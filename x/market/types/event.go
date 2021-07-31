@@ -6,8 +6,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/sdkutil"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/sdkutil"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 const (

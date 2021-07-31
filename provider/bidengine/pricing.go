@@ -14,8 +14,8 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/types/unit"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/types/unit"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 	"github.com/shopspring/decimal"
 )
 
@@ -23,7 +23,7 @@ type BidPricingStrategy interface {
 	CalculatePrice(ctx context.Context, owner string, gspec *dtypes.GroupSpec) (sdk.Coin, error)
 }
 
-const denom = "uakt"
+const denom = "uve"
 
 var errAllScalesZero = errors.New("At least one bid price must be a non-zero number")
 
@@ -296,7 +296,7 @@ func (ssp shellScriptPricing) CalculatePrice(ctx context.Context, owner string, 
 	cmd.Stdout = outputBuf
 
 	subprocEnv := os.Environ()
-	subprocEnv = append(subprocEnv, fmt.Sprintf("AKASH_OWNER=%s", owner))
+	subprocEnv = append(subprocEnv, fmt.Sprintf("VIRTENGINE_OWNER=%s", owner))
 	cmd.Env = subprocEnv
 
 	err = cmd.Run()

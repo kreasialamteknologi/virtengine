@@ -52,10 +52,10 @@ profiles:
           - 4
       pricing:
         web:
-          denom: uakt
+          denom: uve
           amount: 50
         bew:
-          denom: uakt
+          denom: uve
           amount: 50
 deployment:
   web:

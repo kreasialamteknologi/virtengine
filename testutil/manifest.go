@@ -3,7 +3,7 @@ package testutil
 import (
 	"testing"
 
-	"github.com/ovrclk/akash/manifest"
+	"github.com/virtengine/virtengine/manifest"
 )
 
 var (

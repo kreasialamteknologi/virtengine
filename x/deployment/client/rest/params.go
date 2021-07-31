@@ -6,8 +6,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/x/deployment/query"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/query"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 // DeploymentIDFromRequest returns DeploymentID from parsing request

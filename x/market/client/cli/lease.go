@@ -7,7 +7,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
 
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 func cmdGetLeases() *cobra.Command {

@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/testutil"
+	"github.com/virtengine/virtengine/testutil"
 )
 
 func Test_Manifest_encoding(t *testing.T) {

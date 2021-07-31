@@ -60,7 +60,7 @@ func interBlockCacheOpt() func(*baseapp.BaseApp) {
 	return baseapp.SetInterBlockCache(store.NewCommitKVStoreCacheManager())
 }
 
-func simulateFromSeedFunc(t *testing.T, newApp *AkashApp, config simtypes.Config) (bool, simulation.Params, error) {
+func simulateFromSeedFunc(t *testing.T, newApp *VirtEngineApp, config simtypes.Config) (bool, simulation.Params, error) {
 	return simulation.SimulateFromSeed(
 		t, os.Stdout, newApp.BaseApp, simapp.AppStateFn(newApp.AppCodec(), newApp.SimulationManager()),
 		simtypes.RandomAccounts, // Replace with own random account function if using keys other than secp256k1
@@ -84,7 +84,7 @@ func TestFullAppSimulation(t *testing.T) {
 	}()
 
 	app1 := NewApp(logger, db, nil, true, simapp.FlagPeriodValue, map[int64]bool{}, DefaultHome, simapp.EmptyAppOptions{}, fauxMerkleModeOpt)
-	require.Equal(t, "akash", app1.Name())
+	require.Equal(t, "virtengine", app1.Name())
 
 	fmt.Printf("config-------- %v", config)
 	// run randomized simulation

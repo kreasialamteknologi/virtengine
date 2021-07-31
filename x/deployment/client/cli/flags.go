@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 var (

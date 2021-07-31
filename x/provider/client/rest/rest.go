@@ -8,7 +8,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
-	"github.com/ovrclk/akash/x/provider/query"
+	"github.com/virtengine/virtengine/x/provider/query"
 )
 
 // RegisterRoutes registers all query routes

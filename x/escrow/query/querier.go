@@ -3,7 +3,7 @@ package query
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/x/escrow/keeper"
+	"github.com/virtengine/virtengine/x/escrow/keeper"
 )
 
 func NewQuerier(keeper keeper.Keeper, cdc *codec.LegacyAmino) sdk.Querier {

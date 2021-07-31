@@ -4,14 +4,14 @@ set -e
 
 env | sort
 
-mkdir -p "$AKASH_HOME/data"
-mkdir -p "$AKASH_HOME/config"
+mkdir -p "$VIRTENGINE_HOME/data"
+mkdir -p "$VIRTENGINE_HOME/config"
 
 # XXX it's not reading all of the env variables.
 
-cp "$AKASH_BOOT_KEYS/priv_validator_state.json"   "$AKASH_HOME/data/"
-cp "$AKASH_BOOT_DATA/genesis.json" "$AKASH_HOME/config/"
-cp "$AKASH_BOOT_KEYS/node_key.json" "$AKASH_HOME/config/"
-cp "$AKASH_BOOT_KEYS/priv_validator_key.json" "$AKASH_HOME/config/"
+cp "$VIRTENGINE_BOOT_KEYS/priv_validator_state.json"   "$VIRTENGINE_HOME/data/"
+cp "$VIRTENGINE_BOOT_DATA/genesis.json" "$VIRTENGINE_HOME/config/"
+cp "$VIRTENGINE_BOOT_KEYS/node_key.json" "$VIRTENGINE_HOME/config/"
+cp "$VIRTENGINE_BOOT_KEYS/priv_validator_key.json" "$VIRTENGINE_HOME/config/"
 
-/bin/akash --home="$AKASH_HOME" --rpc.laddr="$AKASH_RPC_LADDR" start
+/bin/virtengine --home="$VIRTENGINE_HOME" --rpc.laddr="$VIRTENGINE_RPC_LADDR" start

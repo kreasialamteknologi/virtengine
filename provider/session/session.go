@@ -3,8 +3,8 @@ package session
 import (
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/ovrclk/akash/client"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/client"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 // Session interface wraps Log, Client, Provider and ForModule methods

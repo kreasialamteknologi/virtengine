@@ -4,17 +4,17 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	paramskeeper "github.com/cosmos/cosmos-sdk/x/params/keeper"
 
-	"github.com/ovrclk/akash/x/audit"
-	"github.com/ovrclk/akash/x/cert"
-	"github.com/ovrclk/akash/x/deployment"
-	"github.com/ovrclk/akash/x/escrow"
-	ekeeper "github.com/ovrclk/akash/x/escrow/keeper"
-	"github.com/ovrclk/akash/x/market"
-	mhooks "github.com/ovrclk/akash/x/market/hooks"
-	"github.com/ovrclk/akash/x/provider"
+	"github.com/virtengine/virtengine/x/audit"
+	"github.com/virtengine/virtengine/x/cert"
+	"github.com/virtengine/virtengine/x/deployment"
+	"github.com/virtengine/virtengine/x/escrow"
+	ekeeper "github.com/virtengine/virtengine/x/escrow/keeper"
+	"github.com/virtengine/virtengine/x/market"
+	mhooks "github.com/virtengine/virtengine/x/market/hooks"
+	"github.com/virtengine/virtengine/x/provider"
 )
 
-func akashModuleBasics() []module.AppModuleBasic {
+func virtengineModuleBasics() []module.AppModuleBasic {
 	return []module.AppModuleBasic{
 		escrow.AppModuleBasic{},
 		deployment.AppModuleBasic{},
@@ -25,7 +25,7 @@ func akashModuleBasics() []module.AppModuleBasic {
 	}
 }
 
-func akashKVStoreKeys() []string {
+func virtengineKVStoreKeys() []string {
 	return []string{
 		escrow.StoreKey,
 		deployment.StoreKey,
@@ -36,13 +36,13 @@ func akashKVStoreKeys() []string {
 	}
 }
 
-func akashSubspaces(k paramskeeper.Keeper) paramskeeper.Keeper {
+func virtengineSubspaces(k paramskeeper.Keeper) paramskeeper.Keeper {
 	k.Subspace(deployment.ModuleName)
 	k.Subspace(market.ModuleName)
 	return k
 }
 
-func (app *AkashApp) setAkashKeepers() {
+func (app *VirtEngineApp) setVirtEngineKeepers() {
 
 	app.keeper.escrow = ekeeper.NewKeeper(
 		app.appCodec,
@@ -85,7 +85,7 @@ func (app *AkashApp) setAkashKeepers() {
 	)
 }
 
-func (app *AkashApp) akashAppModules() []module.AppModule {
+func (app *VirtEngineApp) virtengineAppModules() []module.AppModule {
 	return []module.AppModule{
 
 		escrow.NewAppModule(
@@ -130,13 +130,13 @@ func (app *AkashApp) akashAppModules() []module.AppModule {
 	}
 }
 
-func (app *AkashApp) akashEndBlockModules() []string {
+func (app *VirtEngineApp) virtengineEndBlockModules() []string {
 	return []string{
 		deployment.ModuleName, market.ModuleName,
 	}
 }
 
-func (app *AkashApp) akashInitGenesisOrder() []string {
+func (app *VirtEngineApp) virtengineInitGenesisOrder() []string {
 	return []string{
 		cert.ModuleName,
 		escrow.ModuleName,
@@ -146,7 +146,7 @@ func (app *AkashApp) akashInitGenesisOrder() []string {
 	}
 }
 
-func (app *AkashApp) akashSimModules() []module.AppModuleSimulation {
+func (app *VirtEngineApp) virtengineSimModules() []module.AppModuleSimulation {
 	return []module.AppModuleSimulation{
 		deployment.NewAppModuleSimulation(
 			app.keeper.deployment,

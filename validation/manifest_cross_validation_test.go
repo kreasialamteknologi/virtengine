@@ -6,11 +6,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/testutil"
-	akashtypes "github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/validation"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/testutil"
+	virtenginetypes "github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/validation"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 func TestManifestWithEmptyDeployment(t *testing.T) {
@@ -34,7 +34,7 @@ func simpleDeployment(t *testing.T) []dtypes.Group {
 		State:   0,
 		GroupSpec: dtypes.GroupSpec{
 			Name:         nameOfTestGroup,
-			Requirements: akashtypes.PlacementRequirements{},
+			Requirements: virtenginetypes.PlacementRequirements{},
 			Resources:    resources,
 		},
 	}
@@ -161,7 +161,7 @@ func TestManifestWithEndpointMismatchB(t *testing.T) {
 	m := simpleManifest()
 	deployment := simpleDeployment(t)
 	// Add an endpoint where the manifest doesn't call for it
-	deployment[0].GroupSpec.Resources[0].Resources.Endpoints = append(deployment[0].GroupSpec.Resources[0].Resources.Endpoints, akashtypes.Endpoint{})
+	deployment[0].GroupSpec.Resources[0].Resources.Endpoints = append(deployment[0].GroupSpec.Resources[0].Resources.Endpoints, virtenginetypes.Endpoint{})
 	err := validation.ValidateManifestWithDeployment(&m, deployment)
 	require.Error(t, err)
 	require.Regexp(t, "^.*mismatch on number of HTTP only endpoints.+$", err)

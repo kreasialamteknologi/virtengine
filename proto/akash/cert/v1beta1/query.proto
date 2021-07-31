@@ -1,18 +1,18 @@
 syntax = "proto3";
-package akash.cert.v1beta1;
+package virtengine.cert.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "akash/cert/v1beta1/cert.proto";
+import "virtengine/cert/v1beta1/cert.proto";
 
-option go_package = "github.com/ovrclk/akash/x/cert/types";
+option go_package = "github.com/virtengine/virtengine/x/cert/types";
 
 // Query defines the gRPC querier service
 service Query {
   // Certificates queries certificates
   rpc Certificates(QueryCertificatesRequest) returns (QueryCertificatesResponse) {
-    option (google.api.http).get = "/akash/cert/v1beta1/certificates/list";
+    option (google.api.http).get = "/virtengine/cert/v1beta1/certificates/list";
   }
 }
 

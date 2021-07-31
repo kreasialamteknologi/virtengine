@@ -2,9 +2,9 @@ package event
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/manifest"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 // LeaseWon is the data structure that includes leaseID, group and price

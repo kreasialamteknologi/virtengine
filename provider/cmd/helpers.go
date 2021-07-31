@@ -6,14 +6,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	akashclient "github.com/ovrclk/akash/client"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/ovrclk/akash/app"
+	"github.com/virtengine/virtengine/app"
 )
 
 const (
@@ -111,7 +111,7 @@ func leasesForDeployment(ctx context.Context, cctx client.Context, flags *pflag.
 		filter.OSeq = val
 	}
 
-	cclient := akashclient.NewQueryClientFromCtx(cctx)
+	cclient := virtengineclient.NewQueryClientFromCtx(cctx)
 	resp, err := cclient.Leases(ctx, &mtypes.QueryLeasesRequest{
 		Filters: filter,
 	})

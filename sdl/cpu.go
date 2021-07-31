@@ -6,7 +6,7 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v3"
 
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/types"
 )
 
 type v2CPUAttributes types.Attributes

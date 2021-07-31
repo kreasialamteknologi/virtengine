@@ -7,22 +7,22 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ovrclk/akash/provider/cluster"
-	"github.com/ovrclk/akash/provider/cluster/util"
+	"github.com/virtengine/virtengine/provider/cluster"
+	"github.com/virtengine/virtengine/provider/cluster/util"
 
 	"github.com/pkg/errors"
 	"github.com/tendermint/tendermint/libs/log"
 
 	lifecycle "github.com/boz/go-lifecycle"
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/provider/event"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/sdl"
-	"github.com/ovrclk/akash/util/runner"
-	"github.com/ovrclk/akash/validation"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/provider/event"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/sdl"
+	"github.com/virtengine/virtengine/util/runner"
+	"github.com/virtengine/virtengine/validation"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 var (
@@ -374,7 +374,7 @@ func (m *manager) checkHostnamesForManifest(requestManifest manifest.Manifest, g
 
 func (m *manager) validateRequest(req manifestRequest) error {
 	// ensure that an uploaded manifest matches the hash declared on
-	// the Akash Deployment.Version
+	// the VirtEngine Deployment.Version
 	version, err := sdl.ManifestVersion(req.value.Manifest)
 	if err != nil {
 		return err

@@ -1,6 +1,6 @@
-host: https://akash.ovrclk.com
+host: https://virtengine.virtengine.com
 attributes:
   - key: region
     value: sfo
   - key: moniker
-    value: akash
+    value: virtengine

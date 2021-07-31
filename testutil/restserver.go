@@ -7,11 +7,11 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	akashclient "github.com/ovrclk/akash/client"
-	gwutils "github.com/ovrclk/akash/provider/gateway/utils"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	gwutils "github.com/virtengine/virtengine/provider/gateway/utils"
 )
 
-func NewServer(t testing.TB, qclient akashclient.QueryClient, handler http.Handler, certs []tls.Certificate) *httptest.Server {
+func NewServer(t testing.TB, qclient virtengineclient.QueryClient, handler http.Handler, certs []tls.Certificate) *httptest.Server {
 	t.Helper()
 
 	ts := httptest.NewUnstartedServer(handler)

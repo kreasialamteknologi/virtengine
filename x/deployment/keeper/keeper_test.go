@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	"github.com/ovrclk/akash/x/deployment/keeper"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	"github.com/virtengine/virtengine/x/deployment/keeper"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 func Test_Create(t *testing.T) {

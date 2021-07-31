@@ -3,20 +3,20 @@
 package mocks
 
 import (
-	audittypes "github.com/ovrclk/akash/x/audit/types"
-	certtypes "github.com/ovrclk/akash/x/cert/types"
+	audittypes "github.com/virtengine/virtengine/x/audit/types"
+	certtypes "github.com/virtengine/virtengine/x/cert/types"
 
 	context "context"
 
-	deploymenttypes "github.com/ovrclk/akash/x/deployment/types"
+	deploymenttypes "github.com/virtengine/virtengine/x/deployment/types"
 
 	grpc "google.golang.org/grpc"
 
-	markettypes "github.com/ovrclk/akash/x/market/types"
+	markettypes "github.com/virtengine/virtengine/x/market/types"
 
 	mock "github.com/stretchr/testify/mock"
 
-	providertypes "github.com/ovrclk/akash/x/provider/types"
+	providertypes "github.com/virtengine/virtengine/x/provider/types"
 
 	types "github.com/cosmos/cosmos-sdk/types"
 )

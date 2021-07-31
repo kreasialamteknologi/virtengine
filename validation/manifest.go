@@ -5,12 +5,12 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/ovrclk/akash/provider/cluster/util"
+	"github.com/virtengine/virtengine/provider/cluster/util"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 	k8svalidation "k8s.io/apimachinery/pkg/util/validation"
 )
 

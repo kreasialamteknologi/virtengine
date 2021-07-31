@@ -8,10 +8,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
 
-	"github.com/ovrclk/akash/cmd/common"
-	"github.com/ovrclk/akash/sdkutil"
-	dcli "github.com/ovrclk/akash/x/deployment/client/cli"
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/cmd/common"
+	"github.com/virtengine/virtengine/sdkutil"
+	dcli "github.com/virtengine/virtengine/x/deployment/client/cli"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 // GetTxCmd returns the transaction commands for market module

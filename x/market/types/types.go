@@ -5,8 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/types"
-	atypes "github.com/ovrclk/akash/x/audit/types"
+	"github.com/virtengine/virtengine/types"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
 
 	"gopkg.in/yaml.v3"
 )

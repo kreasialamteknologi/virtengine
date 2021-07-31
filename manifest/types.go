@@ -1,7 +1,7 @@
 package manifest
 
 import (
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/types"
 )
 
 // Manifest store list of groups

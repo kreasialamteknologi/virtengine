@@ -3,7 +3,7 @@ package bidengine
 import (
 	"context"
 	"errors"
-	atypes "github.com/ovrclk/akash/x/audit/types"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"time"
@@ -11,11 +11,11 @@ import (
 	lifecycle "github.com/boz/go-lifecycle"
 
 	sdkquery "github.com/cosmos/cosmos-sdk/types/query"
-	"github.com/ovrclk/akash/provider/cluster"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	mquery "github.com/ovrclk/akash/x/market/query"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/provider/cluster"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	mquery "github.com/virtengine/virtengine/x/market/query"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 var (

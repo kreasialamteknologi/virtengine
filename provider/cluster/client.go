@@ -14,12 +14,12 @@ import (
 	eventsv1 "k8s.io/api/events/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/ovrclk/akash/manifest"
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	atypes "github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/types/unit"
-	mquery "github.com/ovrclk/akash/x/market/query"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	atypes "github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/types/unit"
+	mquery "github.com/virtengine/virtengine/x/market/query"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 var (

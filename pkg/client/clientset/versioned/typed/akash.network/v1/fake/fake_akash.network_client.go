@@ -19,22 +19,22 @@ limitations under the License.
 package fake
 
 import (
-	v1 "github.com/ovrclk/akash/pkg/client/clientset/versioned/typed/akash.network/v1"
+	v1 "github.com/virtengine/virtengine/pkg/client/clientset/versioned/typed/virtengine.network/v1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
 
-type FakeAkashV1 struct {
+type FakeVirtEngineV1 struct {
 	*testing.Fake
 }
 
-func (c *FakeAkashV1) Manifests(namespace string) v1.ManifestInterface {
+func (c *FakeVirtEngineV1) Manifests(namespace string) v1.ManifestInterface {
 	return &FakeManifests{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *FakeAkashV1) RESTClient() rest.Interface {
+func (c *FakeVirtEngineV1) RESTClient() rest.Interface {
 	var ret *rest.RESTClient
 	return ret
 }

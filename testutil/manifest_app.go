@@ -3,9 +3,9 @@ package testutil
 import (
 	"testing"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/types/unit"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/types/unit"
 )
 
 // AppManifestGenerator represents a real-world, deployable configuration.
@@ -34,7 +34,7 @@ func (mg manifestGeneratorApp) Service(t testing.TB) manifest.Service {
 	t.Helper()
 	return manifest.Service{
 		Name:  "demo",
-		Image: "ropes/akash-app:v1",
+		Image: "ropes/virtengine-app:v1",
 		Resources: types.ResourceUnits{
 			CPU: &types.CPU{
 				Units: types.NewResourceValue(100),

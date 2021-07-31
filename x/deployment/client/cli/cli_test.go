@@ -10,10 +10,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/cosmos/cosmos-sdk/testutil/network"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/testutil"
-	ccli "github.com/ovrclk/akash/x/cert/client/cli"
-	"github.com/ovrclk/akash/x/deployment/client/cli"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/testutil"
+	ccli "github.com/virtengine/virtengine/x/cert/client/cli"
+	"github.com/virtengine/virtengine/x/deployment/client/cli"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 type IntegrationTestSuite struct {

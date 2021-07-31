@@ -8,9 +8,9 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 
-	"github.com/ovrclk/akash/sdkutil"
-	"github.com/ovrclk/akash/x/provider/config"
-	"github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/sdkutil"
+	"github.com/virtengine/virtengine/x/provider/config"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 // GetTxCmd returns the transaction commands for provider module

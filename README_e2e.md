@@ -30,7 +30,7 @@ Prerequisites:
 
 1. Vagrant
 2. VirtualBox
-3. The ovrclk/kubespray project checked out at the same level as this project
+3. The virtengine/kubespray project checked out at the same level as this project
 
 This starts a complete K8S cluster that is provisioned by kubespray. This uses at least 6 gigabytes of system memory
 when ran.

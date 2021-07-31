@@ -38,18 +38,18 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/ovrclk/akash/app"
-	dcmd "github.com/ovrclk/akash/deploy/cmd"
-	ecmd "github.com/ovrclk/akash/events/cmd"
-	pcmd "github.com/ovrclk/akash/provider/cmd"
-	"github.com/ovrclk/akash/sdkutil"
+	"github.com/virtengine/virtengine/app"
+	dcmd "github.com/virtengine/virtengine/deploy/cmd"
+	ecmd "github.com/virtengine/virtengine/events/cmd"
+	pcmd "github.com/virtengine/virtengine/provider/cmd"
+	"github.com/virtengine/virtengine/sdkutil"
 )
 
 func bindFlags(cmd *cobra.Command, v *viper.Viper) {
 	cmd.Flags().VisitAll(func(f *pflag.Flag) {
 		// Environment variables can't have dashes in them, so bind them to their equivalent
 		// keys with underscores, e.g. --favorite-color to STING_FAVORITE_COLOR
-		_ = v.BindEnv(f.Name, fmt.Sprintf("%s_%s", "AKASH", strings.ToUpper(strings.ReplaceAll(f.Name, "-", "_"))))
+		_ = v.BindEnv(f.Name, fmt.Sprintf("%s_%s", "VIRTENGINE", strings.ToUpper(strings.ReplaceAll(f.Name, "-", "_"))))
 		_ = v.BindPFlag(f.Name, f)
 
 		// Apply the viper config value to the flag when the flag is not set and viper has a value
@@ -60,7 +60,7 @@ func bindFlags(cmd *cobra.Command, v *viper.Viper) {
 	})
 }
 
-// NewRootCmd creates a new root command for akash. It is called once in the
+// NewRootCmd creates a new root command for virtengine. It is called once in the
 // main function.
 func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 	encodingConfig := app.MakeEncodingConfig()
@@ -75,9 +75,9 @@ func NewRootCmd() (*cobra.Command, params.EncodingConfig) {
 		WithHomeDir(app.DefaultHome)
 
 	rootCmd := &cobra.Command{
-		Use:          "akash",
-		Short:        "Akash Blockchain Application",
-		Long:         "Akash CLI Utility.\n\nAkash is a peer-to-peer marketplace for computing resources and \na deployment platform for heavily distributed applications. \nFind out more at https://akash.network",
+		Use:          "virtengine",
+		Short:        "VirtEngine Blockchain Application",
+		Long:         "VirtEngine CLI Utility.\n\nVirtEngine is a peer-to-peer marketplace for computing resources and \na deployment platform for heavily distributed applications. \nFind out more at https://virtengine.network",
 		SilenceUsage: true,
 		PersistentPreRunE: func(cmd *cobra.Command, _ []string) error {
 			if err := server.InterceptConfigsPreRunHandler(cmd); err != nil {
@@ -113,7 +113,7 @@ func Execute(rootCmd *cobra.Command) error {
 	rootCmd.PersistentFlags().String(flags.FlagLogLevel, zerolog.InfoLevel.String(), "The logging level (trace|debug|info|warn|error|fatal|panic)")
 	rootCmd.PersistentFlags().String(flags.FlagLogFormat, tmcfg.LogFormatPlain, "The logging format (json|plain)")
 
-	executor := tmcli.PrepareBaseCmd(rootCmd, "AKASH", app.DefaultHome)
+	executor := tmcli.PrepareBaseCmd(rootCmd, "VIRTENGINE", app.DefaultHome)
 	return executor.ExecuteContext(ctx)
 }
 
@@ -196,19 +196,19 @@ func newApp(logger log.Logger, db dbm.DB, traceStore io.Writer, appOpts serverty
 func createAppAndExport(
 	logger log.Logger, db dbm.DB, tio io.Writer, height int64, forZeroHeight bool, jailAllowedAddrs []string, appOpts servertypes.AppOptions) (servertypes.ExportedApp, error) {
 
-	var akashApp *app.AkashApp
+	var virtengineApp *app.VirtEngineApp
 
 	if height != -1 {
-		akashApp = app.NewApp(logger, db, tio, false, uint(1), map[int64]bool{}, "", appOpts)
+		virtengineApp = app.NewApp(logger, db, tio, false, uint(1), map[int64]bool{}, "", appOpts)
 
-		if err := akashApp.LoadHeight(height); err != nil {
+		if err := virtengineApp.LoadHeight(height); err != nil {
 			return servertypes.ExportedApp{}, err
 		}
 	} else {
-		akashApp = app.NewApp(logger, db, tio, true, uint(1), map[int64]bool{}, "", appOpts)
+		virtengineApp = app.NewApp(logger, db, tio, true, uint(1), map[int64]bool{}, "", appOpts)
 	}
 
-	return akashApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
+	return virtengineApp.ExportAppStateAndValidators(forZeroHeight, jailAllowedAddrs)
 }
 
 func queryCmd() *cobra.Command {

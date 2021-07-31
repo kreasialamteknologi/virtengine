@@ -4,27 +4,27 @@ resources:
   - service.yaml
   - ingress.yaml
 
-namespace: akash-services
+namespace: virtengine-services
 
 commonLabels:
-  app: akash-provider
-  akash.network/component: akash-provider
+  app: virtengine-provider
+  virtengine.network/component: virtengine-provider
 
 configMapGenerator:
-  - name: akash-provider-boot
+  - name: virtengine-provider-boot
     files:
       - run.sh
 
-  - name: akash-client-config
+  - name: virtengine-client-config
     literals:
       - home=/home
       - from=main
-      - node=http://akash-node:26657
+      - node=http://virtengine-node:26657
       - chain-id=local
       - keyring-backend=test
       - trust-node=true
 
-  - name: akash-provider-config
+  - name: virtengine-provider-config
     literals:
       ##
       #  override-able defaults
@@ -61,7 +61,7 @@ secretGenerator:
   ##
   # required values:
   ##
-  - name: akash-provider-keys
+  - name: virtengine-provider-keys
     files:
     # - key.txt
     # - key-pass.txt

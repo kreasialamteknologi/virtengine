@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: akash-services-default-deny-ingress
+  name: virtengine-services-default-deny-ingress
 spec:
   podSelector: 
     matchLabels: {}
@@ -12,7 +12,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: akash-services-allow-akash-services
+  name: virtengine-services-allow-virtengine-services
 spec:
   podSelector: 
     matchLabels: {}
@@ -20,12 +20,12 @@ spec:
   - from:
     - namespaceSelector:
         matchLabels:
-          akash.network/name: akash-services
+          virtengine.network/name: virtengine-services
 ---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: akash-services-allow-ingress-nginx
+  name: virtengine-services-allow-ingress-nginx
 spec:
   podSelector: 
     matchLabels: {}

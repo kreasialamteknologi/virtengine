@@ -13,9 +13,9 @@ import (
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/x/audit/keeper"
-	"github.com/ovrclk/akash/x/audit/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/x/audit/keeper"
+	"github.com/virtengine/virtengine/x/audit/types"
 )
 
 func TestProviderCreate(t *testing.T) {

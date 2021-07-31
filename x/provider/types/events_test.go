@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/sdkutil"
+	"github.com/virtengine/virtengine/sdkutil"
 )
 
 var (
@@ -84,7 +84,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 			},
 		},
@@ -122,7 +122,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 			},
 		},
@@ -160,7 +160,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 			},
 		},

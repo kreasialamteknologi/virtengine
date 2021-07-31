@@ -13,9 +13,9 @@ import (
 
 	simappparams "github.com/cosmos/cosmos-sdk/simapp/params"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
-	appparams "github.com/ovrclk/akash/app/params"
-	keepers "github.com/ovrclk/akash/x/market/handler"
-	"github.com/ovrclk/akash/x/market/types"
+	appparams "github.com/virtengine/virtengine/app/params"
+	keepers "github.com/virtengine/virtengine/x/market/handler"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 // Simulation operation weights constants

@@ -1,9 +1,9 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: manifests.akash.network
+  name: manifests.virtengine.network
 spec:
-  group: akash.network
+  group: virtengine.network
   scope: Namespaced
   names:
     plural: manifests

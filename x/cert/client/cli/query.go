@@ -10,7 +10,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 
-	"github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/x/cert/types"
 )
 
 func GetQueryCmd() *cobra.Command {

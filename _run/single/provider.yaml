@@ -1,4 +1,4 @@
-host: https://akash-provider.localhost
+host: https://virtengine-provider.localhost
 attributes:
   - key: region
     value: us-west

@@ -5,14 +5,14 @@ import (
 )
 
 const (
-	Bech32PrefixAccAddr = "akash"
-	Bech32PrefixAccPub  = "akashpub"
+	Bech32PrefixAccAddr = "virtengine"
+	Bech32PrefixAccPub  = "virtenginepub"
 
-	Bech32PrefixValAddr = "akashvaloper"
-	Bech32PrefixValPub  = "akashvaloperpub"
+	Bech32PrefixValAddr = "virtenginevaloper"
+	Bech32PrefixValPub  = "virtenginevaloperpub"
 
-	Bech32PrefixConsAddr = "akashvalcons"
-	Bech32PrefixConsPub  = "akashvalconspub"
+	Bech32PrefixConsAddr = "virtenginevalcons"
+	Bech32PrefixConsPub  = "virtenginevalconspub"
 )
 
 // InitSDKConfig configures address prefixes for validator, accounts and consensus nodes

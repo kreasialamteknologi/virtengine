@@ -13,10 +13,10 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 
-	"github.com/ovrclk/akash/x/deployment/client/cli"
-	deploymentTypes "github.com/ovrclk/akash/x/deployment/types"
-	"github.com/ovrclk/akash/x/escrow/types"
-	marketTypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/deployment/client/cli"
+	deploymentTypes "github.com/virtengine/virtengine/x/deployment/types"
+	"github.com/virtengine/virtengine/x/escrow/types"
+	marketTypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 func GetQueryCmd() *cobra.Command {

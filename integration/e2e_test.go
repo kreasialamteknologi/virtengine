@@ -7,7 +7,7 @@ import (
 	"errors"
 	"fmt"
 	sdktest "github.com/cosmos/cosmos-sdk/testutil"
-	"github.com/ovrclk/akash/provider/gateway/rest"
+	"github.com/virtengine/virtengine/provider/gateway/rest"
 	"io/ioutil"
 	"net"
 	"net/url"
@@ -21,13 +21,13 @@ import (
 	bankcli "github.com/cosmos/cosmos-sdk/x/bank/client/testutil"
 	"github.com/stretchr/testify/assert"
 
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	providerCmd "github.com/ovrclk/akash/provider/cmd"
-	"github.com/ovrclk/akash/sdl"
-	ccli "github.com/ovrclk/akash/x/cert/client/cli"
-	mcli "github.com/ovrclk/akash/x/market/client/cli"
-	"github.com/ovrclk/akash/x/provider/client/cli"
-	"github.com/ovrclk/akash/x/provider/types"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	providerCmd "github.com/virtengine/virtengine/provider/cmd"
+	"github.com/virtengine/virtengine/sdl"
+	ccli "github.com/virtengine/virtengine/x/cert/client/cli"
+	mcli "github.com/virtengine/virtengine/x/market/client/cli"
+	"github.com/virtengine/virtengine/x/provider/client/cli"
+	"github.com/virtengine/virtengine/x/provider/types"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
@@ -38,11 +38,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/testutil/network"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	ptestutil "github.com/ovrclk/akash/provider/testutil"
-	"github.com/ovrclk/akash/testutil"
-	deploycli "github.com/ovrclk/akash/x/deployment/client/cli"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	ptestutil "github.com/virtengine/virtengine/provider/testutil"
+	"github.com/virtengine/virtengine/testutil"
+	deploycli "github.com/virtengine/virtengine/x/deployment/client/cli"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 // IntegrationTestSuite wraps testing components
@@ -245,7 +245,7 @@ func (s *IntegrationTestSuite) SetupSuite() {
 	// Run Provider service
 	keyName := s.keyProvider.GetName()
 
-	// Change the akash home directory for CLI to access the test keyring
+	// Change the virtengine home directory for CLI to access the test keyring
 	cliHome := strings.Replace(s.validator.ClientCtx.HomeDir, "simd", "simcli", 1)
 
 	cctx := s.validator.ClientCtx

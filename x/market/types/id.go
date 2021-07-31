@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 // MakeOrderID returns OrderID instance with provided groupID details and oseq

@@ -5,10 +5,10 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/manifest"
-	providerUtil "github.com/ovrclk/akash/provider/cluster/util"
-	"github.com/ovrclk/akash/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/manifest"
+	providerUtil "github.com/virtengine/virtengine/provider/cluster/util"
+	"github.com/virtengine/virtengine/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 type v2 struct {

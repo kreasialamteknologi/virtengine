@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 var (

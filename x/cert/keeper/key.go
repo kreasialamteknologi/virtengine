@@ -6,7 +6,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/x/cert/types"
 )
 
 const (

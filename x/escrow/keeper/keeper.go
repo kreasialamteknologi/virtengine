@@ -3,7 +3,7 @@ package keeper
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/x/escrow/types"
+	"github.com/virtengine/virtengine/x/escrow/types"
 	"github.com/pkg/errors"
 )
 

@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/ovrclk/akash/manifest"
+	"github.com/virtengine/virtengine/manifest"
 )
 
 // RandManifestGenerator generates a manifest with random values
@@ -34,9 +34,9 @@ func (mg manifestGeneratorRand) Service(t testing.TB) manifest.Service {
 	t.Helper()
 	return manifest.Service{
 		Name:      "demo",
-		Image:     "quay.io/ovrclk/demo-app",
+		Image:     "quay.io/virtengine/demo-app",
 		Args:      []string{"run"},
-		Env:       []string{"AKASH_TEST_SERVICE=true"},
+		Env:       []string{"VIRTENGINE_TEST_SERVICE=true"},
 		Resources: ResourceUnits(t),
 		Count:     rand.Uint32(), // nolint: gosec
 		Expose: []manifest.ServiceExpose{

@@ -22,10 +22,10 @@ import (
 	"context"
 	time "time"
 
-	akashnetworkv1 "github.com/ovrclk/akash/pkg/apis/akash.network/v1"
-	versioned "github.com/ovrclk/akash/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/ovrclk/akash/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/ovrclk/akash/pkg/client/listers/akash.network/v1"
+	virtenginenetworkv1 "github.com/virtengine/virtengine/pkg/apis/virtengine.network/v1"
+	versioned "github.com/virtengine/virtengine/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/virtengine/virtengine/pkg/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/virtengine/virtengine/pkg/client/listers/virtengine.network/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -62,16 +62,16 @@ func NewFilteredManifestInformer(client versioned.Interface, namespace string, r
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AkashV1().Manifests(namespace).List(context.TODO(), options)
+				return client.VirtEngineV1().Manifests(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.AkashV1().Manifests(namespace).Watch(context.TODO(), options)
+				return client.VirtEngineV1().Manifests(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&akashnetworkv1.Manifest{},
+		&virtenginenetworkv1.Manifest{},
 		resyncPeriod,
 		indexers,
 	)
@@ -82,7 +82,7 @@ func (f *manifestInformer) defaultInformer(client versioned.Interface, resyncPer
 }
 
 func (f *manifestInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&akashnetworkv1.Manifest{}, f.defaultInformer)
+	return f.factory.InformerFor(&virtenginenetworkv1.Manifest{}, f.defaultInformer)
 }
 
 func (f *manifestInformer) Lister() v1.ManifestLister {

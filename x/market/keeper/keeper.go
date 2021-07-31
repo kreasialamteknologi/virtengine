@@ -4,8 +4,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	"github.com/ovrclk/akash/x/market/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	"github.com/virtengine/virtengine/x/market/types"
 	"github.com/pkg/errors"
 )
 

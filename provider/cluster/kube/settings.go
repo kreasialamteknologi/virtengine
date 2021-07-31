@@ -2,7 +2,7 @@ package kube
 
 import (
 	"fmt"
-	validation_util "github.com/ovrclk/akash/util/validation"
+	validation_util "github.com/virtengine/virtengine/util/validation"
 	"github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
 )

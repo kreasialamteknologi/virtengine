@@ -2,8 +2,8 @@ package provider
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/x/provider/keeper"
-	"github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/provider/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

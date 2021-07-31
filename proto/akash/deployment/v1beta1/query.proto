@@ -1,30 +1,30 @@
 syntax = "proto3";
-package akash.deployment.v1beta1;
+package virtengine.deployment.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "akash/deployment/v1beta1/deployment.proto";
-import "akash/deployment/v1beta1/group.proto";
-import "akash/escrow/v1beta1/types.proto";
+import "virtengine/deployment/v1beta1/deployment.proto";
+import "virtengine/deployment/v1beta1/group.proto";
+import "virtengine/escrow/v1beta1/types.proto";
 
-option go_package = "github.com/ovrclk/akash/x/deployment/types";
+option go_package = "github.com/virtengine/virtengine/x/deployment/types";
 
 // Query defines the gRPC querier service
 service Query {
   // Deployments queries deployments
   rpc Deployments(QueryDeploymentsRequest) returns (QueryDeploymentsResponse) {
-    option (google.api.http).get = "/akash/deployment/v1beta1/deployments/list";
+    option (google.api.http).get = "/virtengine/deployment/v1beta1/deployments/list";
   }
 
   // Deployment queries deployment details
   rpc Deployment(QueryDeploymentRequest) returns (QueryDeploymentResponse) {
-    option (google.api.http).get = "/akash/deployment/v1beta1/deployments/info";
+    option (google.api.http).get = "/virtengine/deployment/v1beta1/deployments/info";
   }
 
   // Group queries group details
   rpc Group(QueryGroupRequest) returns (QueryGroupResponse) {
-    option (google.api.http).get = "/akash/deployment/v1beta1/groups/info";
+    option (google.api.http).get = "/virtengine/deployment/v1beta1/groups/info";
   }
 }
 
@@ -55,7 +55,7 @@ message QueryDeploymentResponse {
       [(gogoproto.nullable) = false, (gogoproto.jsontag) = "deployment", (gogoproto.moretags) = "yaml:\"deployment\""];
   repeated Group groups = 2
       [(gogoproto.nullable) = false, (gogoproto.jsontag) = "groups", (gogoproto.moretags) = "yaml:\"groups\""];
-  akash.escrow.v1beta1.Account escrow_account = 3 [
+  virtengine.escrow.v1beta1.Account escrow_account = 3 [
     (gogoproto.nullable) = false
   ];
 }

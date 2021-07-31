@@ -15,19 +15,19 @@ bins: $(BINS)
 build:
 	$(GO) build -a  ./...
 
-$(AKASH): modvendor
-	$(GO) build -o $@ $(BUILD_FLAGS) ./cmd/akash
+$(VIRTENGINE): modvendor
+	$(GO) build -o $@ $(BUILD_FLAGS) ./cmd/virtengine
 
-.PHONY: akash
-akash: $(AKASH)
+.PHONY: virtengine
+virtengine: $(VIRTENGINE)
 
-.PHONY: akash_docgen
-akash_docgen: $(AKASH_DEVCACHE)
-	$(GO) build -o $(AKASH_DEVCACHE_BIN)/akash_docgen $(BUILD_FLAGS) ./docgen
+.PHONY: virtengine_docgen
+virtengine_docgen: $(VIRTENGINE_DEVCACHE)
+	$(GO) build -o $(VIRTENGINE_DEVCACHE_BIN)/virtengine_docgen $(BUILD_FLAGS) ./docgen
 
 .PHONY: install
 install:
-	$(GO) install $(BUILD_FLAGS) ./cmd/akash
+	$(GO) install $(BUILD_FLAGS) ./cmd/virtengine
 
 .PHONY: image-minikube
 image-minikube:
@@ -43,8 +43,8 @@ docker-image:
 		-e LD_FLAGS="$(GORELEASER_LD_FLAGS)" \
 		-e GOLANG_VERSION="$(GOLANG_VERSION)" \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v `pwd`:/go/src/github.com/ovrclk/akash \
-		-w /go/src/github.com/ovrclk/akash \
+		-v `pwd`:/go/src/github.com/virtengine/virtengine \
+		-w /go/src/github.com/virtengine/virtengine \
 		troian/golang-cross:${GOLANG_CROSS_VERSION}-linux-amd64 \
 		-f .goreleaser-docker.yaml --rm-dist --skip-validate --skip-publish --snapshot
 
@@ -64,10 +64,10 @@ release-dry-run: modvendor gen-changelog
 		-e HOMEBREW_NAME="$(GORELEASER_HOMEBREW_NAME)" \
 		-e HOMEBREW_CUSTOM="$(GORELEASER_HOMEBREW_CUSTOM)" \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v `pwd`:/go/src/github.com/ovrclk/akash \
-		-w /go/src/github.com/ovrclk/akash \
+		-v `pwd`:/go/src/github.com/virtengine/virtengine \
+		-w /go/src/github.com/virtengine/virtengine \
 		troian/golang-cross:${GOLANG_CROSS_VERSION} \
-		-f "$(GORELEASER_CONFIG)" --skip-validate=$(GORELEASER_SKIP_VALIDATE) --rm-dist --skip-publish --release-notes=/go/src/github.com/ovrclk/akash/.cache/changelog.md
+		-f "$(GORELEASER_CONFIG)" --skip-validate=$(GORELEASER_SKIP_VALIDATE) --rm-dist --skip-publish --release-notes=/go/src/github.com/virtengine/virtengine/.cache/changelog.md
 
 .PHONY: release
 release: modvendor gen-changelog
@@ -85,7 +85,7 @@ release: modvendor gen-changelog
 		-e HOMEBREW_CUSTOM="$(GORELEASER_HOMEBREW_CUSTOM)" \
 		--env-file .release-env \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v `pwd`:/go/src/github.com/ovrclk/akash \
-		-w /go/src/github.com/ovrclk/akash \
+		-v `pwd`:/go/src/github.com/virtengine/virtengine \
+		-w /go/src/github.com/virtengine/virtengine \
 		troian/golang-cross:${GOLANG_CROSS_VERSION} \
-		-f "$(GORELEASER_CONFIG)" release --rm-dist --release-notes=/go/src/github.com/ovrclk/akash/.cache/changelog.md
+		-f "$(GORELEASER_CONFIG)" release --rm-dist --release-notes=/go/src/github.com/virtengine/virtengine/.cache/changelog.md

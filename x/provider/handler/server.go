@@ -7,10 +7,10 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/pkg/errors"
 
-	mkeeper "github.com/ovrclk/akash/x/market/keeper"
-	mtypes "github.com/ovrclk/akash/x/market/types"
-	"github.com/ovrclk/akash/x/provider/keeper"
-	"github.com/ovrclk/akash/x/provider/types"
+	mkeeper "github.com/virtengine/virtengine/x/market/keeper"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
+	"github.com/virtengine/virtengine/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 var (

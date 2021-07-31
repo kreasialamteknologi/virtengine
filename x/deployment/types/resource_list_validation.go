@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/types"
 	"github.com/pkg/errors"
 )
 

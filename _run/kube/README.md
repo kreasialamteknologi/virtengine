@@ -3,7 +3,7 @@
 The _Kube_ dev environment builds:
 
 * A single-node blockchain network
-* An Akash Provider Services Daemon (PSD) for bidding and running workloads.
+* An VirtEngine Provider Services Daemon (PSD) for bidding and running workloads.
 * A Kubernetes cluster for the PSD to run workloads on.
 
 The [instructions](#runbook) below will illustrate how to run a network with a single, local node and execute workloads in [kind](https://kind.sigs.k8s.io/):
@@ -39,7 +39,7 @@ this example.
 |`DSEQ`|1|deployment sequence|
 |`GSEQ`|1|group sequence|
 |`OSEQ`|1|order sequence|
-|`PRICE`|10uakt|price to bid|
+|`PRICE`|10uve|price to bid|
 
 # Runbook
 
@@ -76,7 +76,7 @@ there may be a problem.
 | Map random local port to port 80 of your workload | `make kind-cluster-create` | This is less error-prone, but makes it difficult to access your app through the browser. |
 | Map localhost port 80 to workload  | `KIND_CONFIG=kind-config-80.yaml make kind-cluster-create` | If anything else is listening on port 80 (any other web server), this method will fail.  If it does succeed, you will be able to browse your app from the browser. |
 
-## Build Akash binaries and initialize network
+## Build VirtEngine binaries and initialize network
 
 Initialize keys and accounts:
 
@@ -87,7 +87,7 @@ make init
 
 ## Run local network
 
-In a separate terminal, the following command will run the `akash` node:
+In a separate terminal, the following command will run the `virtengine` node:
 
 ### __t2 Step: 3__
 ```sh
@@ -239,7 +239,7 @@ deployed workload at http://hello.localhost
 ## Update Deployment
 
 Updating active Deployments is a two step process. First edit the `deployment.yaml` with whatever changes are desired. Example; update the `image` field.
- 1. Update the Akash Network to inform the Provider that a new Deployment declaration is expected.
+ 1. Update the VirtEngine Network to inform the Provider that a new Deployment declaration is expected.
    * `make deployment-update`
  2. Send the updated manifest to the Provider to run.
    * `make send-manifest`
@@ -248,7 +248,7 @@ Between the first and second step, the prior deployment's containers will contin
 
 #### Limitations
 
-Akash Groups are translated into Kubernetes Deployments, this means that only a few fields from the Akash SDL are mutable. For example `image`, `command`, `args`, `env` and exposed ports can be modified, but compute resources and placement criteria cannot.
+VirtEngine Groups are translated into Kubernetes Deployments, this means that only a few fields from the VirtEngine SDL are mutable. For example `image`, `command`, `args`, `env` and exposed ports can be modified, but compute resources and placement criteria cannot.
 
 ## Terminate lease
 

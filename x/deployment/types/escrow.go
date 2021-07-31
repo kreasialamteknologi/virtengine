@@ -1,7 +1,7 @@
 package types
 
 import (
-	etypes "github.com/ovrclk/akash/x/escrow/types"
+	etypes "github.com/virtengine/virtengine/x/escrow/types"
 )
 
 const (

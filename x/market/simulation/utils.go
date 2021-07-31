@@ -2,9 +2,9 @@ package simulation
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	keepers "github.com/ovrclk/akash/x/market/handler"
-	"github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	keepers "github.com/virtengine/virtengine/x/market/handler"
+	"github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 func getOrdersWithState(ctx sdk.Context, ks keepers.Keepers, state types.Order_State) []types.Order {

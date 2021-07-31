@@ -3,7 +3,7 @@ package simulation
 import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/x/cert/types"
 )
 
 func RandomizedGenState(simState *module.SimulationState) {

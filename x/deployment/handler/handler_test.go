@@ -11,12 +11,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	"github.com/ovrclk/akash/x/deployment/handler"
-	"github.com/ovrclk/akash/x/deployment/keeper"
-	"github.com/ovrclk/akash/x/deployment/types"
-	mkeeper "github.com/ovrclk/akash/x/market/keeper"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	"github.com/virtengine/virtengine/x/deployment/handler"
+	"github.com/virtengine/virtengine/x/deployment/keeper"
+	"github.com/virtengine/virtengine/x/deployment/types"
+	mkeeper "github.com/virtengine/virtengine/x/market/keeper"
 )
 
 type testSuite struct {
@@ -255,7 +255,7 @@ func (st *testSuite) createDeployment() (types.Deployment, []types.Group) {
 		{
 			Resources: testutil.ResourceUnits(st.t),
 			Count:     1,
-			Price:     testutil.AkashCoinRandom(st.t),
+			Price:     testutil.VirtEngineCoinRandom(st.t),
 		},
 	}
 	groups := []types.Group{

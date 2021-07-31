@@ -10,7 +10,7 @@ import (
 func RootCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:          "provider",
-		Short:        "Akash provider commands",
+		Short:        "VirtEngine provider commands",
 		SilenceUsage: true,
 	}
 

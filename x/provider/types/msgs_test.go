@@ -9,7 +9,7 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/types"
 )
 
 func TestConfigPath(t *testing.T) {
@@ -19,7 +19,7 @@ func TestConfigPath(t *testing.T) {
 	}
 	tests := []testConfigPath{
 		{
-			path:   "/home/ropes/go/src/github.com/ovrclk/akash/_run/kube/provider.yaml",
+			path:   "/home/ropes/go/src/github.com/virtengine/virtengine/_run/kube/provider.yaml",
 			expErr: ErrNotAbsProviderURI,
 		},
 		{

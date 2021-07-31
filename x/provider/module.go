@@ -21,13 +21,13 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 
-	mkeeper "github.com/ovrclk/akash/x/market/keeper"
-	"github.com/ovrclk/akash/x/provider/client/cli"
-	"github.com/ovrclk/akash/x/provider/client/rest"
-	"github.com/ovrclk/akash/x/provider/handler"
-	"github.com/ovrclk/akash/x/provider/keeper"
-	"github.com/ovrclk/akash/x/provider/simulation"
-	"github.com/ovrclk/akash/x/provider/types"
+	mkeeper "github.com/virtengine/virtengine/x/market/keeper"
+	"github.com/virtengine/virtengine/x/provider/client/cli"
+	"github.com/virtengine/virtengine/x/provider/client/rest"
+	"github.com/virtengine/virtengine/x/provider/handler"
+	"github.com/virtengine/virtengine/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/provider/simulation"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 var (

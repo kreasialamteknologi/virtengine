@@ -15,10 +15,10 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/testutil"
-	atypes "github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/types/unit"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/testutil"
+	atypes "github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/types/unit"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 	"github.com/stretchr/testify/require"
 )
 
@@ -67,7 +67,7 @@ func defaultGroupSpec() *dtypes.GroupSpec {
 		Memory:  &memory,
 		Storage: &storage,
 	}
-	price := sdk.NewInt64Coin("uakt", 23)
+	price := sdk.NewInt64Coin("uve", 23)
 	resource := dtypes.Resource{
 		Resources: clusterResources,
 		Count:     1,
@@ -101,7 +101,7 @@ func Test_ScalePricingOnCpu(t *testing.T) {
 	gspec.Resources[0].Resources.CPU.Units = atypes.NewResourceValue(cpuQuantity)
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
-	expectedPrice := testutil.AkashCoin(t, cpuScale.IntPart()*int64(cpuQuantity))
+	expectedPrice := testutil.VirtEngineCoin(t, cpuScale.IntPart()*int64(cpuQuantity))
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
@@ -119,7 +119,7 @@ func Test_ScalePricingOnCpuRoundsUpToOne(t *testing.T) {
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
 	// Implementation rounds up to 1
-	expectedPrice := testutil.AkashCoin(t, 1)
+	expectedPrice := testutil.VirtEngineCoin(t, 1)
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
@@ -136,10 +136,10 @@ func Test_ScalePricingOnCpuRoundsUp(t *testing.T) {
 	gspec.Resources[0].Resources.CPU.Units = atypes.NewResourceValue(uint64(cpuQuantity))
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
-	// Implementation rounds up to nearest whole uakt
+	// Implementation rounds up to nearest whole uve
 	expected := cpuScale.Mul(decimal.NewFromInt(int64(cpuQuantity))).Ceil()
 	require.True(t, expected.IsPositive()) // sanity check expected value
-	expectedPrice := testutil.AkashCoin(t, expected.IntPart())
+	expectedPrice := testutil.VirtEngineCoin(t, expected.IntPart())
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
@@ -156,7 +156,7 @@ func Test_ScalePricingOnMemory(t *testing.T) {
 	gspec.Resources[0].Resources.Memory.Quantity = atypes.NewResourceValue(memoryQuantity)
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
-	expectedPrice := testutil.AkashCoin(t, int64(memoryScale*memoryQuantity))
+	expectedPrice := testutil.VirtEngineCoin(t, int64(memoryScale*memoryQuantity))
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
@@ -174,9 +174,9 @@ func Test_ScalePricingOnMemoryRoundsUpA(t *testing.T) {
 	gspec.Resources[0].Resources.Memory.Quantity = atypes.NewResourceValue(memoryQuantity)
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
-	// The pricing function cannot round down, so the price must exactly 1 uakt larger
+	// The pricing function cannot round down, so the price must exactly 1 uve larger
 	// than the scale provided
-	expectedPrice := testutil.AkashCoin(t, int64(124))
+	expectedPrice := testutil.VirtEngineCoin(t, int64(124))
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
@@ -195,13 +195,13 @@ func Test_ScalePricingOnMemoryRoundsUpB(t *testing.T) {
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
 	// The pricing function cannot round down, so the price must exactly twice the scale
-	expectedPrice := testutil.AkashCoin(t, int64(246))
+	expectedPrice := testutil.VirtEngineCoin(t, int64(246))
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
 
 func Test_ScalePricingOnMemoryRoundsUpFromZero(t *testing.T) {
-	memoryScale := uint64(1) // 1 uakt per megabyte
+	memoryScale := uint64(1) // 1 uve per megabyte
 	memoryPrice := decimal.NewFromInt(int64(memoryScale))
 	pricing, err := MakeScalePricing(decimal.Zero, memoryPrice, decimal.Zero, decimal.Zero)
 	require.NoError(t, err)
@@ -213,8 +213,8 @@ func Test_ScalePricingOnMemoryRoundsUpFromZero(t *testing.T) {
 	gspec.Resources[0].Resources.Memory.Quantity = atypes.NewResourceValue(memoryQuantity)
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
-	// The pricing function cannot round down, so the price must exactly 1 uakt
-	expectedPrice := testutil.AkashCoin(t, int64(1))
+	// The pricing function cannot round down, so the price must exactly 1 uve
+	expectedPrice := testutil.VirtEngineCoin(t, int64(1))
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
@@ -232,7 +232,7 @@ func Test_ScalePricingOnStorage(t *testing.T) {
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
 	// one is added due to fractional rounding in the implementation
-	expectedPrice := testutil.AkashCoin(t, int64(storageScale*storageQuantity)+1)
+	expectedPrice := testutil.VirtEngineCoin(t, int64(storageScale*storageQuantity)+1)
 	require.Equal(t, expectedPrice, price)
 	require.NoError(t, err)
 }
@@ -250,14 +250,14 @@ func Test_ScalePricingByCountOfResources(t *testing.T) {
 	firstPrice, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 
 	// one is added due to fractional rounding in the implementation
-	firstExpectedPrice := testutil.AkashCoin(t, int64(storageScale*storageQuantity)+1)
+	firstExpectedPrice := testutil.VirtEngineCoin(t, int64(storageScale*storageQuantity)+1)
 	require.Equal(t, firstExpectedPrice, firstPrice)
 	require.NoError(t, err)
 
 	gspec.Resources[0].Count = 2
 	secondPrice, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 	// one is added due to fractional rounding in the implementation
-	secondExpectedPrice := testutil.AkashCoin(t, 2*int64(storageScale*storageQuantity)+1)
+	secondExpectedPrice := testutil.VirtEngineCoin(t, 2*int64(storageScale*storageQuantity)+1)
 	require.Equal(t, secondExpectedPrice, secondPrice)
 	require.NoError(t, err)
 }
@@ -428,7 +428,7 @@ func Test_ScriptPricingReturnsResultFromScript(t *testing.T) {
 
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), defaultGroupSpec())
 	require.NoError(t, err)
-	require.Equal(t, "uakt", price.Denom)
+	require.Equal(t, "uve", price.Denom)
 	require.Equal(t, int64(132), price.Amount.Int64())
 }
 
@@ -523,7 +523,7 @@ func Test_ScriptPricingWritesJsonToStdin(t *testing.T) {
 	gspec := defaultGroupSpec()
 	price, err := pricing.CalculatePrice(context.Background(), testutil.AccAddress(t).String(), gspec)
 	require.NoError(t, err)
-	require.Equal(t, "uakt", price.Denom)
+	require.Equal(t, "uve", price.Denom)
 	require.Equal(t, int64(1), price.Amount.Int64())
 	// Open the file and make sure it has the JSON
 	fin, err := os.Open(jsonPath)

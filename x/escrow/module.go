@@ -21,11 +21,11 @@ import (
 	"github.com/gogo/protobuf/grpc"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/x/escrow/client/cli"
-	"github.com/ovrclk/akash/x/escrow/client/rest"
-	"github.com/ovrclk/akash/x/escrow/keeper"
-	"github.com/ovrclk/akash/x/escrow/query"
-	"github.com/ovrclk/akash/x/escrow/types"
+	"github.com/virtengine/virtengine/x/escrow/client/cli"
+	"github.com/virtengine/virtengine/x/escrow/client/rest"
+	"github.com/virtengine/virtengine/x/escrow/keeper"
+	"github.com/virtengine/virtengine/x/escrow/query"
+	"github.com/virtengine/virtengine/x/escrow/types"
 )
 
 var (

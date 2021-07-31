@@ -6,8 +6,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	dcli "github.com/ovrclk/akash/x/deployment/client/cli"
-	"github.com/ovrclk/akash/x/market/types"
+	dcli "github.com/virtengine/virtengine/x/deployment/client/cli"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 var (

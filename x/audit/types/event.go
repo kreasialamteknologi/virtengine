@@ -3,7 +3,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/sdkutil"
+	"github.com/virtengine/virtengine/sdkutil"
 )
 
 const (

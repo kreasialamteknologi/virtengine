@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	"github.com/ovrclk/akash/x/escrow/keeper"
-	"github.com/ovrclk/akash/x/escrow/keeper/mocks"
-	"github.com/ovrclk/akash/x/escrow/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	"github.com/virtengine/virtengine/x/escrow/keeper"
+	"github.com/virtengine/virtengine/x/escrow/keeper/mocks"
+	"github.com/virtengine/virtengine/x/escrow/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -17,8 +17,8 @@ func Test_AccountCreate(t *testing.T) {
 	ctx, keeper, bkeeper := setupKeeper(t)
 	id := genAccountID(t)
 	owner := testutil.AccAddress(t)
-	amt := testutil.AkashCoinRandom(t)
-	amt2 := testutil.AkashCoinRandom(t)
+	amt := testutil.VirtEngineCoinRandom(t)
+	amt2 := testutil.VirtEngineCoinRandom(t)
 
 	// create account
 	bkeeper.
@@ -52,10 +52,10 @@ func Test_PaymentCreate(t *testing.T) {
 	aid := genAccountID(t)
 	aowner := testutil.AccAddress(t)
 
-	amt := testutil.AkashCoin(t, 1000)
+	amt := testutil.VirtEngineCoin(t, 1000)
 	pid := testutil.Name(t, "payment")
 	powner := testutil.AccAddress(t)
-	rate := testutil.AkashCoin(t, 10)
+	rate := testutil.VirtEngineCoin(t, 10)
 
 	// create account
 	bkeeper.
@@ -76,7 +76,7 @@ func Test_PaymentCreate(t *testing.T) {
 	blkdelta := int64(10)
 	ctx = ctx.WithBlockHeight(ctx.BlockHeight() + blkdelta)
 	bkeeper.
-		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, powner, sdk.NewCoins(testutil.AkashCoin(t, rate.Amount.Int64()*blkdelta))).
+		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, powner, sdk.NewCoins(testutil.VirtEngineCoin(t, rate.Amount.Int64()*blkdelta))).
 		Return(nil)
 	assert.NoError(t, keeper.PaymentWithdraw(ctx, aid, pid))
 
@@ -86,22 +86,22 @@ func Test_PaymentCreate(t *testing.T) {
 		require.Equal(t, ctx.BlockHeight(), acct.SettledAt)
 
 		require.Equal(t, types.AccountOpen, acct.State)
-		require.Equal(t, testutil.AkashCoin(t, amt.Amount.Int64()-rate.Amount.Int64()*ctx.BlockHeight()), acct.Balance)
-		require.Equal(t, testutil.AkashCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), acct.Transferred)
+		require.Equal(t, testutil.VirtEngineCoin(t, amt.Amount.Int64()-rate.Amount.Int64()*ctx.BlockHeight()), acct.Balance)
+		require.Equal(t, testutil.VirtEngineCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), acct.Transferred)
 
 		payment, err := keeper.GetPayment(ctx, aid, pid)
 		require.NoError(t, err)
 
 		require.Equal(t, types.PaymentOpen, payment.State)
-		require.Equal(t, testutil.AkashCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), payment.Withdrawn)
-		require.Equal(t, testutil.AkashCoin(t, 0), payment.Balance)
+		require.Equal(t, testutil.VirtEngineCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), payment.Withdrawn)
+		require.Equal(t, testutil.VirtEngineCoin(t, 0), payment.Balance)
 	}
 
 	// close payment
 	blkdelta = 20
 	ctx = ctx.WithBlockHeight(ctx.BlockHeight() + blkdelta)
 	bkeeper.
-		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, powner, sdk.NewCoins(testutil.AkashCoin(t, rate.Amount.Int64()*blkdelta))).
+		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, powner, sdk.NewCoins(testutil.VirtEngineCoin(t, rate.Amount.Int64()*blkdelta))).
 		Return(nil)
 	assert.NoError(t, keeper.PaymentClose(ctx, aid, pid))
 
@@ -111,15 +111,15 @@ func Test_PaymentCreate(t *testing.T) {
 		require.Equal(t, ctx.BlockHeight(), acct.SettledAt)
 
 		require.Equal(t, types.AccountOpen, acct.State)
-		require.Equal(t, testutil.AkashCoin(t, amt.Amount.Int64()-rate.Amount.Int64()*ctx.BlockHeight()), acct.Balance)
-		require.Equal(t, testutil.AkashCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), acct.Transferred)
+		require.Equal(t, testutil.VirtEngineCoin(t, amt.Amount.Int64()-rate.Amount.Int64()*ctx.BlockHeight()), acct.Balance)
+		require.Equal(t, testutil.VirtEngineCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), acct.Transferred)
 
 		payment, err := keeper.GetPayment(ctx, aid, pid)
 		require.NoError(t, err)
 
 		require.Equal(t, types.PaymentClosed, payment.State)
-		require.Equal(t, testutil.AkashCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), payment.Withdrawn)
-		require.Equal(t, testutil.AkashCoin(t, 0), payment.Balance)
+		require.Equal(t, testutil.VirtEngineCoin(t, rate.Amount.Int64()*ctx.BlockHeight()), payment.Withdrawn)
+		require.Equal(t, testutil.VirtEngineCoin(t, 0), payment.Balance)
 	}
 
 	ctx = ctx.WithBlockHeight(ctx.BlockHeight() + 30)
@@ -132,7 +132,7 @@ func Test_PaymentCreate(t *testing.T) {
 
 	// closing the account transfers all remaining funds
 	bkeeper.
-		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, aowner, sdk.NewCoins(testutil.AkashCoin(t, amt.Amount.Int64()-rate.Amount.Int64()*30))).
+		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, aowner, sdk.NewCoins(testutil.VirtEngineCoin(t, amt.Amount.Int64()-rate.Amount.Int64()*30))).
 		Return(nil)
 	assert.NoError(t, keeper.AccountClose(ctx, aid))
 }
@@ -141,10 +141,10 @@ func Test_Payment_Overdraw(t *testing.T) {
 	ctx, keeper, bkeeper := setupKeeper(t)
 	aid := genAccountID(t)
 	aowner := testutil.AccAddress(t)
-	amt := testutil.AkashCoin(t, 1000)
+	amt := testutil.VirtEngineCoin(t, 1000)
 	pid := testutil.Name(t, "payment")
 	powner := testutil.AccAddress(t)
-	rate := testutil.AkashCoin(t, 10)
+	rate := testutil.VirtEngineCoin(t, 10)
 
 	// create account
 	bkeeper.
@@ -159,7 +159,7 @@ func Test_Payment_Overdraw(t *testing.T) {
 	blkdelta := int64(1000/10 + 1)
 	ctx = ctx.WithBlockHeight(ctx.BlockHeight() + blkdelta)
 	bkeeper.
-		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, powner, sdk.NewCoins(testutil.AkashCoin(t, 1000))).
+		On("SendCoinsFromModuleToAccount", ctx, types.ModuleName, powner, sdk.NewCoins(testutil.VirtEngineCoin(t, 1000))).
 		Return(nil)
 	assert.NoError(t, keeper.PaymentWithdraw(ctx, aid, pid))
 
@@ -169,7 +169,7 @@ func Test_Payment_Overdraw(t *testing.T) {
 		assert.Equal(t, ctx.BlockHeight(), acct.SettledAt)
 
 		assert.Equal(t, types.AccountOverdrawn, acct.State)
-		assert.Equal(t, testutil.AkashCoin(t, 0), acct.Balance)
+		assert.Equal(t, testutil.VirtEngineCoin(t, 0), acct.Balance)
 		assert.Equal(t, amt, acct.Transferred)
 
 		payment, err := keeper.GetPayment(ctx, aid, pid)
@@ -177,7 +177,7 @@ func Test_Payment_Overdraw(t *testing.T) {
 
 		assert.Equal(t, types.PaymentOverdrawn, payment.State)
 		assert.Equal(t, amt, payment.Withdrawn)
-		assert.Equal(t, testutil.AkashCoin(t, 0), payment.Balance)
+		assert.Equal(t, testutil.VirtEngineCoin(t, 0), payment.Balance)
 	}
 
 }
@@ -187,10 +187,10 @@ func Test_PaymentCreate_later(t *testing.T) {
 	aid := genAccountID(t)
 	aowner := testutil.AccAddress(t)
 
-	amt := testutil.AkashCoin(t, 1000)
+	amt := testutil.VirtEngineCoin(t, 1000)
 	pid := testutil.Name(t, "payment")
 	powner := testutil.AccAddress(t)
-	rate := testutil.AkashCoin(t, 10)
+	rate := testutil.VirtEngineCoin(t, 10)
 
 	// create account
 	bkeeper.

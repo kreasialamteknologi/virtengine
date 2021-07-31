@@ -1,8 +1,8 @@
 package cert
 
 import (
-	"github.com/ovrclk/akash/x/cert/keeper"
-	"github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/x/cert/keeper"
+	"github.com/virtengine/virtengine/x/cert/types"
 )
 
 const (

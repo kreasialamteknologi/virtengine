@@ -1,12 +1,12 @@
 syntax = "proto3";
-package akash.base.v1beta1;
+package virtengine.base.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "akash/base/v1beta1/attribute.proto";
-import "akash/base/v1beta1/resourcevalue.proto";
-import "akash/base/v1beta1/endpoint.proto";
+import "virtengine/base/v1beta1/attribute.proto";
+import "virtengine/base/v1beta1/resourcevalue.proto";
+import "virtengine/base/v1beta1/endpoint.proto";
 
-option go_package = "github.com/ovrclk/akash/types";
+option go_package = "github.com/virtengine/virtengine/types";
 
 // CPU stores resource units and cpu config attributes
 message CPU {
@@ -63,6 +63,6 @@ message ResourceUnits {
     (gogoproto.jsontag)  = "storage,omitempty",
     (gogoproto.moretags) = "yaml:\"storage,omitempty\""
   ];
-  repeated akash.base.v1beta1.Endpoint endpoints = 4
+  repeated virtengine.base.v1beta1.Endpoint endpoints = 4
       [(gogoproto.nullable) = false, (gogoproto.jsontag) = "endpoints", (gogoproto.moretags) = "yaml:\"endpoints\""];
 }

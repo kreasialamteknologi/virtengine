@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: akash-provider
+  name: virtengine-provider
 subjects:
   - kind: ServiceAccount
     name: default

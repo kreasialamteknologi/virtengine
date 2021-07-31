@@ -14,10 +14,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 	"github.com/pkg/errors"
 
-	appparams "github.com/ovrclk/akash/app/params"
-	"github.com/ovrclk/akash/x/provider/config"
-	"github.com/ovrclk/akash/x/provider/keeper"
-	"github.com/ovrclk/akash/x/provider/types"
+	appparams "github.com/virtengine/virtengine/app/params"
+	"github.com/virtengine/virtengine/x/provider/config"
+	"github.com/virtengine/virtengine/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 // Simulation operation weights constants

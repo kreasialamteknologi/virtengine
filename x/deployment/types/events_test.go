@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/sdkutil"
+	"github.com/virtengine/virtengine/sdkutil"
 )
 
 var (
@@ -20,7 +20,7 @@ var (
 		return ""
 	}()
 
-	keyAcc, _         = sdk.AccAddressFromBech32("akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr")
+	keyAcc, _         = sdk.AccAddressFromBech32("virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr")
 	errWildcard       = errors.New("wildcard string error can't be matched")
 	tmpSum            = sha256.Sum256([]byte(keyAcc))
 	deploymentVersion = encodeHex(tmpSum[:])

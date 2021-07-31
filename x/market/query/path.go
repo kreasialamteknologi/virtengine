@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/pkg/errors"
 
-	dpath "github.com/ovrclk/akash/x/deployment/query"
-	"github.com/ovrclk/akash/x/market/types"
+	dpath "github.com/virtengine/virtengine/x/deployment/query"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 const (

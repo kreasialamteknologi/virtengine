@@ -3,7 +3,7 @@ package testutil
 import (
 	"testing"
 
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 func Provider(t testing.TB) ptypes.Provider {

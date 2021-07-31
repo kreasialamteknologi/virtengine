@@ -3,7 +3,7 @@ package keeper
 import (
 	"bytes"
 
-	"github.com/ovrclk/akash/x/escrow/types"
+	"github.com/virtengine/virtengine/x/escrow/types"
 )
 
 var (

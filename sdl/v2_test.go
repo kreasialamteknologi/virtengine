@@ -3,15 +3,15 @@ package sdl
 import (
 	"testing"
 
-	"github.com/ovrclk/akash/validation"
+	"github.com/virtengine/virtengine/validation"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"gopkg.in/yaml.v3"
 
-	"github.com/ovrclk/akash/manifest"
-	atypes "github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/types/unit"
+	"github.com/virtengine/virtengine/manifest"
+	atypes "github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/types/unit"
 )
 
 func TestV2Expose(t *testing.T) {

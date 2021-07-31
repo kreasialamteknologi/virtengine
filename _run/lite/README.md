@@ -3,7 +3,7 @@
 The _Lite_ development environment builds a single-node network
 for testing blockchain operations.
 
-An Akash Provider Daemon may optionally be run, but
+An VirtEngine Provider Daemon may optionally be run, but
 it will not execute workloads for leases that it acquires.
 
 The [instructions](#runbook) below will illustrate how to:
@@ -43,7 +43,7 @@ this example.
 |`DSEQ`|1|deployment sequence|
 |`GSEQ`|1|group sequence|
 |`OSEQ`|1|order sequence|
-|`PRICE`|10uakt|price to bid|
+|`PRICE`|10uve|price to bid|
 
 ## Runbook
 
@@ -64,7 +64,7 @@ make clean init
 
 The following command will
 
-* build `akash`
+* build `virtengine`
 * create configuration directories
 * create a genesis file with [accounts](#setup) and single validator.
 
@@ -75,7 +75,7 @@ make init
 
 ### Run local network
 
-In a separate terminal, the following command will run the `akash` node:
+In a separate terminal, the following command will run the `virtengine` node:
 
 __t2__
 ```sh
@@ -395,7 +395,7 @@ KEY_NAME=other DSEQ=20 GSEQ=99 OSEQ=500 make order-close
 
 Fully-customized bid creation
 ```sh
-KEY_NAME=other PROVIDER_KEY_NAME=validator DSEQ=20 GSEQ=99 OSEQ=500 PRICE=100uakt make bid-create
+KEY_NAME=other PROVIDER_KEY_NAME=validator DSEQ=20 GSEQ=99 OSEQ=500 PRICE=100uve make bid-create
 ```
 
 Fully-customized bid close

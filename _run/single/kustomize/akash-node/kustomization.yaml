@@ -1,15 +1,15 @@
 bases:
-  # - github.com/ovrclk/akash/_docs/kustomize/akashd?ref=boz/kustomize
-  - ../../../../_docs/kustomize/akash-node
+  # - github.com/virtengine/virtengine/_docs/kustomize/virtengined?ref=boz/kustomize
+  - ../../../../_docs/kustomize/virtengine-node
 
-namespace: akash-services
+namespace: virtengine-services
 
 configMapGenerator:
 
   ##
   # cosmos-sdk app config (app.toml) overrides
   ##
-  - name: akash-app-config
+  - name: virtengine-app-config
     behavior: merge
     literals:
       # - pruning=syncable
@@ -17,18 +17,18 @@ configMapGenerator:
   ##
   # tendermint node config (config.toml) overrides
   ##
-  - name: akash-config
+  - name: virtengine-config
     behavior: merge
     literals:
       # - moniker=node0
 
-  - name: akash-data
+  - name: virtengine-data
     behavior: merge
     files:
       - cache/config/genesis.json
 
 secretGenerator:
-  - name: akash-keys
+  - name: virtengine-keys
     behavior: replace
     files:
       - cache/config/node_key.json
@@ -47,11 +47,11 @@ patchesJson6902:
       group: networking.k8s.io
       version: v1
       kind: Ingress
-      name: akash-node
+      name: virtengine-node
   - path: docker-image.yaml
     target:
       kind: Deployment
       group: apps
-      name: akash-node
+      name: virtengine-node
       version: v1
 

@@ -4,9 +4,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
-	mkeeper "github.com/ovrclk/akash/x/market/keeper"
-	"github.com/ovrclk/akash/x/provider/keeper"
-	"github.com/ovrclk/akash/x/provider/types"
+	mkeeper "github.com/virtengine/virtengine/x/market/keeper"
+	"github.com/virtengine/virtengine/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 // NewHandler returns a handler for "provider" type messages.

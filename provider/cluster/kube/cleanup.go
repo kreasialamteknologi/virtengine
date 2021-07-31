@@ -3,8 +3,8 @@ package kube
 import (
 	"context"
 
-	"github.com/ovrclk/akash/manifest"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/selection"
@@ -20,11 +20,11 @@ func cleanupStaleResources(ctx context.Context, kc kubernetes.Interface, lid mty
 		svcnames = append(svcnames, svc.Name)
 	}
 
-	req1, err := labels.NewRequirement(akashManifestServiceLabelName, selection.NotIn, svcnames)
+	req1, err := labels.NewRequirement(virtengineManifestServiceLabelName, selection.NotIn, svcnames)
 	if err != nil {
 		return err
 	}
-	req2, err := labels.NewRequirement(akashManagedLabelName, selection.Equals, []string{"true"})
+	req2, err := labels.NewRequirement(virtengineManagedLabelName, selection.Equals, []string{"true"})
 	if err != nil {
 		return err
 	}

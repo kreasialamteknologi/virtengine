@@ -2,8 +2,8 @@ package util
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/manifest"
-	atypes "github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/manifest"
+	atypes "github.com/virtengine/virtengine/types"
 	"math"
 )
 

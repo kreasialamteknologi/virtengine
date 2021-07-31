@@ -3,21 +3,21 @@ resources:
   - service.yaml
   - ingress.yaml
 commonLabels:
-  app: akash-node
-  akash.network/component: akash-node
+  app: virtengine-node
+  virtengine.network/component: virtengine-node
 
-namespace: akash-services
+namespace: virtengine-services
 
 configMapGenerator:
 
-  - name: akash-boot
+  - name: virtengine-boot
     files:
       - run.sh
 
   ##
   # cosmos-sdk app config (app.toml)
   ##
-  - name: akash-app-config
+  - name: virtengine-app-config
     literals:
       - minimum-gas-prices=
       - halt-height=0
@@ -28,7 +28,7 @@ configMapGenerator:
   ##
   # tendermint node config (config.toml)
   ##
-  - name: akash-config
+  - name: virtengine-config
     literals:
       - home=/home
       - moniker=node0
@@ -38,20 +38,20 @@ configMapGenerator:
       - log_level=info
       - log_format=plain
 
-      # configmap: akash-data
+      # configmap: virtengine-data
       # XXX: not being read
       - genesis_file=/boot-data/genesis.json
 
-      # secret: akash-keys
+      # secret: virtengine-keys
       # XXX: not being read
       - priv_validator_key_file=/boot-keys/priv_validator_key.json
 
-      # secret: akash-keys
+      # secret: virtengine-keys
       # XXX: not being read
       - priv_validator_state_file=data/priv_validator_state.json
       - priv_validator_laddr=
 
-      # secret: akash-keys
+      # secret: virtengine-keys
       # XXX: not being read
       - node_key_file=/boot-keys/node_key.json
       - abci=socket
@@ -151,7 +151,7 @@ configMapGenerator:
       - instrumentation.max_open_connections=3
       - instrumentation.namespace=tendermint
 
-  - name: akash-data
+  - name: virtengine-data
     ##
     #  required files
     ##
@@ -159,7 +159,7 @@ configMapGenerator:
       # - config/genesis.json
 
 secretGenerator:
-  - name: akash-keys
+  - name: virtengine-keys
     ##
     #  required files
     ##

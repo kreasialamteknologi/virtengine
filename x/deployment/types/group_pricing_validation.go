@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/validation/constants"
+	"github.com/virtengine/virtengine/validation/constants"
 	"github.com/pkg/errors"
 )
 
@@ -19,8 +19,8 @@ func validateGroupPricing(gspec GroupSpec) error {
 			return fmt.Errorf("group %v: %w", gspec.GetName(), err)
 		}
 
-		if resource.FullPrice().Denom != constants.AkashDenom {
-			return fmt.Errorf("%w: denomination must be %q", ErrInvalidDeployment, constants.AkashDenom)
+		if resource.FullPrice().Denom != constants.VirtEngineDenom {
+			return fmt.Errorf("%w: denomination must be %q", ErrInvalidDeployment, constants.VirtEngineDenom)
 		}
 
 		if idx == 0 {

@@ -10,17 +10,17 @@ import (
 	"github.com/spf13/viper"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/ovrclk/akash/cmd/common"
-	cmdcommon "github.com/ovrclk/akash/cmd/common"
-	"github.com/ovrclk/akash/events"
-	"github.com/ovrclk/akash/pubsub"
+	"github.com/virtengine/virtengine/cmd/common"
+	cmdcommon "github.com/virtengine/virtengine/cmd/common"
+	"github.com/virtengine/virtengine/events"
+	"github.com/virtengine/virtengine/pubsub"
 )
 
 // EventCmd prints out events in real time
 func EventCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "events",
-		Short: "Prints out akash events in real time",
+		Short: "Prints out virtengine events in real time",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return common.RunForever(func(ctx context.Context) error {
 				return getEvents(ctx, cmd, args)
@@ -55,7 +55,7 @@ func getEvents(ctx context.Context, cmd *cobra.Command, _ []string) error {
 	}
 
 	group.Go(func() error {
-		return events.Publish(ctx, cctx.Client, "akash-cli", bus)
+		return events.Publish(ctx, cctx.Client, "virtengine-cli", bus)
 	})
 
 	group.Go(func() error {

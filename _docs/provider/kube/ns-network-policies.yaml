@@ -9,36 +9,36 @@ items:
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: default-deny-egress
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Egress
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: default-deny-ingress
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Ingress
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: egress-allow-cidr
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
@@ -50,15 +50,15 @@ items:
           - 10.0.0.0/8
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Egress
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: egress-allow-internal
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
@@ -66,18 +66,18 @@ items:
     - to:
       - namespaceSelector:
           matchLabels:
-            akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+            virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Egress
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: egress-allow-kube-dns
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
@@ -90,15 +90,15 @@ items:
           cidr: 10.0.0.0/8
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Egress
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: ingress-allow-node-ports
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
@@ -110,15 +110,15 @@ items:
           - 10.0.0.0/8
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Ingress
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: ingress-allow-controller
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
@@ -129,15 +129,15 @@ items:
             name: ingress-nginx
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Ingress
 - apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:
     labels:
-      akash.network: "true"
-      akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+      virtengine.network: "true"
+      virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     name: ingress-allow-internal
     namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
   spec:
@@ -145,10 +145,10 @@ items:
     - from:
       - namespaceSelector:
           matchLabels:
-            akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+            virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     podSelector:
       matchLabels:
-        akash.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
+        virtengine.network/namespace: jcdbq0ri93p2ej5p9k6bd59rl04o5nu9u7a1ottnvi81k
     policyTypes:
     - Ingress
 kind: List

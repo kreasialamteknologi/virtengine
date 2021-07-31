@@ -6,12 +6,12 @@ import (
 	sdkclient "github.com/cosmos/cosmos-sdk/client"
 	"github.com/spf13/cobra"
 
-	akashclient "github.com/ovrclk/akash/client"
-	cmdcommon "github.com/ovrclk/akash/cmd/common"
-	gwrest "github.com/ovrclk/akash/provider/gateway/rest"
-	cutils "github.com/ovrclk/akash/x/cert/utils"
-	dcli "github.com/ovrclk/akash/x/deployment/client/cli"
-	mcli "github.com/ovrclk/akash/x/market/client/cli"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	cmdcommon "github.com/virtengine/virtengine/cmd/common"
+	gwrest "github.com/virtengine/virtengine/provider/gateway/rest"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
+	dcli "github.com/virtengine/virtengine/x/deployment/client/cli"
+	mcli "github.com/virtengine/virtengine/x/market/client/cli"
 )
 
 func serviceStatusCmd() *cobra.Command {
@@ -58,7 +58,7 @@ func doServiceStatus(cmd *cobra.Command) error {
 		return err
 	}
 
-	gclient, err := gwrest.NewClient(akashclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
+	gclient, err := gwrest.NewClient(virtengineclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
 	if err != nil {
 		return err
 	}

@@ -7,7 +7,7 @@
 /vendor
 
 # binaries
-/akash
+/virtengine
 
 # dev artifacts
 /devdata

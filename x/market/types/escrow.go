@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	etypes "github.com/ovrclk/akash/x/escrow/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	etypes "github.com/virtengine/virtengine/x/escrow/types"
 )
 
 const (

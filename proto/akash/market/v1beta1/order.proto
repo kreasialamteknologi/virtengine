@@ -1,10 +1,10 @@
 syntax = "proto3";
-package akash.market.v1beta1;
+package virtengine.market.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "akash/deployment/v1beta1/group.proto";
+import "virtengine/deployment/v1beta1/group.proto";
 
-option go_package = "github.com/ovrclk/akash/x/market/types";
+option go_package = "github.com/virtengine/virtengine/x/market/types";
 
 // OrderID stores owner and all other seq numbers
 message OrderID {
@@ -47,7 +47,7 @@ message Order {
   }
 
   State state    = 2 [(gogoproto.jsontag) = "state", (gogoproto.moretags) = "yaml:\"state\""];
-  akash.deployment.v1beta1.GroupSpec spec = 3
+  virtengine.deployment.v1beta1.GroupSpec spec = 3
       [(gogoproto.nullable) = false, (gogoproto.jsontag) = "spec", (gogoproto.moretags) = "yaml:\"spec\""];
 
   int64 created_at = 4;

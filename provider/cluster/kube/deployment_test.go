@@ -3,12 +3,12 @@ package kube
 import (
 	"context"
 	"fmt"
-	"github.com/ovrclk/akash/testutil"
+	"github.com/virtengine/virtengine/testutil"
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/sdl"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/sdl"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/tendermint/tendermint/crypto/ed25519"
@@ -73,27 +73,27 @@ func TestDeploySetsEnvironmentVariables(t *testing.T) {
 		env[entry.Name] = entry.Value
 	}
 
-	value, ok := env[envVarAkashClusterPublicHostname]
+	value, ok := env[envVarVirtEngineClusterPublicHostname]
 	require.True(t, ok)
 	require.Equal(t, fakeHostname, value)
 
-	value, ok = env[envVarAkashDeploymentSequence]
+	value, ok = env[envVarVirtEngineDeploymentSequence]
 	require.True(t, ok)
 	require.Equal(t, fmt.Sprintf("%d", lid.GetDSeq()), value)
 
-	value, ok = env[envVarAkashGroupSequence]
+	value, ok = env[envVarVirtEngineGroupSequence]
 	require.True(t, ok)
 	require.Equal(t, fmt.Sprintf("%d", lid.GetGSeq()), value)
 
-	value, ok = env[envVarAkashOrderSequence]
+	value, ok = env[envVarVirtEngineOrderSequence]
 	require.True(t, ok)
 	require.Equal(t, fmt.Sprintf("%d", lid.GetOSeq()), value)
 
-	value, ok = env[envVarAkashOwner]
+	value, ok = env[envVarVirtEngineOwner]
 	require.True(t, ok)
 	require.Equal(t, lid.Owner, value)
 
-	value, ok = env[envVarAkashProvider]
+	value, ok = env[envVarVirtEngineProvider]
 	require.True(t, ok)
 	require.Equal(t, lid.Provider, value)
 

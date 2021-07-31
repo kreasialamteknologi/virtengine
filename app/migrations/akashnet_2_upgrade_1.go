@@ -15,7 +15,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-func MigrateAkashnet2Upgrade1(
+func MigrateVirtEnginenet2Upgrade1(
 	ctx sdk.Context,
 	akeeper authkeeper.AccountKeeper,
 	bkeeper bankkeeper.Keeper,

@@ -5,7 +5,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/types"
 )
 
 type v2MemoryAttributes types.Attributes

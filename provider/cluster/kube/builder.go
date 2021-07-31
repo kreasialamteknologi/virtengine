@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ovrclk/akash/provider/cluster/util"
+	"github.com/virtengine/virtengine/provider/cluster/util"
 	uuid "github.com/satori/go.uuid"
 
 	"github.com/tendermint/tendermint/libs/log"
@@ -24,24 +24,24 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
 
-	"github.com/ovrclk/akash/manifest"
-	akashv1 "github.com/ovrclk/akash/pkg/apis/akash.network/v1"
-	clusterUtil "github.com/ovrclk/akash/provider/cluster/util"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	virtenginev1 "github.com/virtengine/virtengine/pkg/apis/virtengine.network/v1"
+	clusterUtil "github.com/virtengine/virtengine/provider/cluster/util"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 const (
-	akashManagedLabelName         = "akash.network"
-	akashNetworkNamespace         = "akash.network/namespace"
-	akashManifestServiceLabelName = "akash.network/manifest-service"
+	virtengineManagedLabelName         = "virtengine.network"
+	virtengineNetworkNamespace         = "virtengine.network/namespace"
+	virtengineManifestServiceLabelName = "virtengine.network/manifest-service"
 
-	akashLeaseOwnerLabelName    = "akash.network/lease.id.owner"
-	akashLeaseDSeqLabelName     = "akash.network/lease.id.dseq"
-	akashLeaseGSeqLabelName     = "akash.network/lease.id.gseq"
-	akashLeaseOSeqLabelName     = "akash.network/lease.id.oseq"
-	akashLeaseProviderLabelName = "akash.network/lease.id.provider"
+	virtengineLeaseOwnerLabelName    = "virtengine.network/lease.id.owner"
+	virtengineLeaseDSeqLabelName     = "virtengine.network/lease.id.dseq"
+	virtengineLeaseGSeqLabelName     = "virtengine.network/lease.id.gseq"
+	virtengineLeaseOSeqLabelName     = "virtengine.network/lease.id.oseq"
+	virtengineLeaseProviderLabelName = "virtengine.network/lease.id.provider"
 
-	akashDeploymentPolicyName = "akash-deployment-restrictions"
+	virtengineDeploymentPolicyName = "virtengine-deployment-restrictions"
 )
 
 var (
@@ -62,8 +62,8 @@ func (b *builder) ns() string {
 
 func (b *builder) labels() map[string]string {
 	return map[string]string{
-		akashManagedLabelName: "true",
-		akashNetworkNamespace: lidNS(b.lid),
+		virtengineManagedLabelName: "true",
+		virtengineNetworkNamespace: lidNS(b.lid),
 	}
 }
 
@@ -198,7 +198,7 @@ func (b *deploymentBuilder) name() string {
 
 func (b *deploymentBuilder) labels() map[string]string {
 	obj := b.builder.labels()
-	obj[akashManifestServiceLabelName] = b.service.Name
+	obj[virtengineManifestServiceLabelName] = b.service.Name
 	return obj
 }
 
@@ -315,12 +315,12 @@ func (b *deploymentBuilder) container() corev1.Container {
 }
 
 const (
-	envVarAkashGroupSequence         = "AKASH_GROUP_SEQUENCE"
-	envVarAkashDeploymentSequence    = "AKASH_DEPLOYMENT_SEQUENCE"
-	envVarAkashOrderSequence         = "AKASH_ORDER_SEQUENCE"
-	envVarAkashOwner                 = "AKASH_OWNER"
-	envVarAkashProvider              = "AKASH_PROVIDER"
-	envVarAkashClusterPublicHostname = "AKASH_CLUSTER_PUBLIC_HOSTNAME"
+	envVarVirtEngineGroupSequence         = "VIRTENGINE_GROUP_SEQUENCE"
+	envVarVirtEngineDeploymentSequence    = "VIRTENGINE_DEPLOYMENT_SEQUENCE"
+	envVarVirtEngineOrderSequence         = "VIRTENGINE_ORDER_SEQUENCE"
+	envVarVirtEngineOwner                 = "VIRTENGINE_OWNER"
+	envVarVirtEngineProvider              = "VIRTENGINE_PROVIDER"
+	envVarVirtEngineClusterPublicHostname = "VIRTENGINE_CLUSTER_PUBLIC_HOSTNAME"
 )
 
 func addIfNotPresent(envVarsAlreadyAdded map[string]int, env []corev1.EnvVar, key string, value interface{}) []corev1.EnvVar {
@@ -335,12 +335,12 @@ func addIfNotPresent(envVarsAlreadyAdded map[string]int, env []corev1.EnvVar, ke
 
 func (b *deploymentBuilder) addEnvVarsForDeployment(envVarsAlreadyAdded map[string]int, env []corev1.EnvVar) []corev1.EnvVar {
 	// Add each env. var. if it is not already set by the SDL
-	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarAkashGroupSequence, b.lid.GetGSeq())
-	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarAkashDeploymentSequence, b.lid.GetDSeq())
-	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarAkashOrderSequence, b.lid.GetOSeq())
-	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarAkashOwner, b.lid.Owner)
-	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarAkashProvider, b.lid.Provider)
-	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarAkashClusterPublicHostname, b.settings.ClusterPublicHostname)
+	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarVirtEngineGroupSequence, b.lid.GetGSeq())
+	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarVirtEngineDeploymentSequence, b.lid.GetDSeq())
+	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarVirtEngineOrderSequence, b.lid.GetOSeq())
+	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarVirtEngineOwner, b.lid.Owner)
+	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarVirtEngineProvider, b.lid.Provider)
+	env = addIfNotPresent(envVarsAlreadyAdded, env, envVarVirtEngineClusterPublicHostname, b.settings.ClusterPublicHostname)
 	return env
 }
 
@@ -519,7 +519,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 		{
 
 			ObjectMeta: metav1.ObjectMeta{
-				Name:      akashDeploymentPolicyName,
+				Name:      virtengineDeploymentPolicyName,
 				Labels:    b.labels(),
 				Namespace: lidNS(b.lid),
 			},
@@ -535,7 +535,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 							{
 								NamespaceSelector: &metav1.LabelSelector{
 									MatchLabels: map[string]string{
-										akashNetworkNamespace: lidNS(b.lid),
+										virtengineNetworkNamespace: lidNS(b.lid),
 									},
 								},
 							},
@@ -564,7 +564,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 							{
 								NamespaceSelector: &metav1.LabelSelector{
 									MatchLabels: map[string]string{
-										akashNetworkNamespace: lidNS(b.lid),
+										virtengineNetworkNamespace: lidNS(b.lid),
 									},
 								},
 							},
@@ -642,7 +642,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 
 		// Make a network policy just to open these ports to incoming traffic
 		serviceName := service.Name
-		policyName := fmt.Sprintf("akash-%s-np", serviceName)
+		policyName := fmt.Sprintf("virtengine-%s-np", serviceName)
 		policy := netv1.NetworkPolicy{
 			ObjectMeta: metav1.ObjectMeta{
 				Labels:    b.labels(),
@@ -658,7 +658,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 				},
 				PodSelector: metav1.LabelSelector{
 					MatchLabels: map[string]string{
-						akashManifestServiceLabelName: serviceName,
+						virtengineManifestServiceLabelName: serviceName,
 					},
 				},
 				PolicyTypes: []netv1.PolicyType{
@@ -689,7 +689,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 								{
 									NamespaceSelector: &metav1.LabelSelector{
 										MatchLabels: map[string]string{
-											akashNetworkNamespace: lidNS(b.lid),
+											virtengineNetworkNamespace: lidNS(b.lid),
 										},
 									},
 								},
@@ -702,7 +702,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 								{
 									NamespaceSelector: &metav1.LabelSelector{
 										MatchLabels: map[string]string{
-											akashNetworkNamespace: lidNS(b.lid),
+											virtengineNetworkNamespace: lidNS(b.lid),
 										},
 									},
 								},
@@ -721,7 +721,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 				Spec: netv1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
 						MatchLabels: map[string]string{
-							akashNetworkNamespace: lidNS(b.lid),
+							virtengineNetworkNamespace: lidNS(b.lid),
 						},
 					},
 					Ingress: []netv1.NetworkPolicyIngressRule{
@@ -755,7 +755,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 				Spec: netv1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
 						MatchLabels: map[string]string{
-							akashNetworkNamespace: lidNS(b.lid),
+							virtengineNetworkNamespace: lidNS(b.lid),
 						},
 					},
 					Ingress: []netv1.NetworkPolicyIngressRule{
@@ -805,7 +805,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 		Spec: netv1.NetworkPolicySpec{
 			PodSelector: metav1.LabelSelector{
 				MatchLabels: map[string]string{
-					akashNetworkNamespace: lidNS(b.lid),
+					virtengineNetworkNamespace: lidNS(b.lid),
 				},
 			},
 			Egress: []netv1.NetworkPolicyEgressRule{
@@ -814,7 +814,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 						{
 							NamespaceSelector: &metav1.LabelSelector{
 								MatchLabels: map[string]string{
-									akashNetworkNamespace: lidNS(b.lid),
+									virtengineNetworkNamespace: lidNS(b.lid),
 								},
 							},
 						},
@@ -835,7 +835,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 		Spec: netv1.NetworkPolicySpec{
 			PodSelector: metav1.LabelSelector{
 				MatchLabels: map[string]string{
-					akashNetworkNamespace: lidNS(b.lid),
+					virtengineNetworkNamespace: lidNS(b.lid),
 				},
 			},
 			Egress: []netv1.NetworkPolicyEgressRule{
@@ -871,7 +871,7 @@ func (b *netPolBuilder) create() ([]*netv1.NetworkPolicy, error) { // nolint:gol
 		Spec: netv1.NetworkPolicySpec{
 			PodSelector: metav1.LabelSelector{
 				MatchLabels: map[string]string{
-					akashNetworkNamespace: lidNS(b.lid),
+					virtengineNetworkNamespace: lidNS(b.lid),
 				},
 			},
 			Egress: []netv1.NetworkPolicyEgressRule{
@@ -1003,7 +1003,7 @@ func lidNS(lid mtypes.LeaseID) string {
 	return strings.ToLower(base32.HexEncoding.WithPadding(base32.NoPadding).EncodeToString(sha[:]))
 }
 
-// manifestBuilder composes the k8s akashv1.Manifest type from LeaseID and
+// manifestBuilder composes the k8s virtenginev1.Manifest type from LeaseID and
 // manifest.Group data.
 type manifestBuilder struct {
 	builder
@@ -1030,8 +1030,8 @@ func (b *manifestBuilder) ns() string {
 	return b.mns
 }
 
-func (b *manifestBuilder) create() (*akashv1.Manifest, error) {
-	obj, err := akashv1.NewManifest(b.name(), b.lid, b.group)
+func (b *manifestBuilder) create() (*virtenginev1.Manifest, error) {
+	obj, err := virtenginev1.NewManifest(b.name(), b.lid, b.group)
 	if err != nil {
 		return nil, err
 	}
@@ -1039,8 +1039,8 @@ func (b *manifestBuilder) create() (*akashv1.Manifest, error) {
 	return obj, nil
 }
 
-func (b *manifestBuilder) update(obj *akashv1.Manifest) (*akashv1.Manifest, error) {
-	m, err := akashv1.NewManifest(b.name(), b.lid, b.group)
+func (b *manifestBuilder) update(obj *virtenginev1.Manifest) (*virtenginev1.Manifest, error) {
+	m, err := virtenginev1.NewManifest(b.name(), b.lid, b.group)
 	if err != nil {
 		return nil, err
 	}
@@ -1054,10 +1054,10 @@ func (b *manifestBuilder) name() string {
 }
 
 func appendLeaseLabels(lid mtypes.LeaseID, labels map[string]string) map[string]string {
-	labels[akashLeaseOwnerLabelName] = lid.Owner
-	labels[akashLeaseDSeqLabelName] = strconv.FormatUint(lid.DSeq, 10)
-	labels[akashLeaseGSeqLabelName] = strconv.FormatUint(uint64(lid.GSeq), 10)
-	labels[akashLeaseOSeqLabelName] = strconv.FormatUint(uint64(lid.OSeq), 10)
-	labels[akashLeaseProviderLabelName] = lid.Provider
+	labels[virtengineLeaseOwnerLabelName] = lid.Owner
+	labels[virtengineLeaseDSeqLabelName] = strconv.FormatUint(lid.DSeq, 10)
+	labels[virtengineLeaseGSeqLabelName] = strconv.FormatUint(uint64(lid.GSeq), 10)
+	labels[virtengineLeaseOSeqLabelName] = strconv.FormatUint(uint64(lid.OSeq), 10)
+	labels[virtengineLeaseProviderLabelName] = lid.Provider
 	return labels
 }

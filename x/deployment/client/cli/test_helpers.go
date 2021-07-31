@@ -6,8 +6,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	sdktest "github.com/cosmos/cosmos-sdk/testutil"
 
-	testutilcli "github.com/ovrclk/akash/testutil/cli"
-	"github.com/ovrclk/akash/x/deployment/types"
+	testutilcli "github.com/virtengine/virtengine/testutil/cli"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 const key string = types.StoreKey

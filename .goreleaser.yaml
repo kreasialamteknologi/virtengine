@@ -2,9 +2,9 @@ env:
   - GO111MODULE=on
   - CGO_ENABLED=1
 builds:
-  - id: akash-darwin-amd64
-    binary: akash
-    main: ./cmd/akash
+  - id: virtengine-darwin-amd64
+    binary: virtengine
+    main: ./cmd/virtengine
     goarch:
       - amd64
     goos:
@@ -19,9 +19,9 @@ builds:
     ldflags:
       - "{{ .Env.LD_FLAGS }}"
       - -linkmode=external
-  - id: akash-darwin-arm64
-    binary: akash
-    main: ./cmd/akash
+  - id: virtengine-darwin-arm64
+    binary: virtengine
+    main: ./cmd/virtengine
     goarch:
       - arm64
     goos:
@@ -36,9 +36,9 @@ builds:
     ldflags:
       - "{{ .Env.LD_FLAGS }}"
       - -linkmode=external
-  - id: akash-linux-amd64
-    binary: akash
-    main: ./cmd/akash
+  - id: virtengine-linux-amd64
+    binary: virtengine
+    main: ./cmd/virtengine
     goarch:
       - amd64
     goos:
@@ -51,9 +51,9 @@ builds:
       - "{{ .Env.LD_FLAGS }}"
       - -extldflags "-lc -lrt -lpthread --static"
       - -linkmode=external
-  - id: akash-linux-arm64
-    binary: akash
-    main: ./cmd/akash
+  - id: virtengine-linux-arm64
+    binary: virtengine
+    main: ./cmd/virtengine
     goarch:
       - arm64
     goos:
@@ -69,9 +69,9 @@ builds:
       - "{{ .Env.LD_FLAGS }}"
       - -extldflags "-lc -lrt -lpthread --static"
       - -linkmode=external
-  - id: akash-windows-amd64
-    binary: akash
-    main: ./cmd/akash
+  - id: virtengine-windows-amd64
+    binary: virtengine
+    main: ./cmd/virtengine
     goarch:
       - amd64
     goos:
@@ -88,13 +88,13 @@ builds:
       - "{{ .Env.LD_FLAGS }}"
       - -linkmode=external
 archives:
-  - id: akash
+  - id: virtengine
     builds:
-      - akash-darwin-amd64
-      - akash-darwin-arm64
-      - akash-linux-amd64
-      - akash-linux-arm64
-      - akash-windows-amd64
+      - virtengine-darwin-amd64
+      - virtengine-darwin-arm64
+      - virtengine-linux-amd64
+      - virtengine-linux-arm64
+      - virtengine-windows-amd64
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     wrap_in_directory: true
     format: zip
@@ -103,30 +103,30 @@ archives:
 
 dockers:
   - ids:
-      - akash-linux-amd64
-    dockerfile: _build/Dockerfile.akash
+      - virtengine-linux-amd64
+    dockerfile: _build/Dockerfile.virtengine
     goos: linux
     goarch: amd64
     image_templates:
-      - 'ghcr.io/ovrclk/akash:{{if eq .Env.MAINNET "true"}}stable{{else}}latest{{end}}'
-      - 'ghcr.io/ovrclk/akash:{{ .ShortCommit }}'
-      - 'ghcr.io/ovrclk/akash:{{ .Version }}'
+      - 'ghcr.io/virtengine/virtengine:{{if eq .Env.MAINNET "true"}}stable{{else}}latest{{end}}'
+      - 'ghcr.io/virtengine/virtengine:{{ .ShortCommit }}'
+      - 'ghcr.io/virtengine/virtengine:{{ .Version }}'
 brews:
   - name: "{{ .Env.HOMEBREW_NAME }}"
     tap:
-      owner: ovrclk
+      owner: virtengine
       name: homebrew-tap
-    homepage: "https://akash.network"
+    homepage: "https://virtengine.network"
     description: "Blockchain-powered decentralized compute platform"
     custom_block: |
       {{ .Env.HOMEBREW_CUSTOM }}
     install: |
-      bin.install "akash"
+      bin.install "virtengine"
 
 nfpms:
   - vendor: "Overclock Labs Inc."
-    homepage: "http://ovrclk.com"
-    maintainer: "Akash Network <hello@akash.network>"
+    homepage: "http://virtengine.com"
+    maintainer: "VirtEngine Network <hello@virtengine.network>"
     formats:
       - deb
       - rpm
@@ -134,7 +134,7 @@ nfpms:
 
 release:
   github:
-    owner: ovrclk
-    name: akash
+    owner: virtengine
+    name: virtengine
   prerelease: auto
   draft: false

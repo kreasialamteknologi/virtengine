@@ -5,7 +5,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkquery "github.com/cosmos/cosmos-sdk/types/query"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 // TODO: implement with search parameters

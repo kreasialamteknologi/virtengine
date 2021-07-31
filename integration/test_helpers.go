@@ -23,7 +23,7 @@ attributes:
   - key: region
     value: us-west
   - key: moniker
-    value: akash
+    value: virtengine
 `
 )
 

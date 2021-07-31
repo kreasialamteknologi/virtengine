@@ -3,7 +3,7 @@ package testutil
 import (
 	"testing"
 
-	atypes "github.com/ovrclk/akash/x/audit/types"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
 )
 
 func AuditedProvider(t testing.TB) (atypes.ProviderID, atypes.Provider) {

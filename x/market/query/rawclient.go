@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	sdkclient "github.com/cosmos/cosmos-sdk/client"
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 // RawClient interface

@@ -3,7 +3,7 @@ package kube
 import (
 	"context"
 	"fmt"
-	metricsutils "github.com/ovrclk/akash/util/metrics"
+	metricsutils "github.com/virtengine/virtengine/util/metrics"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"os"
@@ -14,8 +14,8 @@ import (
 	kubeErrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/watch"
 
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	"github.com/ovrclk/akash/provider/cluster/util"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	"github.com/virtengine/virtengine/provider/cluster/util"
 
 	"github.com/pkg/errors"
 	appsv1 "k8s.io/api/apps/v1"
@@ -31,11 +31,11 @@ import (
 
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/ovrclk/akash/manifest"
-	akashclient "github.com/ovrclk/akash/pkg/client/clientset/versioned"
-	"github.com/ovrclk/akash/provider/cluster"
-	"github.com/ovrclk/akash/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	virtengineclient "github.com/virtengine/virtengine/pkg/client/clientset/versioned"
+	"github.com/virtengine/virtengine/provider/cluster"
+	"github.com/virtengine/virtengine/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"k8s.io/client-go/tools/pager"
 
 	"k8s.io/apimachinery/pkg/runtime"
@@ -65,7 +65,7 @@ var _ Client = (*client)(nil)
 
 type client struct {
 	kc                kubernetes.Interface
-	ac                akashclient.Interface
+	ac                virtengineclient.Interface
 	metc              metricsclient.Interface
 	ns                string
 	settings          Settings
@@ -95,7 +95,7 @@ func newClientWithSettings(log log.Logger, ns string, settings Settings) (Client
 		return nil, errors.Wrap(err, "kube: error creating kubernetes client")
 	}
 
-	mc, err := akashclient.NewForConfig(config)
+	mc, err := virtengineclient.NewForConfig(config)
 	if err != nil {
 		return nil, errors.Wrap(err, "kube: error creating manifest client")
 	}
@@ -141,7 +141,7 @@ func openKubeConfig(cfgPath string, log log.Logger) (*rest.Config, error) {
 }
 
 func (c *client) Deployments(ctx context.Context) ([]ctypes.Deployment, error) {
-	manifests, err := c.ac.AkashV1().Manifests(c.ns).List(ctx, metav1.ListOptions{})
+	manifests, err := c.ac.VirtEngineV1().Manifests(c.ns).List(ctx, metav1.ListOptions{})
 	if err != nil {
 		return nil, err
 	}
@@ -291,7 +291,7 @@ func (c *client) LeaseEvents(ctx context.Context, lid mtypes.LeaseID, services s
 
 	listOpts := metav1.ListOptions{}
 	if len(services) != 0 {
-		listOpts.LabelSelector = fmt.Sprintf(akashManifestServiceLabelName+" in (%s)", services)
+		listOpts.LabelSelector = fmt.Sprintf(virtengineManifestServiceLabelName+" in (%s)", services)
 	}
 
 	var wtch ctypes.EventsWatcher
@@ -332,7 +332,7 @@ func (c *client) LeaseLogs(ctx context.Context, lid mtypes.LeaseID,
 
 	listOpts := metav1.ListOptions{}
 	if len(services) != 0 {
-		listOpts.LabelSelector = fmt.Sprintf(akashManifestServiceLabelName+" in (%s)", services)
+		listOpts.LabelSelector = fmt.Sprintf(virtengineManifestServiceLabelName+" in (%s)", services)
 	}
 
 	c.log.Error("filtering pods", "labelSelector", listOpts.LabelSelector)
@@ -470,7 +470,7 @@ func (c *client) LeaseStatus(ctx context.Context, lid mtypes.LeaseID) (*ctypes.L
 						case corev1.ProtocolUDP:
 							v.Proto = manifest.UDP
 						default:
-							isValid = false // Skip this, since the Protocol is set to something not supported by Akash
+							isValid = false // Skip this, since the Protocol is set to something not supported by VirtEngine
 						}
 						if isValid {
 							foundCnt++
@@ -525,7 +525,7 @@ func (c *client) ServiceStatus(ctx context.Context, lid mtypes.LeaseID, name str
 	hasIngress := false
 	// Get manifest definition from CRD
 	c.log.Debug("Pulling manifest from CRD", "lease-ns", lidNS(lid))
-	obj, err := c.ac.AkashV1().Manifests(c.ns).Get(ctx, lidNS(lid), metav1.GetOptions{})
+	obj, err := c.ac.VirtEngineV1().Manifests(c.ns).Get(ctx, lidNS(lid), metav1.GetOptions{})
 	if err != nil {
 		c.log.Error("CRD manifest not found", "lease-ns", lidNS(lid), "name", name)
 		return nil, err

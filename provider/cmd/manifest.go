@@ -9,15 +9,15 @@ import (
 
 	sdkclient "github.com/cosmos/cosmos-sdk/client"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 
-	akashclient "github.com/ovrclk/akash/client"
-	gwrest "github.com/ovrclk/akash/provider/gateway/rest"
-	"github.com/ovrclk/akash/sdl"
-	cutils "github.com/ovrclk/akash/x/cert/utils"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	gwrest "github.com/virtengine/virtengine/provider/gateway/rest"
+	"github.com/virtengine/virtengine/sdl"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
 )
 
 var (
@@ -91,7 +91,7 @@ func doSendManifest(cmd *cobra.Command, sdlpath string) error {
 
 	for i, lid := range leases {
 		prov, _ := sdk.AccAddressFromBech32(lid.Provider)
-		gclient, err := gwrest.NewClient(akashclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
+		gclient, err := gwrest.NewClient(virtengineclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
 		if err != nil {
 			return err
 		}

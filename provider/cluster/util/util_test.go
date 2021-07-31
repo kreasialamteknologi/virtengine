@@ -1,9 +1,9 @@
 package util_test
 
 import (
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/provider/cluster/util"
-	atypes "github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/provider/cluster/util"
+	atypes "github.com/virtengine/virtengine/types"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

@@ -1,8 +1,8 @@
 package manifest
 
 import (
-	"github.com/ovrclk/akash/manifest"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/manifest"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 // Status is the data structure

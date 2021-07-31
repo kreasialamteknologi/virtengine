@@ -12,17 +12,17 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	"google.golang.org/grpc"
 
-	"github.com/ovrclk/akash/client/broadcaster"
-	amodule "github.com/ovrclk/akash/x/audit"
-	atypes "github.com/ovrclk/akash/x/audit/types"
-	cmodule "github.com/ovrclk/akash/x/cert"
-	ctypes "github.com/ovrclk/akash/x/cert/types"
-	dmodule "github.com/ovrclk/akash/x/deployment"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mmodule "github.com/ovrclk/akash/x/market"
-	mtypes "github.com/ovrclk/akash/x/market/types"
-	pmodule "github.com/ovrclk/akash/x/provider"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/client/broadcaster"
+	amodule "github.com/virtengine/virtengine/x/audit"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
+	cmodule "github.com/virtengine/virtengine/x/cert"
+	ctypes "github.com/virtengine/virtengine/x/cert/types"
+	dmodule "github.com/virtengine/virtengine/x/deployment"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mmodule "github.com/virtengine/virtengine/x/market"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
+	pmodule "github.com/virtengine/virtengine/x/provider"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 var (

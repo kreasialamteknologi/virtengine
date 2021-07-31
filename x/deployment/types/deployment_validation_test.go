@@ -5,12 +5,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	akashtypes "github.com/ovrclk/akash/types"
+	virtenginetypes "github.com/virtengine/virtengine/types"
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 func TestZeroValueGroupSpec(t *testing.T) {
@@ -54,21 +54,21 @@ func TestEmptyGroupSpecIsInvalid(t *testing.T) {
 func validSimpleGroupSpec() types.GroupSpec {
 	resources := make([]types.Resource, 1)
 	resources[0] = types.Resource{
-		Resources: akashtypes.ResourceUnits{
-			CPU: &akashtypes.CPU{
-				Units: akashtypes.ResourceValue{
+		Resources: virtenginetypes.ResourceUnits{
+			CPU: &virtenginetypes.CPU{
+				Units: virtenginetypes.ResourceValue{
 					Val: sdk.NewInt(10),
 				},
 				Attributes: nil,
 			},
-			Memory: &akashtypes.Memory{
-				Quantity: akashtypes.ResourceValue{
+			Memory: &virtenginetypes.Memory{
+				Quantity: virtenginetypes.ResourceValue{
 					Val: sdk.NewIntFromUint64(types.GetValidationConfig().MinUnitMemory),
 				},
 				Attributes: nil,
 			},
-			Storage: &akashtypes.Storage{
-				Quantity: akashtypes.ResourceValue{
+			Storage: &virtenginetypes.Storage{
+				Quantity: virtenginetypes.ResourceValue{
 					Val: sdk.NewIntFromUint64(types.GetValidationConfig().MinUnitStorage),
 				},
 				Attributes: nil,
@@ -83,7 +83,7 @@ func validSimpleGroupSpec() types.GroupSpec {
 	}
 	return types.GroupSpec{
 		Name:         "testGroup",
-		Requirements: akashtypes.PlacementRequirements{},
+		Requirements: virtenginetypes.PlacementRequirements{},
 		Resources:    resources,
 	}
 }

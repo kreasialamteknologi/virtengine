@@ -19,7 +19,7 @@ var (
 func RootCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:          "deploy",
-		Short:        "Akash deploy tool commands",
+		Short:        "VirtEngine deploy tool commands",
 		SilenceUsage: true,
 	}
 

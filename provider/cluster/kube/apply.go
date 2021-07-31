@@ -5,8 +5,8 @@ package kube
 import (
 	"context"
 
-	akashv1 "github.com/ovrclk/akash/pkg/client/clientset/versioned"
-	metricsutils "github.com/ovrclk/akash/util/metrics"
+	virtenginev1 "github.com/virtengine/virtengine/pkg/client/clientset/versioned"
+	metricsutils "github.com/virtengine/virtengine/util/metrics"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -157,7 +157,7 @@ func prepareEnvironment(ctx context.Context, kc kubernetes.Interface, ns string)
 			ObjectMeta: metav1.ObjectMeta{
 				Name: ns,
 				Labels: map[string]string{
-					akashManagedLabelName: "true",
+					virtengineManagedLabelName: "true",
 				},
 			},
 		}
@@ -167,23 +167,23 @@ func prepareEnvironment(ctx context.Context, kc kubernetes.Interface, ns string)
 	return err
 }
 
-func applyManifest(ctx context.Context, kc akashv1.Interface, b *manifestBuilder) error {
-	obj, err := kc.AkashV1().Manifests(b.ns()).Get(ctx, b.name(), metav1.GetOptions{})
+func applyManifest(ctx context.Context, kc virtenginev1.Interface, b *manifestBuilder) error {
+	obj, err := kc.VirtEngineV1().Manifests(b.ns()).Get(ctx, b.name(), metav1.GetOptions{})
 
-	metricsutils.IncCounterVecWithLabelValuesFiltered(kubeCallsCounter, "akash-manifests-get", err, errors.IsNotFound)
+	metricsutils.IncCounterVecWithLabelValuesFiltered(kubeCallsCounter, "virtengine-manifests-get", err, errors.IsNotFound)
 
 	switch {
 	case err == nil:
 		obj, err = b.update(obj)
 		if err == nil {
-			_, err = kc.AkashV1().Manifests(b.ns()).Update(ctx, obj, metav1.UpdateOptions{})
-			metricsutils.IncCounterVecWithLabelValues(kubeCallsCounter, "akash-manifests-update", err)
+			_, err = kc.VirtEngineV1().Manifests(b.ns()).Update(ctx, obj, metav1.UpdateOptions{})
+			metricsutils.IncCounterVecWithLabelValues(kubeCallsCounter, "virtengine-manifests-update", err)
 		}
 	case errors.IsNotFound(err):
 		obj, err = b.create()
 		if err == nil {
-			_, err = kc.AkashV1().Manifests(b.ns()).Create(ctx, obj, metav1.CreateOptions{})
-			metricsutils.IncCounterVecWithLabelValues(kubeCallsCounter, "akash-manifests-create", err)
+			_, err = kc.VirtEngineV1().Manifests(b.ns()).Create(ctx, obj, metav1.CreateOptions{})
+			metricsutils.IncCounterVecWithLabelValues(kubeCallsCounter, "virtengine-manifests-create", err)
 		}
 	}
 	return err

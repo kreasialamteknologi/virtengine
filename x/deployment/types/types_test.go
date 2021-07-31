@@ -9,11 +9,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/ovrclk/akash/sdkutil"
-	"github.com/ovrclk/akash/testutil"
-	atypes "github.com/ovrclk/akash/x/audit/types"
+	"github.com/virtengine/virtengine/sdkutil"
+	"github.com/virtengine/virtengine/testutil"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
 
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 type gStateTest struct {

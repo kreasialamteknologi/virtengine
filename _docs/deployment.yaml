@@ -89,26 +89,26 @@ profiles:
         region: us-west
       pricing:
         web:
-          denom: akash
+          denom: virtengine
           amount: 10
         db:
-          denom: akash
+          denom: virtengine
           amount: 50
         db-pool:
-          denom: akash
+          denom: virtengine
           amount: 30
     eastcoast:
       attributes:
         region: us-east
       pricing:
         web:
-          denom: akash
+          denom: virtengine
           amount: 30
         db:
-          denom: akash
+          denom: virtengine
           amount: 60
         db-pool:
-          denom: akash
+          denom: virtengine
           amount: 40
 
 deployment:

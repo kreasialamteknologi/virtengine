@@ -1,11 +1,11 @@
 // +k8s:deepcopy-gen=package
 // +k8s:defaulter-gen=TypeMeta
 // +k8s:openapi-gen=true
-// +groupName=akash.network
+// +groupName=virtengine.network
 
 // Package v1 is the initial version of types which integrate with the Kubernetes API.
 //
-// Contains the Stack Definition Language(pkg: github.com/ovrclk/akash/sdl) Manifest
+// Contains the Stack Definition Language(pkg: github.com/virtengine/virtengine/sdl) Manifest
 // declarations which are written to Kubernetes CRDs for storage.
 //
 // Manifest {

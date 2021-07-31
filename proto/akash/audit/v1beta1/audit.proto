@@ -1,10 +1,10 @@
 syntax = "proto3";
-package akash.audit.v1beta1;
+package virtengine.audit.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "akash/base/v1beta1/attribute.proto";
+import "virtengine/base/v1beta1/attribute.proto";
 
-option go_package = "github.com/ovrclk/akash/x/audit/types";
+option go_package = "github.com/virtengine/virtengine/x/audit/types";
 
 // Msg defines the provider Msg service
 service Msg {
@@ -21,8 +21,8 @@ message Provider {
 
   string auditor = 2 [(gogoproto.jsontag) = "auditor", (gogoproto.moretags) = "yaml:\"auditor\""];
 
-  repeated akash.base.v1beta1.Attribute attributes = 4 [
-    (gogoproto.castrepeated) = "github.com/ovrclk/akash/types.Attributes",
+  repeated virtengine.base.v1beta1.Attribute attributes = 4 [
+    (gogoproto.castrepeated) = "github.com/virtengine/virtengine/types.Attributes",
     (gogoproto.nullable)     = false,
     (gogoproto.jsontag)      = "attributes",
     (gogoproto.moretags)     = "yaml:\"attributes\""
@@ -38,8 +38,8 @@ message AuditedAttributes {
 
   string auditor = 2 [(gogoproto.jsontag) = "auditor", (gogoproto.moretags) = "yaml:\"auditor\""];
 
-  repeated akash.base.v1beta1.Attribute attributes = 3 [
-    (gogoproto.castrepeated) = "github.com/ovrclk/akash/types.Attributes",
+  repeated virtengine.base.v1beta1.Attribute attributes = 3 [
+    (gogoproto.castrepeated) = "github.com/virtengine/virtengine/types.Attributes",
     (gogoproto.nullable)     = false,
     (gogoproto.jsontag)      = "attributes",
     (gogoproto.moretags)     = "yaml:\"attributes\""
@@ -73,8 +73,8 @@ message MsgSignProviderAttributes {
 
   string auditor = 2 [(gogoproto.jsontag) = "auditor", (gogoproto.moretags) = "yaml:\"auditor\""];
 
-  repeated akash.base.v1beta1.Attribute attributes = 3 [
-    (gogoproto.castrepeated) = "github.com/ovrclk/akash/types.Attributes",
+  repeated virtengine.base.v1beta1.Attribute attributes = 3 [
+    (gogoproto.castrepeated) = "github.com/virtengine/virtengine/types.Attributes",
     (gogoproto.nullable)     = false,
     (gogoproto.jsontag)      = "attributes",
     (gogoproto.moretags)     = "yaml:\"attributes\""

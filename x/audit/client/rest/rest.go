@@ -9,8 +9,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/rest"
 	"github.com/gorilla/mux"
 
-	"github.com/ovrclk/akash/x/audit/query"
-	"github.com/ovrclk/akash/x/audit/types"
+	"github.com/virtengine/virtengine/x/audit/query"
+	"github.com/virtengine/virtengine/x/audit/types"
 )
 
 // RegisterRoutes registers all query routes

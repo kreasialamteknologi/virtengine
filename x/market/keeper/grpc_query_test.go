@@ -9,10 +9,10 @@ import (
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkquery "github.com/cosmos/cosmos-sdk/types/query"
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	"github.com/ovrclk/akash/x/market/keeper"
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	"github.com/virtengine/virtengine/x/market/keeper"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 type grpcTestSuite struct {

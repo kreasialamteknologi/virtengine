@@ -15,10 +15,10 @@ import (
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 
-	appparams "github.com/ovrclk/akash/app/params"
-	sdlv1 "github.com/ovrclk/akash/sdl"
-	"github.com/ovrclk/akash/x/deployment/keeper"
-	"github.com/ovrclk/akash/x/deployment/types"
+	appparams "github.com/virtengine/virtengine/app/params"
+	sdlv1 "github.com/virtengine/virtengine/sdl"
+	"github.com/virtengine/virtengine/x/deployment/keeper"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 // Simulation operation weights constants

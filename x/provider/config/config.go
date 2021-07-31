@@ -5,8 +5,8 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/ovrclk/akash/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 // Config is the struct that stores provider config

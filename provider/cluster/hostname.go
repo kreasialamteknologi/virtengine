@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 	lifecycle "github.com/boz/go-lifecycle"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 	"github.com/pkg/errors"
 	"strings"
 	"sync"

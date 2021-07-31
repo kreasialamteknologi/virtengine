@@ -9,10 +9,10 @@ import (
 	"time"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	gateway "github.com/ovrclk/akash/provider/gateway/rest"
-	"github.com/ovrclk/akash/pubsub"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	gateway "github.com/virtengine/virtengine/provider/gateway/rest"
+	"github.com/virtengine/virtengine/pubsub"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"github.com/pkg/errors"
 )
 

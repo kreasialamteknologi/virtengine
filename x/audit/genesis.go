@@ -4,9 +4,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/ovrclk/akash/x/audit/keeper"
+	"github.com/virtengine/virtengine/x/audit/keeper"
 
-	"github.com/ovrclk/akash/x/audit/types"
+	"github.com/virtengine/virtengine/x/audit/types"
 )
 
 // ValidateGenesis does validation check of the Genesis and returns error incase of failure

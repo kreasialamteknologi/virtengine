@@ -3,7 +3,7 @@ package simulation
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 var minDeposit = sdk.NewInt64Coin("stake", 1)

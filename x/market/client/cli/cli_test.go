@@ -15,14 +15,14 @@ import (
 	bankcli "github.com/cosmos/cosmos-sdk/x/bank/client/testutil"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	"github.com/ovrclk/akash/testutil"
-	ccli "github.com/ovrclk/akash/x/cert/client/cli"
-	dcli "github.com/ovrclk/akash/x/deployment/client/cli"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	"github.com/ovrclk/akash/x/market/client/cli"
-	"github.com/ovrclk/akash/x/market/types"
-	pcli "github.com/ovrclk/akash/x/provider/client/cli"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/testutil"
+	ccli "github.com/virtengine/virtengine/x/cert/client/cli"
+	dcli "github.com/virtengine/virtengine/x/deployment/client/cli"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	"github.com/virtengine/virtengine/x/market/client/cli"
+	"github.com/virtengine/virtengine/x/market/types"
+	pcli "github.com/virtengine/virtengine/x/provider/client/cli"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 type IntegrationTestSuite struct {
@@ -231,7 +231,7 @@ func (s *IntegrationTestSuite) Test2CreateBid() {
 		fmt.Sprintf("--%s=%s", flags.FlagFees, sdk.NewCoins(sdk.NewCoin(s.cfg.BondDenom, sdk.NewInt(10))).String()),
 		fmt.Sprintf("--gas=%d", flags.DefaultGasLimit),
 		fmt.Sprintf("--deposit=%s", cli.DefaultDeposit),
-		"--price=1uakt",
+		"--price=1uve",
 	)
 	s.Require().NoError(err)
 

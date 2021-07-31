@@ -1,7 +1,7 @@
 package query
 
 import (
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 // Client interface

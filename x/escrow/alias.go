@@ -1,6 +1,6 @@
 package escrow
 
-import "github.com/ovrclk/akash/x/escrow/types"
+import "github.com/virtengine/virtengine/x/escrow/types"
 
 const (
 	// StoreKey represents storekey of deployment module

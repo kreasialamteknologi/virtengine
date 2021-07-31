@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/cosmos/cosmos-sdk/server"
-	"github.com/ovrclk/akash/cmd/akash/cmd"
+	"github.com/virtengine/virtengine/cmd/virtengine/cmd"
 )
 
 // In main we call the rootCmd

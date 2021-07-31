@@ -31,7 +31,7 @@ lint:
     - confio
   ignore_only:
     RPC_RESPONSE_STANDARD_NAME:
-      - akash/audit/v1beta1/query.proto
+      - virtengine/audit/v1beta1/query.proto
 breaking:
   use:
     - FILE

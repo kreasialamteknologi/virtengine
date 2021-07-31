@@ -1,7 +1,7 @@
 package types
 
 import (
-	"github.com/ovrclk/akash/types/unit"
+	"github.com/virtengine/virtengine/types/unit"
 	"testing"
 
 	"github.com/stretchr/testify/require"

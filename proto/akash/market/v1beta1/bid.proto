@@ -1,11 +1,11 @@
 syntax = "proto3";
-package akash.market.v1beta1;
+package virtengine.market.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "akash/market/v1beta1/order.proto";
+import "virtengine/market/v1beta1/order.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/ovrclk/akash/x/market/types";
+option go_package = "github.com/virtengine/virtengine/x/market/types";
 
 // MsgCreateBid defines an SDK message for creating Bid
 message MsgCreateBid {

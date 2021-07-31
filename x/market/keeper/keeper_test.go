@@ -8,11 +8,11 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	"github.com/ovrclk/akash/x/market/keeper"
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	"github.com/virtengine/virtengine/x/market/keeper"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 func Test_CreateOrder(t *testing.T) {
@@ -286,7 +286,7 @@ func createBid(t testing.TB, suite *state.TestSuite) (types.Bid, types.Order) {
 	ctx := suite.Context()
 	order, _ := createOrder(t, suite.Context(), suite.MarketKeeper())
 	provider := testutil.AccAddress(t)
-	price := testutil.AkashCoinRandom(t)
+	price := testutil.VirtEngineCoinRandom(t)
 	bid, err := suite.MarketKeeper().CreateBid(ctx, order.ID(), provider, price)
 	require.NoError(t, err)
 	assert.Equal(t, order.ID(), bid.ID().OrderID())

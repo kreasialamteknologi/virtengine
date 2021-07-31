@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/ovrclk/akash/events"
-	"github.com/ovrclk/akash/pubsub"
+	"github.com/virtengine/virtengine/events"
+	"github.com/virtengine/virtengine/pubsub"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -34,7 +34,7 @@ func ChainEmitter(ctx context.Context, clientCtx client.Context, ehs ...EventHan
 
 	// Publish chain events to the pubsub bus
 	group.Go(func() error {
-		return events.Publish(ctx, clientCtx.Client, "akash-deploy", bus)
+		return events.Publish(ctx, clientCtx.Client, "virtengine-deploy", bus)
 	})
 
 	// Handle all the events coming out of the bus

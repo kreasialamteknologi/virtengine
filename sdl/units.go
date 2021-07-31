@@ -7,7 +7,7 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"github.com/ovrclk/akash/types/unit"
+	"github.com/virtengine/virtengine/types/unit"
 )
 
 var (

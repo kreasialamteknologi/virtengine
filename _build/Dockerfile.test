@@ -8,7 +8,7 @@ FROM golang:alpine AS build-env
 ENV PACKAGES curl make git libc-dev bash gcc linux-headers eudev-dev python2
 
 # Set working directory for the build
-WORKDIR /go/src/github.com/ovrclk/akash
+WORKDIR /go/src/github.com/virtengine/virtengine
 
 # Add source files
 COPY . .
@@ -25,7 +25,7 @@ RUN apk add --update ca-certificates
 WORKDIR /root
 
 # Copy over binaries from the build-env
-COPY --from=build-env /go/bin/akash /usr/bin/akash
+COPY --from=build-env /go/bin/virtengine /usr/bin/virtengine
 
 COPY ./_build/single-node.sh .
 

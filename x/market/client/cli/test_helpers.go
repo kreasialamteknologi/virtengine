@@ -7,7 +7,7 @@ import (
 	sdktest "github.com/cosmos/cosmos-sdk/testutil"
 	clitestutil "github.com/cosmos/cosmos-sdk/testutil/cli"
 
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 // XXX: WHY TF DON'T THESE RETURN OBJECTS

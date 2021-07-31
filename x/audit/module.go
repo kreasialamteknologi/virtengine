@@ -21,12 +21,12 @@ import (
 	"github.com/gogo/protobuf/grpc"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/x/audit/client/cli"
-	"github.com/ovrclk/akash/x/audit/client/rest"
-	"github.com/ovrclk/akash/x/audit/handler"
-	"github.com/ovrclk/akash/x/audit/keeper"
-	"github.com/ovrclk/akash/x/audit/types"
-	pkeeper "github.com/ovrclk/akash/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/audit/client/cli"
+	"github.com/virtengine/virtengine/x/audit/client/rest"
+	"github.com/virtengine/virtengine/x/audit/handler"
+	"github.com/virtengine/virtengine/x/audit/keeper"
+	"github.com/virtengine/virtengine/x/audit/types"
+	pkeeper "github.com/virtengine/virtengine/x/provider/keeper"
 )
 
 var (

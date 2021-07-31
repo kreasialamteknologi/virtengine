@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/sdkutil"
-	"github.com/ovrclk/akash/testutil"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/sdkutil"
+	"github.com/virtengine/virtengine/testutil"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -29,9 +29,9 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 
-	"github.com/ovrclk/akash/sdkutil"
-	"github.com/ovrclk/akash/x/cert/types"
-	cutils "github.com/ovrclk/akash/x/cert/utils"
+	"github.com/virtengine/virtengine/sdkutil"
+	"github.com/virtengine/virtengine/x/cert/types"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
 )
 
 const (

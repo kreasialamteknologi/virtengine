@@ -12,16 +12,16 @@ import (
 
 	"github.com/stretchr/testify/mock"
 
-	qmock "github.com/ovrclk/akash/client/mocks"
-	akashmanifest "github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/provider"
-	pcmock "github.com/ovrclk/akash/provider/cluster/mocks"
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	pmmock "github.com/ovrclk/akash/provider/manifest/mocks"
-	pmock "github.com/ovrclk/akash/provider/mocks"
-	"github.com/ovrclk/akash/testutil"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	providertypes "github.com/ovrclk/akash/x/provider/types"
+	qmock "github.com/virtengine/virtengine/client/mocks"
+	virtenginemanifest "github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/provider"
+	pcmock "github.com/virtengine/virtengine/provider/cluster/mocks"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	pmmock "github.com/virtengine/virtengine/provider/manifest/mocks"
+	pmock "github.com/virtengine/virtengine/provider/mocks"
+	"github.com/virtengine/virtengine/testutil"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	providertypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 func Test_router_Status(t *testing.T) {
@@ -57,7 +57,7 @@ func Test_router_Status(t *testing.T) {
 func Test_router_Validate(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		expected := provider.ValidateGroupSpecResult{
-			MinBidPrice: testutil.AkashCoin(t, 200),
+			MinBidPrice: testutil.VirtEngineCoin(t, 200),
 		}
 		addr := testutil.AccAddress(t)
 		pclient, _, _, qclient := createMocks()
@@ -96,7 +96,7 @@ func Test_router_Manifest(t *testing.T) {
 		did := testutil.DeploymentIDForAccount(t, caddr)
 		pclient, pmclient, _, qclient := createMocks()
 
-		pmclient.On("Submit", mock.Anything, did, akashmanifest.Manifest(nil)).Return(nil)
+		pmclient.On("Submit", mock.Anything, did, virtenginemanifest.Manifest(nil)).Return(nil)
 		withServer(t, paddr, pclient, qclient, nil, func(host string) {
 			cert := testutil.Certificate(t, caddr, testutil.CertificateOptionMocks(qclient))
 			client, err := NewClient(qclient, paddr, cert.Cert)
@@ -115,7 +115,7 @@ func Test_router_Manifest(t *testing.T) {
 
 		pclient, pmclient, _, qclient := createMocks()
 
-		pmclient.On("Submit", mock.Anything, did, akashmanifest.Manifest(nil)).Return(errors.New("ded"))
+		pmclient.On("Submit", mock.Anything, did, virtenginemanifest.Manifest(nil)).Return(errors.New("ded"))
 		withServer(t, paddr, pclient, qclient, nil, func(host string) {
 			cert := testutil.Certificate(t, caddr, testutil.CertificateOptionMocks(qclient))
 			client, err := NewClient(qclient, paddr, cert.Cert)

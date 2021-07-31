@@ -2,7 +2,7 @@ package v1
 
 import (
 	"fmt"
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
 	"math"
 	"strconv"
 
@@ -11,9 +11,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 // +genclient
@@ -44,12 +44,12 @@ type ManifestSpec struct {
 
 // Deployment returns the cluster.Deployment that the saved manifest represents.
 func (m Manifest) Deployment() (ctypes.Deployment, error) {
-	lid, err := m.Spec.LeaseID.toAkash()
+	lid, err := m.Spec.LeaseID.toVirtEngine()
 	if err != nil {
 		return nil, err
 	}
 
-	group, err := m.Spec.Group.toAkash()
+	group, err := m.Spec.Group.toVirtEngine()
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +71,7 @@ func (d deployment) ManifestGroup() manifest.Group {
 
 // NewManifest creates new manifest with provided details. Returns error incase of failure.
 func NewManifest(name string, lid mtypes.LeaseID, mgroup *manifest.Group) (*Manifest, error) {
-	group, err := manifestGroupFromAkash(mgroup)
+	group, err := manifestGroupFromVirtEngine(mgroup)
 	if err != nil {
 		return nil, err
 	}
@@ -79,14 +79,14 @@ func NewManifest(name string, lid mtypes.LeaseID, mgroup *manifest.Group) (*Mani
 	return &Manifest{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       "Manifest",
-			APIVersion: "akash.network/v1",
+			APIVersion: "virtengine.network/v1",
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name: name,
 		},
 		Spec: ManifestSpec{
 			Group:   group,
-			LeaseID: leaseIDFromAkash(lid),
+			LeaseID: leaseIDFromVirtEngine(lid),
 		},
 	}, nil
 }
@@ -100,8 +100,8 @@ type LeaseID struct {
 	Provider string `json:"provider"`
 }
 
-// ToAkash returns LeaseID from LeaseID details
-func (id LeaseID) toAkash() (mtypes.LeaseID, error) {
+// ToVirtEngine returns LeaseID from LeaseID details
+func (id LeaseID) toVirtEngine() (mtypes.LeaseID, error) {
 	owner, err := sdk.AccAddressFromBech32(id.Owner)
 	if err != nil {
 		return mtypes.LeaseID{}, err
@@ -126,8 +126,8 @@ func (id LeaseID) toAkash() (mtypes.LeaseID, error) {
 	}, nil
 }
 
-// LeaseIDFromAkash returns LeaseID instance from akash
-func leaseIDFromAkash(id mtypes.LeaseID) LeaseID {
+// LeaseIDFromVirtEngine returns LeaseID instance from virtengine
+func leaseIDFromVirtEngine(id mtypes.LeaseID) LeaseID {
 	return LeaseID{
 		Owner:    id.Owner,
 		DSeq:     strconv.FormatUint(id.DSeq, 10),
@@ -145,15 +145,15 @@ type ManifestGroup struct {
 	Services []ManifestService `json:"services,omitempty"`
 }
 
-// ToAkash returns akash group details formatted from manifest group
-func (m ManifestGroup) toAkash() (manifest.Group, error) {
+// ToVirtEngine returns virtengine group details formatted from manifest group
+func (m ManifestGroup) toVirtEngine() (manifest.Group, error) {
 	am := manifest.Group{
 		Name:     m.Name,
 		Services: make([]manifest.Service, 0, len(m.Services)),
 	}
 
 	for _, svc := range m.Services {
-		asvc, err := svc.toAkash()
+		asvc, err := svc.toVirtEngine()
 		if err != nil {
 			return am, err
 		}
@@ -163,15 +163,15 @@ func (m ManifestGroup) toAkash() (manifest.Group, error) {
 	return am, nil
 }
 
-// ManifestGroupFromAkash returns manifest group instance from akash group
-func manifestGroupFromAkash(m *manifest.Group) (ManifestGroup, error) {
+// ManifestGroupFromVirtEngine returns manifest group instance from virtengine group
+func manifestGroupFromVirtEngine(m *manifest.Group) (ManifestGroup, error) {
 	ma := ManifestGroup{
 		Name:     m.Name,
 		Services: make([]ManifestService, 0, len(m.Services)),
 	}
 
 	for _, svc := range m.Services {
-		service, err := manifestServiceFromAkash(svc)
+		service, err := manifestServiceFromVirtEngine(svc)
 		if err != nil {
 			return ManifestGroup{}, err
 		}
@@ -199,8 +199,8 @@ type ManifestService struct {
 	Expose []ManifestServiceExpose `json:"expose,omitempty"`
 }
 
-func (ms ManifestService) toAkash() (manifest.Service, error) {
-	res, err := ms.Resources.toAkash()
+func (ms ManifestService) toVirtEngine() (manifest.Service, error) {
+	res, err := ms.Resources.toVirtEngine()
 	if err != nil {
 		return manifest.Service{}, err
 	}
@@ -216,7 +216,7 @@ func (ms ManifestService) toAkash() (manifest.Service, error) {
 	}
 
 	for _, expose := range ms.Expose {
-		value, err := expose.toAkash()
+		value, err := expose.toVirtEngine()
 		if err != nil {
 			return manifest.Service{}, err
 		}
@@ -226,8 +226,8 @@ func (ms ManifestService) toAkash() (manifest.Service, error) {
 	return *ams, nil
 }
 
-func manifestServiceFromAkash(ams manifest.Service) (ManifestService, error) {
-	resources, err := resourceUnitsFromAkash(ams.Resources)
+func manifestServiceFromVirtEngine(ams manifest.Service) (ManifestService, error) {
+	resources, err := resourceUnitsFromVirtEngine(ams.Resources)
 	if err != nil {
 		return ManifestService{}, err
 	}
@@ -243,7 +243,7 @@ func manifestServiceFromAkash(ams manifest.Service) (ManifestService, error) {
 	}
 
 	for _, expose := range ams.Expose {
-		ms.Expose = append(ms.Expose, manifestServiceExposeFromAkash(expose))
+		ms.Expose = append(ms.Expose, manifestServiceExposeFromVirtEngine(expose))
 	}
 
 	return ms, nil
@@ -260,7 +260,7 @@ type ManifestServiceExpose struct {
 	Hosts []string `json:"hosts,omitempty"`
 }
 
-func (mse ManifestServiceExpose) toAkash() (manifest.ServiceExpose, error) {
+func (mse ManifestServiceExpose) toVirtEngine() (manifest.ServiceExpose, error) {
 	proto, err := manifest.ParseServiceProtocol(mse.Proto)
 	if err != nil {
 		fmt.Printf("foobar: %q\n", mse.Proto)
@@ -276,7 +276,7 @@ func (mse ManifestServiceExpose) toAkash() (manifest.ServiceExpose, error) {
 	}, nil
 }
 
-func manifestServiceExposeFromAkash(amse manifest.ServiceExpose) ManifestServiceExpose {
+func manifestServiceExposeFromVirtEngine(amse manifest.ServiceExpose) ManifestServiceExpose {
 	return ManifestServiceExpose{
 		Port:         amse.Port,
 		ExternalPort: amse.ExternalPort,
@@ -294,7 +294,7 @@ type ResourceUnits struct {
 	Storage string `json:"storage,omitempty"`
 }
 
-func (ru ResourceUnits) toAkash() (types.ResourceUnits, error) {
+func (ru ResourceUnits) toVirtEngine() (types.ResourceUnits, error) {
 	memory, err := strconv.ParseUint(ru.Memory, 10, 64)
 	if err != nil {
 		return types.ResourceUnits{}, err
@@ -317,7 +317,7 @@ func (ru ResourceUnits) toAkash() (types.ResourceUnits, error) {
 	}, nil
 }
 
-func resourceUnitsFromAkash(aru types.ResourceUnits) (ResourceUnits, error) {
+func resourceUnitsFromVirtEngine(aru types.ResourceUnits) (ResourceUnits, error) {
 	res := ResourceUnits{}
 	if aru.CPU != nil {
 		if aru.CPU.Units.Value() > math.MaxUint32 {

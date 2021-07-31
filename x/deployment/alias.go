@@ -1,8 +1,8 @@
 package deployment
 
 import (
-	"github.com/ovrclk/akash/x/deployment/keeper"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/keeper"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 const (

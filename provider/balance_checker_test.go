@@ -5,17 +5,17 @@ import (
 	"github.com/boz/go-lifecycle"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	bankTypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/ovrclk/akash/provider/event"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/testutil"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/provider/event"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/testutil"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
 
-	cosmosMock "github.com/ovrclk/akash/testutil/cosmos_mock"
+	cosmosMock "github.com/virtengine/virtengine/testutil/cosmos_mock"
 )
 
 type scaffold struct {

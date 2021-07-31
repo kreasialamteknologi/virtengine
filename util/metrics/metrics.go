@@ -1,7 +1,7 @@
 package metrics
 
 import (
-	"github.com/ovrclk/akash/util/runner"
+	"github.com/virtengine/virtengine/util/runner"
 	"github.com/prometheus/client_golang/prometheus"
 	"time"
 )

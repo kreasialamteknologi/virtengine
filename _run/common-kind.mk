@@ -26,7 +26,7 @@ KIND_PORT_BINDINGS ?= $(shell docker inspect "$(KIND_NAME)-control-plane" \
 KIND_CONFIG        ?= kind-config.yaml
 KIND_CONFIG_CALICO ?= ../kind-config-calico.yaml
 
-DOCKER_IMAGE       ?= ghcr.io/ovrclk/akash:latest
+DOCKER_IMAGE       ?= ghcr.io/virtengine/virtengine:latest
 
 PROVIDER_HOSTNAME ?= localhost
 PROVIDER_HOST     ?= $(PROVIDER_HOSTNAME):$(KIND_HTTP_PORT)
@@ -45,8 +45,8 @@ kind-k8s-ip:
 
 .PHONY: kind-configure-image
 kind-configure-image:
-	echo "- op: replace\n  path: /spec/template/spec/containers/0/image\n  value: $(DOCKER_IMAGE)" > ./kustomize/akash-node/docker-image.yaml && \
-    cp ./kustomize/akash-node/docker-image.yaml ./kustomize/akash-provider/docker-image.yaml
+	echo "- op: replace\n  path: /spec/template/spec/containers/0/image\n  value: $(DOCKER_IMAGE)" > ./kustomize/virtengine-node/docker-image.yaml && \
+    cp ./kustomize/virtengine-node/docker-image.yaml ./kustomize/virtengine-provider/docker-image.yaml
 
 .PHONY: kind-upload-image
 kind-upload-image: $(KIND)
@@ -62,9 +62,9 @@ kind-cluster-create: $(KIND)
 		--config "$(KIND_CONFIG)" \
 		--name "$(KIND_NAME)" \
 		--image "$(KIND_IMG)"
-	kubectl label nodes $(KIND_NAME)-control-plane akash.network/role=ingress
+	kubectl label nodes $(KIND_NAME)-control-plane virtengine.network/role=ingress
 	kubectl apply -f "$(INGRESS_CONFIG_PATH)"
-	"$(AKASH_ROOT)/script/setup-kind.sh"
+	"$(VIRTENGINE_ROOT)/script/setup-kind.sh"
 
 .PHONY: kind-cluster-calico-create
 kind-cluster-calico-create: $(KIND)
@@ -76,13 +76,13 @@ kind-cluster-calico-create: $(KIND)
 	kubectl -n kube-system set env daemonset/calico-node FELIX_IGNORELOOSERPF=true
 	# Calico needs to be managing networking before finishing setup
 	kubectl apply -f "$(INGRESS_CONFIG_PATH)"
-	$(AKASH_ROOT)/script/setup-kind.sh calico-metrics
+	$(VIRTENGINE_ROOT)/script/setup-kind.sh calico-metrics
 
 .PHONY: kind-ingress-setup
 kind-ingress-setup:
-	kubectl label nodes $(KIND_NAME)-control-plane akash.network/role=ingress
+	kubectl label nodes $(KIND_NAME)-control-plane virtengine.network/role=ingress
 	kubectl apply -f "$(INGRESS_CONFIG_PATH)"
-	"$(AKASH_ROOT)/script/setup-kind.sh"
+	"$(VIRTENGINE_ROOT)/script/setup-kind.sh"
 
 
 .PHONY: kind-cluster-delete
@@ -91,4 +91,4 @@ kind-cluster-delete: $(KIND)
 
 .PHONY: kind-cluster-clean
 kind-cluster-clean:
-	kubectl delete ns -l akash.network 
+	kubectl delete ns -l virtengine.network 

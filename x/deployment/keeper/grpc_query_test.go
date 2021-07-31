@@ -9,18 +9,18 @@ import (
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkquery "github.com/cosmos/cosmos-sdk/types/query"
-	"github.com/ovrclk/akash/app"
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	"github.com/ovrclk/akash/x/deployment/keeper"
-	"github.com/ovrclk/akash/x/deployment/types"
-	ekeeper "github.com/ovrclk/akash/x/escrow/keeper"
-	etypes "github.com/ovrclk/akash/x/escrow/types"
+	"github.com/virtengine/virtengine/app"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	"github.com/virtengine/virtengine/x/deployment/keeper"
+	"github.com/virtengine/virtengine/x/deployment/types"
+	ekeeper "github.com/virtengine/virtengine/x/escrow/keeper"
+	etypes "github.com/virtengine/virtengine/x/escrow/types"
 )
 
 type grpcTestSuite struct {
 	t       *testing.T
-	app     *app.AkashApp
+	app     *app.VirtEngineApp
 	ctx     sdk.Context
 	keeper  keeper.IKeeper
 	ekeeper ekeeper.Keeper

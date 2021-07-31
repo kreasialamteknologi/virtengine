@@ -11,9 +11,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/testutil/network"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkrest "github.com/cosmos/cosmos-sdk/types/rest"
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/x/provider/client/cli"
-	"github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/x/provider/client/cli"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 type GRPCRestTestSuite struct {
@@ -81,13 +81,13 @@ func (s *GRPCRestTestSuite) TestGetProviders() {
 	}{
 		{
 			"get providers without pagination",
-			fmt.Sprintf("%s/akash/provider/v1beta1/providers", val.APIAddress),
+			fmt.Sprintf("%s/virtengine/provider/v1beta1/providers", val.APIAddress),
 			provider,
 			1,
 		},
 		{
 			"get providers with pagination",
-			fmt.Sprintf("%s/akash/provider/v1beta1/providers?pagination.offset=2", val.APIAddress),
+			fmt.Sprintf("%s/virtengine/provider/v1beta1/providers?pagination.offset=2", val.APIAddress),
 			types.Provider{},
 			0,
 		},
@@ -123,19 +123,19 @@ func (s *GRPCRestTestSuite) TestGetProvider() {
 	}{
 		{
 			"get group with empty input",
-			fmt.Sprintf("%s/akash/provider/v1beta1/providers/%s", val.APIAddress, ""),
+			fmt.Sprintf("%s/virtengine/provider/v1beta1/providers/%s", val.APIAddress, ""),
 			true,
 			types.Provider{},
 		},
 		{
 			"get provider with invalid input",
-			fmt.Sprintf("%s/akash/provider/v1beta1/providers/%s", val.APIAddress, "hellohai"),
+			fmt.Sprintf("%s/virtengine/provider/v1beta1/providers/%s", val.APIAddress, "hellohai"),
 			true,
 			types.Provider{},
 		},
 		{
 			"valid get provider request",
-			fmt.Sprintf("%s/akash/provider/v1beta1/providers/%s", val.APIAddress, provider.Owner),
+			fmt.Sprintf("%s/virtengine/provider/v1beta1/providers/%s", val.APIAddress, provider.Owner),
 			false,
 			provider,
 		},

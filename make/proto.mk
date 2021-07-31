@@ -16,15 +16,15 @@ proto-lint:
 
 .PHONY: proto-check-breaking
 proto-check-breaking:
-	rm -rf $(AKASH_DEVCACHE)/akash
-	mkdir -p $(AKASH_DEVCACHE)/akash
-	(cp -r .git $(AKASH_DEVCACHE)/akash; \
-	cd $(AKASH_DEVCACHE)/akash; \
+	rm -rf $(VIRTENGINE_DEVCACHE)/virtengine
+	mkdir -p $(VIRTENGINE_DEVCACHE)/virtengine
+	(cp -r .git $(VIRTENGINE_DEVCACHE)/virtengine; \
+	cd $(VIRTENGINE_DEVCACHE)/virtengine; \
 	git checkout master; \
 	git reset --hard; \
 	$(MAKE) modvendor)
-	$(DOCKER_BUF) check breaking --against-input '.cache/akash/'
-	rm -rf $(AKASH_DEVCACHE)/akash
+	$(DOCKER_BUF) check breaking --against-input '.cache/virtengine/'
+	rm -rf $(VIRTENGINE_DEVCACHE)/virtengine
 
 .PHONY: proto-format
 proto-format:

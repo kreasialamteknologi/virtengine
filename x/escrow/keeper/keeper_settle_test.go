@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/x/escrow/types"
+	"github.com/virtengine/virtengine/x/escrow/types"
 	"github.com/stretchr/testify/assert"
 )
 

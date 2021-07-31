@@ -9,14 +9,14 @@ import (
 	"github.com/pkg/errors"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	akashtypes "github.com/ovrclk/akash/types"
-	mkeeper "github.com/ovrclk/akash/x/market/keeper"
-	"github.com/ovrclk/akash/x/provider/handler"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	virtenginetypes "github.com/virtengine/virtengine/types"
+	mkeeper "github.com/virtengine/virtengine/x/market/keeper"
+	"github.com/virtengine/virtengine/x/provider/handler"
 
-	"github.com/ovrclk/akash/x/provider/keeper"
-	"github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 const (
@@ -126,7 +126,7 @@ func TestProviderCreateWithDuplicated(t *testing.T) {
 
 	res, err := suite.handler(suite.ctx, msg)
 	require.Nil(t, res)
-	require.EqualError(t, err, akashtypes.ErrAttributesDuplicateKeys.Error())
+	require.EqualError(t, err, virtenginetypes.ErrAttributesDuplicateKeys.Error())
 }
 
 func TestProviderUpdateWithDuplicated(t *testing.T) {
@@ -151,7 +151,7 @@ func TestProviderUpdateWithDuplicated(t *testing.T) {
 
 	res, err := suite.handler(suite.ctx, updateMsg)
 	require.Nil(t, res)
-	require.EqualError(t, err, akashtypes.ErrAttributesDuplicateKeys.Error())
+	require.EqualError(t, err, virtenginetypes.ErrAttributesDuplicateKeys.Error())
 }
 
 func TestProviderUpdateExisting(t *testing.T) {
@@ -225,7 +225,7 @@ func TestProviderUpdateAttributes(t *testing.T) {
 	group := testutil.DeploymentGroup(t, testutil.DeploymentID(t), 0)
 
 	group.GroupSpec.Resources = testutil.Resources(t)
-	group.GroupSpec.Requirements = akashtypes.PlacementRequirements{
+	group.GroupSpec.Requirements = virtenginetypes.PlacementRequirements{
 		Attributes: createMsg.Attributes,
 	}
 

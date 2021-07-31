@@ -2,14 +2,14 @@ package events
 
 import (
 	"context"
-	atypes "github.com/ovrclk/akash/x/audit/types"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/sdkutil"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/sdkutil"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmclient "github.com/tendermint/tendermint/rpc/client"
 	ctypes "github.com/tendermint/tendermint/rpc/core/types"

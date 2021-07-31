@@ -7,9 +7,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
 
-	akashclient "github.com/ovrclk/akash/client"
-	cmdcommon "github.com/ovrclk/akash/cmd/common"
-	gwrest "github.com/ovrclk/akash/provider/gateway/rest"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	cmdcommon "github.com/virtengine/virtengine/cmd/common"
+	gwrest "github.com/virtengine/virtengine/provider/gateway/rest"
 )
 
 func statusCmd() *cobra.Command {
@@ -37,7 +37,7 @@ func doStatus(cmd *cobra.Command, addr sdk.Address) error {
 		return err
 	}
 
-	gclient, err := gwrest.NewClient(akashclient.NewQueryClientFromCtx(cctx), addr, nil)
+	gclient, err := gwrest.NewClient(virtengineclient.NewQueryClientFromCtx(cctx), addr, nil)
 	if err != nil {
 		return err
 	}

@@ -10,15 +10,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/app"
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/x/audit/keeper"
-	"github.com/ovrclk/akash/x/audit/types"
+	"github.com/virtengine/virtengine/app"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/x/audit/keeper"
+	"github.com/virtengine/virtengine/x/audit/types"
 )
 
 type grpcTestSuite struct {
 	t      *testing.T
-	app    *app.AkashApp
+	app    *app.VirtEngineApp
 	ctx    sdk.Context
 	keeper keeper.Keeper
 

@@ -7,28 +7,28 @@ import (
 	"github.com/stretchr/testify/mock"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/ovrclk/akash/app"
-	akeeper "github.com/ovrclk/akash/x/audit/keeper"
-	atypes "github.com/ovrclk/akash/x/audit/types"
-	dkeeper "github.com/ovrclk/akash/x/deployment/keeper"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	ekeeper "github.com/ovrclk/akash/x/escrow/keeper"
-	emocks "github.com/ovrclk/akash/x/escrow/keeper/mocks"
-	etypes "github.com/ovrclk/akash/x/escrow/types"
-	mhooks "github.com/ovrclk/akash/x/market/hooks"
-	mkeeper "github.com/ovrclk/akash/x/market/keeper"
-	mtypes "github.com/ovrclk/akash/x/market/types"
-	pkeeper "github.com/ovrclk/akash/x/provider/keeper"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/app"
+	akeeper "github.com/virtengine/virtengine/x/audit/keeper"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
+	dkeeper "github.com/virtengine/virtengine/x/deployment/keeper"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	ekeeper "github.com/virtengine/virtengine/x/escrow/keeper"
+	emocks "github.com/virtengine/virtengine/x/escrow/keeper/mocks"
+	etypes "github.com/virtengine/virtengine/x/escrow/types"
+	mhooks "github.com/virtengine/virtengine/x/market/hooks"
+	mkeeper "github.com/virtengine/virtengine/x/market/keeper"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
+	pkeeper "github.com/virtengine/virtengine/x/provider/keeper"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
-// TestSuite encapsulates a functional Akash nodes data stores for
+// TestSuite encapsulates a functional VirtEngine nodes data stores for
 // ephemeral testing.
 type TestSuite struct {
 	t       testing.TB
 	ms      sdk.CommitMultiStore
 	ctx     sdk.Context
-	app     *app.AkashApp
+	app     *app.VirtEngineApp
 	keepers Keepers
 }
 
@@ -90,7 +90,7 @@ func SetupTestSuiteWithKeepers(t testing.TB, keepers Keepers) *TestSuite {
 	}
 }
 
-func (ts *TestSuite) App() *app.AkashApp {
+func (ts *TestSuite) App() *app.VirtEngineApp {
 	return ts.app
 }
 

@@ -63,10 +63,10 @@ import (
 	stakingkeeper "github.com/cosmos/cosmos-sdk/x/staking/keeper"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/ovrclk/akash/app/migrations"
-	"github.com/ovrclk/akash/x/audit"
-	"github.com/ovrclk/akash/x/cert"
-	escrowkeeper "github.com/ovrclk/akash/x/escrow/keeper"
+	"github.com/virtengine/virtengine/app/migrations"
+	"github.com/virtengine/virtengine/x/audit"
+	"github.com/virtengine/virtengine/x/cert"
+	escrowkeeper "github.com/virtengine/virtengine/x/escrow/keeper"
 
 	"github.com/tendermint/tendermint/libs/log"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
@@ -90,28 +90,28 @@ import (
 	slashingkeeper "github.com/cosmos/cosmos-sdk/x/slashing/keeper"
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 
-	dkeeper "github.com/ovrclk/akash/x/deployment/keeper"
-	mkeeper "github.com/ovrclk/akash/x/market/keeper"
-	pkeeper "github.com/ovrclk/akash/x/provider/keeper"
+	dkeeper "github.com/virtengine/virtengine/x/deployment/keeper"
+	mkeeper "github.com/virtengine/virtengine/x/market/keeper"
+	pkeeper "github.com/virtengine/virtengine/x/provider/keeper"
 
 	// unnamed import of statik for swagger UI support
-	_ "github.com/ovrclk/akash/client/docs/statik"
+	_ "github.com/virtengine/virtengine/client/docs/statik"
 )
 
 const (
-	AppName = "akash"
+	AppName = "virtengine"
 )
 
 var (
-	DefaultHome                         = os.ExpandEnv("$HOME/.akash")
-	_           servertypes.Application = (*AkashApp)(nil)
+	DefaultHome                         = os.ExpandEnv("$HOME/.virtengine")
+	_           servertypes.Application = (*VirtEngineApp)(nil)
 
 	// module accounts that are allowed to receive tokens
 	allowedReceivingModAcc = map[string]bool{}
 )
 
-// AkashApp extends ABCI appplication
-type AkashApp struct {
+// VirtEngineApp extends ABCI appplication
+type VirtEngineApp struct {
 	*bam.BaseApp
 	cdc               *codec.LegacyAmino
 	appCodec          codec.Marshaler
@@ -143,7 +143,7 @@ type AkashApp struct {
 		scopedIBC      capabilitykeeper.ScopedKeeper
 		scopedTransfer capabilitykeeper.ScopedKeeper
 
-		// akash keepers
+		// virtengine keepers
 		escrow     escrowkeeper.Keeper
 		deployment dkeeper.IKeeper
 		market     mkeeper.IKeeper
@@ -160,11 +160,11 @@ type AkashApp struct {
 
 // https://github.com/cosmos/sdk-tutorials/blob/c6754a1e313eb1ed973c5c91dcc606f2fd288811/app.go#L73
 
-// NewApp creates and returns a new Akash App.
+// NewApp creates and returns a new VirtEngine App.
 func NewApp(
 	logger log.Logger, db dbm.DB, tio io.Writer, loadLatest bool, invCheckPeriod uint, skipUpgradeHeights map[int64]bool,
 	homePath string, appOpts servertypes.AppOptions, options ...func(*bam.BaseApp),
-) *AkashApp {
+) *VirtEngineApp {
 
 	// TODO: Remove cdc in favor of appCodec once all modules are migrated.
 	encodingConfig := MakeEncodingConfig()
@@ -181,7 +181,7 @@ func NewApp(
 	tkeys := transientStoreKeys()
 	memkeys := memStoreKeys()
 
-	app := &AkashApp{
+	app := &VirtEngineApp{
 		BaseApp:           bapp,
 		cdc:               cdc,
 		appCodec:          appCodec,
@@ -263,8 +263,8 @@ func NewApp(
 
 	app.keeper.upgrade = upgradekeeper.NewKeeper(skipUpgradeHeights, app.keys[upgradetypes.StoreKey], appCodec, homePath)
 
-	app.keeper.upgrade.SetUpgradeHandler("akashnet-2-upgrade-1", func(ctx sdk.Context, plan upgradetypes.Plan) {
-		migrations.MigrateAkashnet2Upgrade1(ctx, app.keeper.acct, app.keeper.bank, app.keeper.staking)
+	app.keeper.upgrade.SetUpgradeHandler("virtenginenet-2-upgrade-1", func(ctx sdk.Context, plan upgradetypes.Plan) {
+		migrations.MigrateVirtEnginenet2Upgrade1(ctx, app.keeper.acct, app.keeper.bank, app.keeper.staking)
 
 		// Set staking HistoricalEntries to 10000, required positive value for ibc
 		app.GetSubspace(stakingtypes.ModuleName).Set(ctx, stakingtypes.KeyHistoricalEntries, uint32(10000))
@@ -323,7 +323,7 @@ func NewApp(
 	// if evidence needs to be handled for the app, set routes in router here and seal
 	app.keeper.evidence = *evidenceKeeper
 
-	app.setAkashKeepers()
+	app.setVirtEngineKeepers()
 
 	// NOTE: we may consider parsing `appOpts` inside module constructors. For the moment
 	// we prefer to be more strict in what arguments the modules expect.
@@ -347,7 +347,7 @@ func NewApp(
 			ibc.NewAppModule(app.keeper.ibc),
 			params.NewAppModule(app.keeper.params),
 			transferModule,
-		}, app.akashAppModules()...)...,
+		}, app.virtengineAppModules()...)...,
 	)
 
 	app.mm.SetOrderBeginBlockers(
@@ -357,7 +357,7 @@ func NewApp(
 	app.mm.SetOrderEndBlockers(
 		append([]string{
 			crisistypes.ModuleName, govtypes.ModuleName, stakingtypes.ModuleName},
-			app.akashEndBlockModules()...,
+			app.virtengineEndBlockModules()...,
 		)...,
 	)
 
@@ -380,7 +380,7 @@ func NewApp(
 			ibctransfertypes.ModuleName,
 		},
 
-			app.akashInitGenesisOrder()...,
+			app.virtengineInitGenesisOrder()...,
 		)...,
 	)
 
@@ -406,7 +406,7 @@ func NewApp(
 			ibc.NewAppModule(app.keeper.ibc),
 			transferModule,
 		},
-			app.akashSimModules()...,
+			app.virtengineSimModules()...,
 		)...,
 	)
 
@@ -463,10 +463,10 @@ func MakeCodecs() (codec.Marshaler, *codec.LegacyAmino) {
 }
 
 // Name returns the name of the App
-func (app *AkashApp) Name() string { return app.BaseApp.Name() }
+func (app *VirtEngineApp) Name() string { return app.BaseApp.Name() }
 
 // InitChainer application update at chain initialization
-func (app *AkashApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
+func (app *VirtEngineApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abci.ResponseInitChain {
 	var genesisState simapp.GenesisState
 	if err := tmjson.Unmarshal(req.AppStateBytes, &genesisState); err != nil {
 		panic(err)
@@ -475,35 +475,35 @@ func (app *AkashApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abc
 }
 
 // BeginBlocker is a function in which application updates every begin block
-func (app *AkashApp) BeginBlocker(
+func (app *VirtEngineApp) BeginBlocker(
 	ctx sdk.Context, req abci.RequestBeginBlock) abci.ResponseBeginBlock {
 	return app.mm.BeginBlock(ctx, req)
 }
 
 // EndBlocker is a function in which application updates every end block
-func (app *AkashApp) EndBlocker(
+func (app *VirtEngineApp) EndBlocker(
 	ctx sdk.Context, req abci.RequestEndBlock) abci.ResponseEndBlock {
 	return app.mm.EndBlock(ctx, req)
 }
 
-// LegacyAmino returns AkashApp's amino codec.
-func (app *AkashApp) LegacyAmino() *codec.LegacyAmino {
+// LegacyAmino returns VirtEngineApp's amino codec.
+func (app *VirtEngineApp) LegacyAmino() *codec.LegacyAmino {
 	return app.cdc
 }
 
-// AppCodec returns AkashApp's app codec.
-func (app *AkashApp) AppCodec() codec.Marshaler {
+// AppCodec returns VirtEngineApp's app codec.
+func (app *VirtEngineApp) AppCodec() codec.Marshaler {
 	return app.appCodec
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *AkashApp) ModuleAccountAddrs() map[string]bool {
+func (app *VirtEngineApp) ModuleAccountAddrs() map[string]bool {
 	return MacAddrs()
 }
 
 // BlockedAddrs returns all the app's module account addresses that are not
 // allowed to receive external tokens.
-func (app *AkashApp) BlockedAddrs() map[string]bool {
+func (app *VirtEngineApp) BlockedAddrs() map[string]bool {
 	perms := MacPerms()
 	blockedAddrs := make(map[string]bool)
 	for acc := range perms {
@@ -513,35 +513,35 @@ func (app *AkashApp) BlockedAddrs() map[string]bool {
 	return blockedAddrs
 }
 
-// InterfaceRegistry returns AkashApp's InterfaceRegistry
-func (app *AkashApp) InterfaceRegistry() codectypes.InterfaceRegistry {
+// InterfaceRegistry returns VirtEngineApp's InterfaceRegistry
+func (app *VirtEngineApp) InterfaceRegistry() codectypes.InterfaceRegistry {
 	return app.interfaceRegistry
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
-func (app *AkashApp) GetKey(storeKey string) *sdk.KVStoreKey {
+func (app *VirtEngineApp) GetKey(storeKey string) *sdk.KVStoreKey {
 	return app.keys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
-func (app *AkashApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
+func (app *VirtEngineApp) GetTKey(storeKey string) *sdk.TransientStoreKey {
 	return app.tkeys[storeKey]
 }
 
 // GetSubspace returns a param subspace for a given module name.
-func (app *AkashApp) GetSubspace(moduleName string) paramstypes.Subspace {
+func (app *VirtEngineApp) GetSubspace(moduleName string) paramstypes.Subspace {
 	subspace, _ := app.keeper.params.GetSubspace(moduleName)
 	return subspace
 }
 
 // SimulationManager implements the SimulationApp interface
-func (app *AkashApp) SimulationManager() *module.SimulationManager {
+func (app *VirtEngineApp) SimulationManager() *module.SimulationManager {
 	return app.sm
 }
 
 // RegisterAPIRoutes registers all application module routes with the provided
 // API server.
-func (app *AkashApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
+func (app *VirtEngineApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig) {
 	clientCtx := apiSvr.ClientCtx
 	rpc.RegisterRoutes(clientCtx, apiSvr.Router)
 	// Register legacy tx routes
@@ -562,12 +562,12 @@ func (app *AkashApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIC
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.
-func (app *AkashApp) RegisterTxService(clientCtx client.Context) {
+func (app *VirtEngineApp) RegisterTxService(clientCtx client.Context) {
 	authtx.RegisterTxService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.BaseApp.Simulate, app.interfaceRegistry)
 }
 
 // RegisterTendermintService implements the Application.RegisterTendermintService method.
-func (app *AkashApp) RegisterTendermintService(clientCtx client.Context) {
+func (app *VirtEngineApp) RegisterTendermintService(clientCtx client.Context) {
 	tmservice.RegisterTendermintService(app.BaseApp.GRPCQueryRouter(), clientCtx, app.interfaceRegistry)
 }
 
@@ -582,8 +582,8 @@ func RegisterSwaggerAPI(ctx client.Context, rtr *mux.Router) {
 	rtr.PathPrefix("/swagger/").Handler(http.StripPrefix("/swagger/", staticServer))
 }
 
-// LoadHeight method of AkashApp loads baseapp application version with given height
-func (app *AkashApp) LoadHeight(height int64) error {
+// LoadHeight method of VirtEngineApp loads baseapp application version with given height
+func (app *VirtEngineApp) LoadHeight(height int64) error {
 	return app.LoadVersion(height)
 }
 
@@ -602,5 +602,5 @@ func initParamsKeeper(appCodec codec.BinaryMarshaler, legacyAmino *codec.LegacyA
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName)
 	paramsKeeper.Subspace(ibchost.ModuleName)
 
-	return akashSubspaces(paramsKeeper)
+	return virtengineSubspaces(paramsKeeper)
 }

@@ -9,7 +9,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/pkg/errors"
 
-	ctypes "github.com/ovrclk/akash/x/cert/types"
+	ctypes "github.com/virtengine/virtengine/x/cert/types"
 )
 
 func NewServerTLSConfig(ctx context.Context, certs []tls.Certificate, cquery ctypes.QueryClient) (*tls.Config, error) {

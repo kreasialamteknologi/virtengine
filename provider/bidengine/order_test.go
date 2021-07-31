@@ -6,7 +6,7 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/sdkutil"
+	"github.com/virtengine/virtengine/sdkutil"
 
 	"testing"
 
@@ -14,18 +14,18 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/testutil"
-	atypes "github.com/ovrclk/akash/types"
-	audittypes "github.com/ovrclk/akash/x/audit/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/testutil"
+	atypes "github.com/virtengine/virtengine/types"
+	audittypes "github.com/virtengine/virtengine/x/audit/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 
-	broadcastmocks "github.com/ovrclk/akash/client/broadcaster/mocks"
-	clientmocks "github.com/ovrclk/akash/client/mocks"
-	clustermocks "github.com/ovrclk/akash/provider/cluster/mocks"
+	broadcastmocks "github.com/virtengine/virtengine/client/broadcaster/mocks"
+	clientmocks "github.com/virtengine/virtengine/client/mocks"
+	clustermocks "github.com/virtengine/virtengine/provider/cluster/mocks"
 )
 
 type orderTestScaffold struct {
@@ -355,7 +355,7 @@ func Test_BidOrderAndThenLeaseCreated(t *testing.T) {
 	ev := mtypes.EventLeaseCreated{
 		Context: sdkutil.BaseModuleEvent{},
 		ID:      leaseID,
-		Price:   testutil.AkashCoin(t, 1),
+		Price:   testutil.VirtEngineCoin(t, 1),
 	}
 
 	require.Equal(t, order.orderID.GroupID(), ev.ID.GroupID())
@@ -395,7 +395,7 @@ func Test_BidOrderAndThenLeaseCreatedForDifferentDeployment(t *testing.T) {
 	ev := mtypes.EventLeaseCreated{
 		Context: sdkutil.BaseModuleEvent{},
 		ID:      leaseID,
-		Price:   testutil.AkashCoin(t, 1),
+		Price:   testutil.VirtEngineCoin(t, 1),
 	}
 
 	subscriber, err := scaffold.testBus.Subscribe()
@@ -502,7 +502,7 @@ func Test_ShouldRecognizeLeaseCreatedIfBiddingIsSkipped(t *testing.T) {
 	ev := mtypes.EventLeaseCreated{
 		Context: sdkutil.BaseModuleEvent{},
 		ID:      leaseID,
-		Price:   testutil.AkashCoin(t, 1),
+		Price:   testutil.VirtEngineCoin(t, 1),
 	}
 
 	err := scaffold.testBus.Publish(ev)

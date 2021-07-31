@@ -1,8 +1,8 @@
 package audit
 
 import (
-	"github.com/ovrclk/akash/x/audit/keeper"
-	"github.com/ovrclk/akash/x/audit/types"
+	"github.com/virtengine/virtengine/x/audit/keeper"
+	"github.com/virtengine/virtengine/x/audit/types"
 )
 
 const (

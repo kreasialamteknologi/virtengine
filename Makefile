@@ -11,14 +11,14 @@ UNAME_ARCH            := $(shell uname -m)
 
 include make/init.mk
 
-.DEFAULT_GOAL         := $(AKASH)
+.DEFAULT_GOAL         := $(VIRTENGINE)
 
 DOCKER_RUN            := docker run --rm -v $(shell pwd):/workspace -w /workspace
 DOCKER_BUF            := $(DOCKER_RUN) bufbuild/buf:$(BUF_VERSION)
 DOCKER_CLANG          := $(DOCKER_RUN) tendermintdev/docker-build-proto
 GOLANGCI_LINT          = $(DOCKER_RUN) --network none golangci/golangci-lint:$(GOLANGCI_LINT_VERSION)-alpine golangci-lint run
 LINT                   = $(GOLANGCI_LINT) ./... --disable-all --deadline=5m --enable
-TEST_DOCKER_REPO      := ovrclk/akashtest
+TEST_DOCKER_REPO      := virtengine/virtenginetest
 
 GORELEASER_CONFIG      = .goreleaser.yaml
 
@@ -43,22 +43,22 @@ else
 endif
 
 ifeq ($(GORELEASER_IS_PREREL),false)
-	GORELEASER_HOMEBREW_NAME=akash
+	GORELEASER_HOMEBREW_NAME=virtengine
 	GORELEASER_HOMEBREW_CUSTOM=
 else
-	GORELEASER_HOMEBREW_NAME="akash-edge"
-	GORELEASER_HOMEBREW_CUSTOM=keg_only :unneeded, \"This is testnet release. Run brew install ovrclk/tap/akash to install mainnet version\"
+	GORELEASER_HOMEBREW_NAME="virtengine-edge"
+	GORELEASER_HOMEBREW_CUSTOM=keg_only :unneeded, \"This is testnet release. Run brew install virtengine/tap/virtengine to install mainnet version\"
 endif
 
 GORELEASER_FLAGS    = -tags="$(GORELEASER_BUILD_TAGS)"
-GORELEASER_LD_FLAGS = -s -w -X github.com/cosmos/cosmos-sdk/version.Name=akash \
--X github.com/cosmos/cosmos-sdk/version.AppName=akash \
+GORELEASER_LD_FLAGS = -s -w -X github.com/cosmos/cosmos-sdk/version.Name=virtengine \
+-X github.com/cosmos/cosmos-sdk/version.AppName=virtengine \
 -X github.com/cosmos/cosmos-sdk/version.BuildTags="$(GORELEASER_BUILD_TAGS)" \
 -X github.com/cosmos/cosmos-sdk/version.Version=$(GORELEASER_TAG) \
 -X github.com/cosmos/cosmos-sdk/version.Commit=$(GIT_HEAD_COMMIT_LONG)
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=akash \
--X github.com/cosmos/cosmos-sdk/version.AppName=akash \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=virtengine \
+-X github.com/cosmos/cosmos-sdk/version.AppName=virtengine \
 -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(BUILD_TAGS)" \
 -X github.com/cosmos/cosmos-sdk/version.Version=$(shell git describe --tags | sed 's/^v//') \
 -X github.com/cosmos/cosmos-sdk/version.Commit=$(GIT_HEAD_COMMIT_LONG)

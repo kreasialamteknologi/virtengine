@@ -1,6 +1,6 @@
 package types
 
-import "github.com/ovrclk/akash/types/unit"
+import "github.com/virtengine/virtengine/types/unit"
 
 // This is the validation configuration that acts as a hard limit
 // on what the network accepts for deployments. This is never changed

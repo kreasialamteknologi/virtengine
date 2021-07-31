@@ -3,8 +3,8 @@ package kube
 import (
 	"context"
 	"errors"
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/types"
 	kubeErrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
@@ -19,17 +19,17 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 
-	crd "github.com/ovrclk/akash/pkg/apis/akash.network/v1"
-	akashclient "github.com/ovrclk/akash/pkg/client/clientset/versioned"
-	akashclient_fake "github.com/ovrclk/akash/pkg/client/clientset/versioned/fake"
-	"github.com/ovrclk/akash/testutil"
-	kubernetes_mocks "github.com/ovrclk/akash/testutil/kubernetes_mock"
-	appsv1_mocks "github.com/ovrclk/akash/testutil/kubernetes_mock/typed/apps/v1"
-	corev1_mocks "github.com/ovrclk/akash/testutil/kubernetes_mock/typed/core/v1"
-	netv1_mocks "github.com/ovrclk/akash/testutil/kubernetes_mock/typed/networking/v1"
+	crd "github.com/virtengine/virtengine/pkg/apis/virtengine.network/v1"
+	virtengineclient "github.com/virtengine/virtengine/pkg/client/clientset/versioned"
+	virtengineclient_fake "github.com/virtengine/virtengine/pkg/client/clientset/versioned/fake"
+	"github.com/virtengine/virtengine/testutil"
+	kubernetes_mocks "github.com/virtengine/virtengine/testutil/kubernetes_mock"
+	appsv1_mocks "github.com/virtengine/virtengine/testutil/kubernetes_mock/typed/apps/v1"
+	corev1_mocks "github.com/virtengine/virtengine/testutil/kubernetes_mock/typed/core/v1"
+	netv1_mocks "github.com/virtengine/virtengine/testutil/kubernetes_mock/typed/networking/v1"
 )
 
-func clientForTest(t *testing.T, kc kubernetes.Interface, ac akashclient.Interface) Client {
+func clientForTest(t *testing.T, kc kubernetes.Interface, ac virtengineclient.Interface) Client {
 	myLog := testutil.Logger(t)
 	result := &client{
 		kc:  kc,
@@ -350,9 +350,9 @@ func TestServiceStatusNoDeployment(t *testing.T) {
 	appsV1Mock.On("Deployments", lidNS(lid)).Return(deploymentsMock)
 	deploymentsMock.On("Get", mock.Anything, serviceName, metav1.GetOptions{}).Return(nil, nil)
 
-	akashMock := akashclient_fake.NewSimpleClientset()
+	virtengineMock := virtengineclient_fake.NewSimpleClientset()
 
-	clientInterface := clientForTest(t, kmock, akashMock)
+	clientInterface := clientForTest(t, kmock, virtengineMock)
 
 	status, err := clientInterface.ServiceStatus(context.Background(), lid, serviceName)
 	require.ErrorIs(t, err, ErrNoDeploymentForLease)
@@ -390,9 +390,9 @@ func TestServiceStatusNoServiceWithName(t *testing.T) {
 
 	m, err := crd.NewManifest(lidNS(lid), lid, mg)
 	require.NoError(t, err)
-	akashMock := akashclient_fake.NewSimpleClientset(m)
+	virtengineMock := virtengineclient_fake.NewSimpleClientset(m)
 
-	clientInterface := clientForTest(t, kmock, akashMock)
+	clientInterface := clientForTest(t, kmock, virtengineMock)
 
 	status, err := clientInterface.ServiceStatus(context.Background(), lid, serviceName)
 	require.ErrorIs(t, err, ErrNoServiceForLease)
@@ -430,13 +430,13 @@ func TestServiceStatusNoCRDManifest(t *testing.T) {
 
 	m, err := crd.NewManifest(lidNS(lid)+"a", lid, mg)
 	require.NoError(t, err)
-	akashMock := akashclient_fake.NewSimpleClientset(m)
+	virtengineMock := virtengineclient_fake.NewSimpleClientset(m)
 
-	clientInterface := clientForTest(t, kmock, akashMock)
+	clientInterface := clientForTest(t, kmock, virtengineMock)
 
 	status, err := clientInterface.ServiceStatus(context.Background(), lid, serviceName)
 	require.Error(t, err)
-	require.Regexp(t, `^manifests.akash.network ".+" not found$`, err)
+	require.Regexp(t, `^manifests.virtengine.network ".+" not found$`, err)
 	require.Nil(t, status)
 }
 
@@ -510,7 +510,7 @@ func TestServiceStatusWithIngress(t *testing.T) {
 
 	m, err := crd.NewManifest(lidNS(lid), lid, mg)
 	require.NoError(t, err)
-	akashMock := akashclient_fake.NewSimpleClientset(m)
+	virtengineMock := virtengineclient_fake.NewSimpleClientset(m)
 
 	netmock := &netv1_mocks.NetworkingV1Interface{}
 	kmock.On("NetworkingV1").Return(netmock)
@@ -536,7 +536,7 @@ func TestServiceStatusWithIngress(t *testing.T) {
 	}
 	ingressMock.On("Get", mock.Anything, serviceName, metav1.GetOptions{}).Return(ingress, nil)
 
-	clientInterface := clientForTest(t, kmock, akashMock)
+	clientInterface := clientForTest(t, kmock, virtengineMock)
 
 	status, err := clientInterface.ServiceStatus(context.Background(), lid, serviceName)
 	require.NoError(t, err)
@@ -617,7 +617,7 @@ func TestServiceStatusWithIngressError(t *testing.T) {
 
 	m, err := crd.NewManifest(lidNS(lid), lid, mg)
 	require.NoError(t, err)
-	akashMock := akashclient_fake.NewSimpleClientset(m)
+	virtengineMock := virtengineclient_fake.NewSimpleClientset(m)
 
 	netmock := &netv1_mocks.NetworkingV1Interface{}
 	kmock.On("NetworkingV1").Return(netmock)
@@ -626,7 +626,7 @@ func TestServiceStatusWithIngressError(t *testing.T) {
 	netmock.On("Ingresses", lidNS(lid)).Return(ingressMock)
 
 	ingressMock.On("Get", mock.Anything, serviceName, metav1.GetOptions{}).Return(nil, errNoSuchIngress)
-	clientInterface := clientForTest(t, kmock, akashMock)
+	clientInterface := clientForTest(t, kmock, virtengineMock)
 
 	status, err := clientInterface.ServiceStatus(context.Background(), lid, serviceName)
 	require.ErrorIs(t, err, errNoSuchIngress)
@@ -703,9 +703,9 @@ func TestServiceStatusWithoutIngress(t *testing.T) {
 
 	m, err := crd.NewManifest(lidNS(lid), lid, mg)
 	require.NoError(t, err)
-	akashMock := akashclient_fake.NewSimpleClientset(m)
+	virtengineMock := virtengineclient_fake.NewSimpleClientset(m)
 
-	clientInterface := clientForTest(t, kmock, akashMock)
+	clientInterface := clientForTest(t, kmock, virtengineMock)
 
 	status, err := clientInterface.ServiceStatus(context.Background(), lid, serviceName)
 	require.NoError(t, err)

@@ -1,7 +1,7 @@
 package sdl
 
 import (
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/types"
 )
 
 type v2ComputeResources struct {

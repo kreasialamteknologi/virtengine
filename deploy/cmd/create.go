@@ -10,17 +10,17 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ovrclk/akash/cmd/common"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/cmd/common"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 
 	"github.com/avast/retry-go"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	gateway "github.com/ovrclk/akash/provider/gateway/rest"
-	dcli "github.com/ovrclk/akash/x/deployment/client/cli"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	gateway "github.com/virtengine/virtengine/provider/gateway/rest"
+	dcli "github.com/virtengine/virtengine/x/deployment/client/cli"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
@@ -49,7 +49,7 @@ func createCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "create [sdl-file]",
 		Args:  cobra.ExactArgs(1),
-		Short: "Create a deployment on the akash network",
+		Short: "Create a deployment on the virtengine network",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			timeoutDuration := viper.GetDuration(FlagTimeout)
 			endAt := time.Now().Add(timeoutDuration)

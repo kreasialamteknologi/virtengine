@@ -10,9 +10,9 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mquery "github.com/ovrclk/akash/x/market/query"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mquery "github.com/virtengine/virtengine/x/market/query"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 type contextKey int

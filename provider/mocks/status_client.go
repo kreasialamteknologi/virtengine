@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	provider "github.com/ovrclk/akash/provider"
+	provider "github.com/virtengine/virtengine/provider"
 	mock "github.com/stretchr/testify/mock"
 )
 

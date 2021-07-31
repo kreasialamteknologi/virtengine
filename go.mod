@@ -1,4 +1,4 @@
-module github.com/ovrclk/akash
+module github.com/virtengine/virtengine
 
 go 1.16
 
@@ -56,12 +56,12 @@ replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alp
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 
-replace github.com/cosmos/cosmos-sdk => github.com/ovrclk/cosmos-sdk v0.41.4-akash-4
+replace github.com/cosmos/cosmos-sdk => github.com/virtengine/cosmos-sdk v0.42.8
 
-replace github.com/tendermint/tendermint => github.com/ovrclk/tendermint v0.34.9-akash-1
+replace github.com/tendermint/tendermint => github.com/virtengine/tendermint v0.34.11
 
 replace (
-	github.com/cosmos/ledger-cosmos-go => github.com/ovrclk/ledger-cosmos-go v0.13.2
+	github.com/cosmos/ledger-cosmos-go => github.com/virtengine/ledger-cosmos-go v0.13.3
 	github.com/zondax/hid => github.com/troian/hid v0.9.9
-	github.com/zondax/ledger-go => github.com/ovrclk/ledger-go v0.13.4
+	github.com/zondax/ledger-go => github.com/virtengine/ledger-go v0.13.4
 )

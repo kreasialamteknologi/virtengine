@@ -9,9 +9,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/log"
 
-	"github.com/ovrclk/akash/provider"
-	gwutils "github.com/ovrclk/akash/provider/gateway/utils"
-	ctypes "github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/provider"
+	gwutils "github.com/virtengine/virtengine/provider/gateway/utils"
+	ctypes "github.com/virtengine/virtengine/x/cert/types"
 )
 
 func NewServer(

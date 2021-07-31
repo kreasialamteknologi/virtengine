@@ -1,8 +1,8 @@
 package cluster
 
 import (
-	atypes "github.com/ovrclk/akash/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	atypes "github.com/virtengine/virtengine/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 func newReservation(order mtypes.OrderID, resources atypes.ResourceGroup) *reservation {

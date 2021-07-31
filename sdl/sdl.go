@@ -11,9 +11,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/validation"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/validation"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 var (

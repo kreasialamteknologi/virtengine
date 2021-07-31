@@ -8,8 +8,8 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/testutil"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/testutil"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -62,11 +62,11 @@ func TestNetworkPolicies(t *testing.T) {
 	assert.Len(t, netPolicies, 1)
 
 	pol0 := netPolicies[0]
-	assert.Equal(t, pol0.Name, "akash-deployment-restrictions")
+	assert.Equal(t, pol0.Name, "virtengine-deployment-restrictions")
 
 	// Change the DSeq ID
 	np.lid.DSeq = uint64(100)
-	k := akashNetworkNamespace
+	k := virtengineNetworkNamespace
 	ns := lidNS(np.lid)
 	updatedNetPol, err := np.update(netPolicies[0])
 	assert.NoError(t, err)

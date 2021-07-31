@@ -8,11 +8,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/cmd/common"
-	"github.com/ovrclk/akash/sdkutil"
-	"github.com/ovrclk/akash/sdl"
-	cutils "github.com/ovrclk/akash/x/cert/utils"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/cmd/common"
+	"github.com/virtengine/virtengine/sdkutil"
+	"github.com/virtengine/virtengine/sdl"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
+	"github.com/virtengine/virtengine/x/deployment/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/spf13/cobra"
@@ -247,7 +247,7 @@ func cmdGroupClose(_ string) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "close",
 		Short:   "close a Deployment's specific Group",
-		Example: "akash tx deployment group-close --owner=[Account Address] --dseq=[uint64] --gseq=[uint32]",
+		Example: "virtengine tx deployment group-close --owner=[Account Address] --dseq=[uint64] --gseq=[uint32]",
 		Args:    cobra.ExactArgs(0),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
@@ -283,7 +283,7 @@ func cmdGroupPause(_ string) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "pause",
 		Short:   "pause a Deployment's specific Group",
-		Example: "akash tx deployment group pause --owner=[Account Address] --dseq=[uint64] --gseq=[uint32]",
+		Example: "virtengine tx deployment group pause --owner=[Account Address] --dseq=[uint64] --gseq=[uint32]",
 		Args:    cobra.ExactArgs(0),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
@@ -319,7 +319,7 @@ func cmdGroupStart(_ string) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "start",
 		Short:   "start a Deployment's specific Group",
-		Example: "akash tx deployment group pause --owner=[Account Address] --dseq=[uint64] --gseq=[uint32]",
+		Example: "virtengine tx deployment group pause --owner=[Account Address] --dseq=[uint64] --gseq=[uint32]",
 		Args:    cobra.ExactArgs(0),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)

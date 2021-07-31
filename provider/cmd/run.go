@@ -7,7 +7,7 @@ import (
 	"crypto/x509"
 	"encoding/pem"
 	"fmt"
-	mparams "github.com/ovrclk/akash/x/market/types"
+	mparams "github.com/virtengine/virtengine/x/market/types"
 	"github.com/shopspring/decimal"
 	"io"
 	"net/http"
@@ -16,10 +16,10 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/client/broadcaster"
-	"github.com/ovrclk/akash/provider/bidengine"
-	ctypes "github.com/ovrclk/akash/x/cert/types"
-	cutils "github.com/ovrclk/akash/x/cert/utils"
+	"github.com/virtengine/virtengine/client/broadcaster"
+	"github.com/virtengine/virtengine/provider/bidengine"
+	ctypes "github.com/virtengine/virtengine/x/cert/types"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
 
 	sdkclient "github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -31,17 +31,17 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/client"
-	"github.com/ovrclk/akash/cmd/common"
-	"github.com/ovrclk/akash/events"
-	"github.com/ovrclk/akash/provider"
-	"github.com/ovrclk/akash/provider/cluster"
-	"github.com/ovrclk/akash/provider/cluster/kube"
-	gwrest "github.com/ovrclk/akash/provider/gateway/rest"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	cmodule "github.com/ovrclk/akash/x/cert"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/client"
+	"github.com/virtengine/virtengine/cmd/common"
+	"github.com/virtengine/virtengine/events"
+	"github.com/virtengine/virtengine/provider"
+	"github.com/virtengine/virtengine/provider/cluster"
+	"github.com/virtengine/virtengine/provider/cluster/kube"
+	gwrest "github.com/virtengine/virtengine/provider/gateway/rest"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	cmodule "github.com/virtengine/virtengine/x/cert"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 const (
@@ -88,11 +88,11 @@ var (
 	errInvalidConfig = errors.New("Invalid configuration")
 )
 
-// RunCmd launches the Akash Provider service
+// RunCmd launches the VirtEngine Provider service
 func RunCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:          "run",
-		Short:        "run akash provider",
+		Short:        "run virtengine provider",
 		SilenceUsage: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return common.RunForever(func(ctx context.Context) error {
@@ -130,22 +130,22 @@ func RunCmd() *cobra.Command {
 		return nil
 	}
 
-	cmd.Flags().String(FlagBidPriceCPUScale, "0", "cpu pricing scale in uakt per millicpu")
+	cmd.Flags().String(FlagBidPriceCPUScale, "0", "cpu pricing scale in uve per millicpu")
 	if err := viper.BindPFlag(FlagBidPriceCPUScale, cmd.Flags().Lookup(FlagBidPriceCPUScale)); err != nil {
 		return nil
 	}
 
-	cmd.Flags().String(FlagBidPriceMemoryScale, "0", "memory pricing scale in uakt per megabyte")
+	cmd.Flags().String(FlagBidPriceMemoryScale, "0", "memory pricing scale in uve per megabyte")
 	if err := viper.BindPFlag(FlagBidPriceMemoryScale, cmd.Flags().Lookup(FlagBidPriceMemoryScale)); err != nil {
 		return nil
 	}
 
-	cmd.Flags().String(FlagBidPriceStorageScale, "0", "storage pricing scale in uakt per megabyte")
+	cmd.Flags().String(FlagBidPriceStorageScale, "0", "storage pricing scale in uve per megabyte")
 	if err := viper.BindPFlag(FlagBidPriceStorageScale, cmd.Flags().Lookup(FlagBidPriceStorageScale)); err != nil {
 		return nil
 	}
 
-	cmd.Flags().String(FlagBidPriceEndpointScale, "0", "endpoint pricing scale in uakt")
+	cmd.Flags().String(FlagBidPriceEndpointScale, "0", "endpoint pricing scale in uve")
 	if err := viper.BindPFlag(FlagBidPriceEndpointScale, cmd.Flags().Lookup(FlagBidPriceEndpointScale)); err != nil {
 		return nil
 	}

@@ -10,15 +10,15 @@ import (
 	sdkquery "github.com/cosmos/cosmos-sdk/types/query"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/app"
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/x/cert/keeper"
-	"github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/app"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/x/cert/keeper"
+	"github.com/virtengine/virtengine/x/cert/types"
 )
 
 type grpcTestSuite struct {
 	t       *testing.T
-	app     *app.AkashApp
+	app     *app.VirtEngineApp
 	ctx     sdk.Context
 	keeper  keeper.Keeper
 	qclient types.QueryClient

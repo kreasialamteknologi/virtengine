@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/ovrclk/akash/util/wsutil"
+	"github.com/virtengine/virtengine/util/wsutil"
 	"io"
 	"k8s.io/client-go/tools/remotecommand"
 	"net/http"
@@ -23,15 +23,15 @@ import (
 
 	kubeErrors "k8s.io/apimachinery/pkg/api/errors"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/provider"
-	"github.com/ovrclk/akash/provider/cluster"
-	kubeClient "github.com/ovrclk/akash/provider/cluster/kube"
-	cltypes "github.com/ovrclk/akash/provider/cluster/types"
-	pmanifest "github.com/ovrclk/akash/provider/manifest"
-	manifestValidation "github.com/ovrclk/akash/validation"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/provider"
+	"github.com/virtengine/virtengine/provider/cluster"
+	kubeClient "github.com/virtengine/virtengine/provider/cluster/kube"
+	cltypes "github.com/virtengine/virtengine/provider/cluster/types"
+	pmanifest "github.com/virtengine/virtengine/provider/manifest"
+	manifestValidation "github.com/virtengine/virtengine/validation"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 type CtxAuthKey string

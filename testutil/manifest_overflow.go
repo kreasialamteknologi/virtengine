@@ -4,8 +4,8 @@ import (
 	"math"
 	"testing"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/types"
 )
 
 // OverflowManifestGenerator generates a manifest maximum integer values
@@ -34,9 +34,9 @@ func (mg manifestGeneratorOverflow) Service(t testing.TB) manifest.Service {
 	t.Helper()
 	return manifest.Service{
 		Name:  "demo",
-		Image: "quay.io/ovrclk/demo-app",
+		Image: "quay.io/virtengine/demo-app",
 		Args:  []string{"run"},
-		Env:   []string{"AKASH_TEST_SERVICE=true"},
+		Env:   []string{"VIRTENGINE_TEST_SERVICE=true"},
 		Resources: types.ResourceUnits{
 			CPU: &types.CPU{
 				Units: types.NewResourceValue(math.MaxUint32),

@@ -3,7 +3,7 @@ package rest
 import (
 	"fmt"
 
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 const (

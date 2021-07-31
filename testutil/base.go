@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/tendermint/tendermint/libs/rand"
 
-	"github.com/ovrclk/akash/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 func init() {
@@ -20,8 +20,8 @@ func init() {
 // CoinDenom provides ability to create coins in test functions and
 // pass them into testutil functionality.
 const (
-	CoinDenom  = "uakt"
-	BechPrefix = "akash"
+	CoinDenom  = "uve"
+	BechPrefix = "virtengine"
 )
 
 // Name generates a random name with the given prefix

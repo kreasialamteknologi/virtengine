@@ -4,14 +4,14 @@ include ../common-commands.mk
 PROVIDER_HOSTNAME ?= https://localhost:8443
 
 provider-run:
-	$(AKASH) provider run \
+	$(VIRTENGINE) provider run \
 		--from "$(PROVIDER_KEY_NAME)" \
 		--cluster-public-hostname "localhost" \
 		--bid-price-strategy "randomRange"
 
 .PHONY: provider-lease-status
 provider-lease-status:
-	$(AKASH) provider lease-status \
+	$(VIRTENGINE) provider lease-status \
 		--dseq      "$(DSEQ)"        \
 		--gseq      "$(GSEQ)"        \
 		--oseq      "$(OSEQ)"        \
@@ -20,7 +20,7 @@ provider-lease-status:
 
 .PHONY: provider-service-status
 provider-service-status:
-	$(AKASH) provider service-status \
+	$(VIRTENGINE) provider service-status \
 		--dseq      "$(DSEQ)"        \
 		--gseq      "$(GSEQ)"        \
 		--oseq      "$(OSEQ)"        \

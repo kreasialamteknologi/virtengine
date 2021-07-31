@@ -1,19 +1,19 @@
-Akash Provider's implementation of Kubernetes Hard Multi-Tenancy
+VirtEngine Provider's implementation of Kubernetes Hard Multi-Tenancy
 ------------------------------------------------
 
-The Kubernetes Provider needs to initialize reasonable security protections against malicious threats from tenants against the provider and other tenants. Kubernetes does not provide perfect multi-tenant threat encapsulation, as do most container orchestrators, but using reasonable default controls and privileges; we aim to provide the best possible security protections for Providers and Tenants on the Akash Network. This will involve multiple layers of protection around separate threat domains.
+The Kubernetes Provider needs to initialize reasonable security protections against malicious threats from tenants against the provider and other tenants. Kubernetes does not provide perfect multi-tenant threat encapsulation, as do most container orchestrators, but using reasonable default controls and privileges; we aim to provide the best possible security protections for Providers and Tenants on the VirtEngine Network. This will involve multiple layers of protection around separate threat domains.
 
 ## Domain: Container/CGroups/Kernel/Service Accounts
 
 Tenant containers are not allowed to run with root privileges on the host machine(for now). There are far too many exploits related to Containers CGroups to trust them to not be exploited. So the Provider applies a "Restrictive PodSecurityPolicy" to all tenant containers; revoking root privileges, disabling certain sys-calls know to lead to escalation of privilege, denying the Pod a service account token, blocking access to root file system, and only allowing applicable volumes.
 
-There are use cases where running as root might be necessary, and the provider with appropriate consideration and controls would allow such operations. eg: Workloads which interface the GPU. This sort of risk needs to be managed by the providers and will be part of their selectable attributes. By default, the Akash Provider blocks workloads running as root with PodSecuirtyPolicy(see below), however this feature will be enabled in the future, and must be enabled by the Provider.
+There are use cases where running as root might be necessary, and the provider with appropriate consideration and controls would allow such operations. eg: Workloads which interface the GPU. This sort of risk needs to be managed by the providers and will be part of their selectable attributes. By default, the VirtEngine Provider blocks workloads running as root with PodSecuirtyPolicy(see below), however this feature will be enabled in the future, and must be enabled by the Provider.
 
 ### Pod Security Policies
 
 Restricted PSP source: https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/policy/restricted-psp.yaml
 
-These polices are applied by the Provider in [provider/cluster/kube/builder.go](https://github.com/ovrclk/akash/blob/master/provider/cluster/kube/builder.go).
+These polices are applied by the Provider in [provider/cluster/kube/builder.go](https://github.com/virtengine/virtengine/blob/master/provider/cluster/kube/builder.go).
 
 ```
 apiVersion: policy/v1beta1
@@ -76,7 +76,7 @@ Networking connections the tenant containers are allowed to create. Ideal goal i
 
 Kubernetes Networking Policies enforced by a [CNI Plugin](https://kubernetes.io/docs/tasks/administer-cluster/network-policy-provider/calico-network-policy/)([Calico](https://docs.projectcalico.org/getting-started/kubernetes/) is recommended) 
 
-These polices are applied by the Provider in [provider/cluster/kube/builder.go](https://github.com/ovrclk/akash/blob/master/provider/cluster/kube/builder.go).
+These polices are applied by the Provider in [provider/cluster/kube/builder.go](https://github.com/virtengine/virtengine/blob/master/provider/cluster/kube/builder.go).
 
 ### Ingress Rules
 * Deny all Ingress into Tenant namespace. This is the base for providing controlled access to the Namespace.

@@ -7,19 +7,19 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	clientMocks "github.com/ovrclk/akash/client/mocks"
-	"github.com/ovrclk/akash/provider/cluster"
-	"github.com/ovrclk/akash/provider/cluster/util"
-	"github.com/ovrclk/akash/provider/event"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/sdkutil"
-	"github.com/ovrclk/akash/sdl"
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/x/deployment/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	markettypes "github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	clientMocks "github.com/virtengine/virtengine/client/mocks"
+	"github.com/virtengine/virtengine/provider/cluster"
+	"github.com/virtengine/virtengine/provider/cluster/util"
+	"github.com/virtengine/virtengine/provider/event"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/sdkutil"
+	"github.com/virtengine/virtengine/sdl"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/x/deployment/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	markettypes "github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
@@ -159,7 +159,7 @@ func TestManagerRequiresHostname(t *testing.T) {
 		LeaseID: lid,
 		Group:   dgroup,
 		Price: sdk.Coin{
-			Denom:  "uakt",
+			Denom:  "uve",
 			Amount: sdk.NewInt(111),
 		},
 	}
@@ -210,7 +210,7 @@ func TestManagerAllowsUpdate(t *testing.T) {
 		LeaseID: lid,
 		Group:   dgroup,
 		Price: sdk.Coin{
-			Denom:  "uakt",
+			Denom:  "uve",
 			Amount: sdk.NewInt(111),
 		},
 	}

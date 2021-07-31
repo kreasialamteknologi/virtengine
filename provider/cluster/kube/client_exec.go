@@ -3,9 +3,9 @@ package kube
 import (
 	"context"
 	"fmt"
-	"github.com/ovrclk/akash/provider/cluster"
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/provider/cluster"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"io"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -86,7 +86,7 @@ func (c *client) Exec(ctx context.Context, leaseID mtypes.LeaseID, serviceName s
 	// Check that the pod exists
 	pods, err := c.kc.CoreV1().Pods(namespace).List(ctx, metav1.ListOptions{
 		TypeMeta:             metav1.TypeMeta{},
-		LabelSelector:        fmt.Sprintf("akash.network/manifest-service=%s", serviceName),
+		LabelSelector:        fmt.Sprintf("virtengine.network/manifest-service=%s", serviceName),
 		FieldSelector:        "",
 		Watch:                false,
 		AllowWatchBookmarks:  false,

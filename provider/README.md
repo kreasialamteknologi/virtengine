@@ -1,6 +1,6 @@
-# Akash Provider Daemon
+# VirtEngine Provider Daemon
 
-This folder contains the Akash Provider Daemon. This piece of software listens to events emitted from the Akash blockchain (code in `../app/app.go`) and takes actions on a connected Kubernetes cluster to provision compute capacity based on the bids that the configured provider key wins. The following are the pieces of the daemon:
+This folder contains the VirtEngine Provider Daemon. This piece of software listens to events emitted from the VirtEngine blockchain (code in `../app/app.go`) and takes actions on a connected Kubernetes cluster to provision compute capacity based on the bids that the configured provider key wins. The following are the pieces of the daemon:
 
 ### [`bidengine`](./bidengine)
 

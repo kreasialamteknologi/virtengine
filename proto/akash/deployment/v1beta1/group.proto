@@ -1,12 +1,12 @@
 syntax = "proto3";
-package akash.deployment.v1beta1;
+package virtengine.deployment.v1beta1;
 
 import "gogoproto/gogo.proto";
-import "akash/base/v1beta1/resource.proto";
-import "akash/base/v1beta1/attribute.proto";
+import "virtengine/base/v1beta1/resource.proto";
+import "virtengine/base/v1beta1/attribute.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/ovrclk/akash/x/deployment/types";
+option go_package = "github.com/virtengine/virtengine/x/deployment/types";
 
 // MsgCloseGroup defines SDK message to close a single Group within a Deployment.
 message MsgCloseGroup {
@@ -72,7 +72,7 @@ message GroupSpec {
 
   string name = 1 [(gogoproto.jsontag) = "name", (gogoproto.moretags) = "yaml:\"name\""];
 
-  akash.base.v1beta1.PlacementRequirements requirements = 2 [
+  virtengine.base.v1beta1.PlacementRequirements requirements = 2 [
     (gogoproto.nullable) = false,
     (gogoproto.jsontag)  = "requirements",
     (gogoproto.moretags) = "yaml:\"requirements\""
@@ -120,7 +120,7 @@ message Group {
 message Resource {
   option (gogoproto.equal) = false;
 
-  akash.base.v1beta1.ResourceUnits resources = 1
+  virtengine.base.v1beta1.ResourceUnits resources = 1
       [(gogoproto.nullable) = false, (gogoproto.jsontag) = "unit", (gogoproto.moretags) = "yaml:\"unit\""];
   uint32                   count = 2 [(gogoproto.jsontag) = "count", (gogoproto.moretags) = "yaml:\"count\""];
   cosmos.base.v1beta1.Coin price = 3

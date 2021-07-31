@@ -15,12 +15,12 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 
-	"github.com/ovrclk/akash/x/deployment/client/cli"
-	"github.com/ovrclk/akash/x/deployment/client/rest"
-	"github.com/ovrclk/akash/x/deployment/handler"
-	"github.com/ovrclk/akash/x/deployment/keeper"
-	"github.com/ovrclk/akash/x/deployment/simulation"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/client/cli"
+	"github.com/virtengine/virtengine/x/deployment/client/rest"
+	"github.com/virtengine/virtengine/x/deployment/handler"
+	"github.com/virtengine/virtengine/x/deployment/keeper"
+	"github.com/virtengine/virtengine/x/deployment/simulation"
+	"github.com/virtengine/virtengine/x/deployment/types"
 
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"

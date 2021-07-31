@@ -2,8 +2,8 @@ package market
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/x/market/keeper"
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/market/keeper"
+	"github.com/virtengine/virtengine/x/market/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 )
 

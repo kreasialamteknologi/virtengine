@@ -6,16 +6,16 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
-	akashtypes "github.com/ovrclk/akash/types"
-	atypes "github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/x/audit/types"
+	virtenginetypes "github.com/virtengine/virtengine/types"
+	atypes "github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/x/audit/types"
 )
 
 // TODO: use interfaces for keepers, queriers
 type IKeeper interface {
 	GetProviderByAuditor(ctx sdk.Context, id types.ProviderID) (types.Provider, bool)
 	GetProviderAttributes(ctx sdk.Context, id sdk.Address) (types.Providers, bool)
-	CreateOrUpdateProviderAttributes(ctx sdk.Context, id types.ProviderID, attr akashtypes.Attributes) error
+	CreateOrUpdateProviderAttributes(ctx sdk.Context, id types.ProviderID, attr virtenginetypes.Attributes) error
 	DeleteProviderAttributes(ctx sdk.Context, id types.ProviderID, keys []string) error
 	WithProviders(ctx sdk.Context, fn func(types.Provider) bool)
 	WithProvider(ctx sdk.Context, id sdk.Address, fn func(types.Provider) bool)
@@ -79,7 +79,7 @@ func (k Keeper) GetProviderAttributes(ctx sdk.Context, id sdk.Address) (types.Pr
 // CreateOrUpdateProviderAttributes update signed provider attributes.
 // creates new if key does not exist
 // if key exists, existing values for matching pairs will be replaced
-func (k Keeper) CreateOrUpdateProviderAttributes(ctx sdk.Context, id types.ProviderID, attr akashtypes.Attributes) error {
+func (k Keeper) CreateOrUpdateProviderAttributes(ctx sdk.Context, id types.ProviderID, attr virtenginetypes.Attributes) error {
 	store := ctx.KVStore(k.skey)
 	key := providerKey(id)
 
@@ -104,7 +104,7 @@ func (k Keeper) CreateOrUpdateProviderAttributes(ctx sdk.Context, id types.Provi
 			kv[entry.Key] = entry.Value
 		}
 
-		attr = akashtypes.Attributes{}
+		attr = virtenginetypes.Attributes{}
 
 		for ky, val := range kv {
 			attr = append(attr, atypes.Attribute{
@@ -166,7 +166,7 @@ func (k Keeper) DeleteProviderAttributes(ctx sdk.Context, id types.ProviderID, k
 			delete(kv, entry)
 		}
 
-		var attr akashtypes.Attributes
+		var attr virtenginetypes.Attributes
 
 		for ky, val := range kv {
 			attr = append(attr, atypes.Attribute{

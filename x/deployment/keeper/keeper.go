@@ -6,7 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
-	"github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/x/deployment/types"
 )
 
 type IKeeper interface {
@@ -146,7 +146,7 @@ func (k Keeper) Create(ctx sdk.Context, deployment types.Deployment, groups []ty
 			ToSDKEvent(),
 	)
 
-	telemetry.IncrCounter(1.0, "akash.deployment_created")
+	telemetry.IncrCounter(1.0, "virtengine.deployment_created")
 
 	return nil
 }

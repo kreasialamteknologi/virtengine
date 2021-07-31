@@ -7,15 +7,15 @@ import (
 
 	sdkclient "github.com/cosmos/cosmos-sdk/client"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 
-	akashclient "github.com/ovrclk/akash/client"
-	cmdcommon "github.com/ovrclk/akash/cmd/common"
-	gwrest "github.com/ovrclk/akash/provider/gateway/rest"
-	cutils "github.com/ovrclk/akash/x/cert/utils"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	cmdcommon "github.com/virtengine/virtengine/cmd/common"
+	gwrest "github.com/virtengine/virtengine/provider/gateway/rest"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
 )
 
 func leaseLogsCmd() *cobra.Command {
@@ -102,7 +102,7 @@ func doLeaseLogs(cmd *cobra.Command) error {
 	for _, lid := range leases {
 		stream := result{lid: lid}
 		prov, _ := sdk.AccAddressFromBech32(lid.Provider)
-		gclient, err := gwrest.NewClient(akashclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
+		gclient, err := gwrest.NewClient(virtengineclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
 		if err == nil {
 			stream.stream, stream.error = gclient.LeaseLogs(ctx, lid, svcs, follow, tailLines)
 		} else {

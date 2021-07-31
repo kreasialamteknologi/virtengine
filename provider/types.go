@@ -3,9 +3,9 @@ package provider
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/ovrclk/akash/provider/bidengine"
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	"github.com/ovrclk/akash/provider/manifest"
+	"github.com/virtengine/virtengine/provider/bidengine"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	"github.com/virtengine/virtengine/provider/manifest"
 )
 
 // Status is the data structure that stores Cluster, Bidengine and Manifest details.

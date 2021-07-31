@@ -8,7 +8,7 @@ GATEWAY_ENDPOINT ?= https://$(GATEWAY_HOST)
 
 .PHONY: provider-run
 provider-run:
-	$(AKASH) provider run \
+	$(VIRTENGINE) provider run \
 		--from "$(PROVIDER_KEY_NAME)" \
 		--cluster-k8s \
 		--gateway-listen-address "$(GATEWAY_HOST)" \
@@ -21,7 +21,7 @@ provider-run:
 
 .PHONY: provider-lease-status
 provider-lease-status:
-	$(AKASH) provider lease-status \
+	$(VIRTENGINE) provider lease-status \
 		--dseq      "$(DSEQ)"        \
 		--gseq      "$(GSEQ)"        \
 		--oseq      "$(OSEQ)"        \
@@ -30,7 +30,7 @@ provider-lease-status:
 
 .PHONY: provider-service-status
 provider-service-status:
-	$(AKASH) provider lease-status \
+	$(VIRTENGINE) provider lease-status \
 		--dseq      "$(DSEQ)"        \
 		--gseq      "$(GSEQ)"        \
 		--oseq      "$(OSEQ)"        \

@@ -23,9 +23,9 @@ import (
 	sync "sync"
 	time "time"
 
-	versioned "github.com/ovrclk/akash/pkg/client/clientset/versioned"
-	akashnetwork "github.com/ovrclk/akash/pkg/client/informers/externalversions/akash.network"
-	internalinterfaces "github.com/ovrclk/akash/pkg/client/informers/externalversions/internalinterfaces"
+	versioned "github.com/virtengine/virtengine/pkg/client/clientset/versioned"
+	virtenginenetwork "github.com/virtengine/virtengine/pkg/client/informers/externalversions/virtengine.network"
+	internalinterfaces "github.com/virtengine/virtengine/pkg/client/informers/externalversions/internalinterfaces"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -172,9 +172,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	Akash() akashnetwork.Interface
+	VirtEngine() virtenginenetwork.Interface
 }
 
-func (f *sharedInformerFactory) Akash() akashnetwork.Interface {
-	return akashnetwork.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) VirtEngine() virtenginenetwork.Interface {
+	return virtenginenetwork.New(f, f.namespace, f.tweakListOptions)
 }

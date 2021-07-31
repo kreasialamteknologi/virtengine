@@ -12,7 +12,7 @@ func TestFull(t *testing.T) {
 version: "2.0"
 services:
   web:
-    image: quay.io/ovrclk/demo-app
+    image: quay.io/virtengine/demo-app
     expose:
     - port: 80
       as: 80
@@ -41,7 +41,7 @@ profiles:
       pricing:
         web:
           amount: 1
-          denom: uakt
+          denom: uve
 deployment:
   web:
     westcoast:

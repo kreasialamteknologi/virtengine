@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: akash-node
+  name: virtengine-node
 spec:
   selector:
-    app: akash-node
+    app: virtengine-node
   ports:
-    - name: akash-rpc
+    - name: virtengine-rpc
       port: 26657
-    - name: akash-p2p
+    - name: virtengine-p2p
       port: 26656

@@ -20,11 +20,11 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/x/cert/client/cli"
-	"github.com/ovrclk/akash/x/cert/handler"
-	"github.com/ovrclk/akash/x/cert/keeper"
-	"github.com/ovrclk/akash/x/cert/simulation"
-	"github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/x/cert/client/cli"
+	"github.com/virtengine/virtengine/x/cert/handler"
+	"github.com/virtengine/virtengine/x/cert/keeper"
+	"github.com/virtengine/virtengine/x/cert/simulation"
+	"github.com/virtengine/virtengine/x/cert/types"
 )
 
 var (

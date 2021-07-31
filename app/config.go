@@ -37,7 +37,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/upgrade"
 	upgradeclient "github.com/cosmos/cosmos-sdk/x/upgrade/client"
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
-	appparams "github.com/ovrclk/akash/app/params"
+	appparams "github.com/virtengine/virtengine/app/params"
 )
 
 var (
@@ -71,8 +71,8 @@ var (
 			transfer.AppModuleBasic{},
 			vesting.AppModuleBasic{},
 		},
-			// akash
-			akashModuleBasics()...,
+			// virtengine
+			virtengineModuleBasics()...,
 		)...,
 	)
 )
@@ -109,7 +109,7 @@ func kvStoreKeys() map[string]*sdk.KVStoreKey {
 			ibctransfertypes.StoreKey,
 			capabilitytypes.StoreKey,
 		},
-			akashKVStoreKeys()...,
+			virtengineKVStoreKeys()...,
 		)...,
 	)
 }

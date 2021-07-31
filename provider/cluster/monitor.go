@@ -8,12 +8,12 @@ import (
 	"time"
 
 	lifecycle "github.com/boz/go-lifecycle"
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/provider/event"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/util/runner"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/provider/event"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/util/runner"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"github.com/tendermint/tendermint/libs/log"
 )
 

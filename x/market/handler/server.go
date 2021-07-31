@@ -8,10 +8,10 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	atypes "github.com/ovrclk/akash/x/audit/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	"github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	"github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 type msgServer struct {
@@ -94,7 +94,7 @@ func (ms msgServer) CreateBid(goCtx context.Context, msg *types.MsgCreateBid) (*
 		return &types.MsgCreateBidResponse{}, err
 	}
 
-	telemetry.IncrCounter(1.0, "akash.bids")
+	telemetry.IncrCounter(1.0, "virtengine.bids")
 	return &types.MsgCreateBidResponse{}, nil
 }
 
@@ -141,7 +141,7 @@ func (ms msgServer) CloseBid(goCtx context.Context, msg *types.MsgCloseBid) (*ty
 		dtypes.EscrowAccountForDeployment(lease.ID().DeploymentID()),
 		types.EscrowPaymentForLease(lease.ID()))
 
-	telemetry.IncrCounter(1.0, "akash.order_closed")
+	telemetry.IncrCounter(1.0, "virtengine.order_closed")
 
 	return &types.MsgCloseBidResponse{}, nil
 }

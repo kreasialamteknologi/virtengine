@@ -7,10 +7,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	"github.com/ovrclk/akash/x/provider/keeper"
-	"github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	"github.com/virtengine/virtengine/x/provider/keeper"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 func TestProviderCreate(t *testing.T) {
@@ -85,7 +85,7 @@ func TestProviderUpdateExisting(t *testing.T) {
 	err := keeper.Create(ctx, prov)
 	require.NoError(t, err)
 
-	prov.HostURI = "akash.domain.com"
+	prov.HostURI = "virtengine.domain.com"
 	err = keeper.Update(ctx, prov)
 	require.NoError(t, err)
 

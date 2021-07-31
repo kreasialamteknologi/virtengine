@@ -12,7 +12,7 @@ func TestSdlVersion(t *testing.T) {
 version: v2.0
 services:
   web:
-    image: quay.io/ovrclk/demo-app
+    image: quay.io/virtengine/demo-app
     expose:
     - port: 80
       as: 80

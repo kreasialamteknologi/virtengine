@@ -13,7 +13,7 @@ import (
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/ovrclk/akash/testutil"
+	"github.com/virtengine/virtengine/testutil"
 )
 
 func TestNewClient(t *testing.T) {

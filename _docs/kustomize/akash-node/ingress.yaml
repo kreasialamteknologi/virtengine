@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: akash-node
+  name: virtengine-node
 spec:
   rules:
-    - host: akash.localhost
+    - host: virtengine.localhost
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: akash-node
+                name: virtengine-node
                 port:
-                  name: akash-rpc
+                  name: virtengine-rpc

@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	crdGroup   = "akash.network"
+	crdGroup   = "virtengine.network"
 	crdVersion = "v1"
 )
 

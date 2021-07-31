@@ -3,8 +3,8 @@
 #
 # Set up a kubernetes environment with kind.
 #
-# * Install Akash CRD
-# * Install `akash-services` Namespace
+# * Install VirtEngine CRD
+# * Install `virtengine-services` Namespace
 # * Install Network Policies
 # * Optionally install metrics-server
 
@@ -17,11 +17,11 @@ install_ns() {
 }
 
 install_network_policies() {
-  kubectl kustomize "$rootdir/_docs/kustomize/akash-services/" | kubectl apply -f-
+  kubectl kustomize "$rootdir/_docs/kustomize/virtengine-services/" | kubectl apply -f-
 }
 
 install_crd() {
-  kubectl apply -f "$rootdir/pkg/apis/akash.network/v1/crd.yaml"
+  kubectl apply -f "$rootdir/pkg/apis/virtengine.network/v1/crd.yaml"
 }
 
 install_metrics() {
@@ -42,11 +42,11 @@ usage() {
 
   Usage: $0 [crd|ns|metrics]
 
-  crd:        install the akash CRDs
-  ns:         install akash namespace
+  crd:        install the virtengine CRDs
+  ns:         install virtengine namespace
   metrics:    install CRDs, NS, metrics-server and wait for metrics to be available
   calico-metrics: install CRDs, NS, Network Policies, metrics-server and wait for metrics to be available
-  networking: install essential k8s namespace and network policies for Akash services
+  networking: install essential k8s namespace and network policies for VirtEngine services
 EOF
   exit 1
 }

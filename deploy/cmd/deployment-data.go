@@ -2,15 +2,15 @@ package cmd
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/cmd/common"
+	"github.com/virtengine/virtengine/cmd/common"
 	"sync"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/sdl"
-	dcli "github.com/ovrclk/akash/x/deployment/client/cli"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/sdl"
+	dcli "github.com/virtengine/virtengine/x/deployment/client/cli"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"github.com/spf13/pflag"
 )
 

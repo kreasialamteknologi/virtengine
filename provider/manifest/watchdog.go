@@ -3,9 +3,9 @@ package manifest
 import (
 	"context"
 	"github.com/boz/go-lifecycle"
-	"github.com/ovrclk/akash/provider/session"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/provider/session"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	"github.com/virtengine/virtengine/x/market/types"
 	"github.com/tendermint/tendermint/libs/log"
 	"time"
 )

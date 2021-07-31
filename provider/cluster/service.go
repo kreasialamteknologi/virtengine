@@ -7,13 +7,13 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	"github.com/ovrclk/akash/provider/event"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	atypes "github.com/ovrclk/akash/types"
-	mquery "github.com/ovrclk/akash/x/market/query"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	"github.com/virtengine/virtengine/provider/event"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	atypes "github.com/virtengine/virtengine/types"
+	mquery "github.com/virtengine/virtengine/x/market/query"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 	"github.com/tendermint/tendermint/libs/log"
 )
 

@@ -7,11 +7,11 @@ import (
 	"fmt"
 	sdkclient "github.com/cosmos/cosmos-sdk/client"
 	dockerterm "github.com/moby/term"
-	akashclient "github.com/ovrclk/akash/client"
-	gwrest "github.com/ovrclk/akash/provider/gateway/rest"
-	cutils "github.com/ovrclk/akash/x/cert/utils"
-	dcli "github.com/ovrclk/akash/x/deployment/client/cli"
-	mcli "github.com/ovrclk/akash/x/market/client/cli"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	gwrest "github.com/virtengine/virtengine/provider/gateway/rest"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
+	dcli "github.com/virtengine/virtengine/x/deployment/client/cli"
+	mcli "github.com/virtengine/virtengine/x/market/client/cli"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 	"io"
@@ -119,7 +119,7 @@ func doLeaseShell(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
-	gclient, err := gwrest.NewClient(akashclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
+	gclient, err := gwrest.NewClient(virtengineclient.NewQueryClientFromCtx(cctx), prov, []tls.Certificate{cert})
 	if err != nil {
 		return err
 	}

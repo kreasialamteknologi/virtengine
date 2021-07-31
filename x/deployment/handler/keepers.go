@@ -2,9 +2,9 @@ package handler
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/x/deployment/types"
-	etypes "github.com/ovrclk/akash/x/escrow/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/deployment/types"
+	etypes "github.com/virtengine/virtengine/x/escrow/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 // MarketKeeper Interface includes market methods

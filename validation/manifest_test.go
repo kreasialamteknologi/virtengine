@@ -9,11 +9,11 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/testutil"
-	akashtypes "github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/validation"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/testutil"
+	virtenginetypes "github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/validation"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 var (
@@ -23,27 +23,27 @@ var (
 	randStorage = testutil.RandStorageQuantity()
 )
 
-var randUnits1 = akashtypes.ResourceUnits{
-	CPU: &akashtypes.CPU{
-		Units: akashtypes.NewResourceValue(randCPU1),
+var randUnits1 = virtenginetypes.ResourceUnits{
+	CPU: &virtenginetypes.CPU{
+		Units: virtenginetypes.NewResourceValue(randCPU1),
 	},
-	Memory: &akashtypes.Memory{
-		Quantity: akashtypes.NewResourceValue(randMemory),
+	Memory: &virtenginetypes.Memory{
+		Quantity: virtenginetypes.NewResourceValue(randMemory),
 	},
-	Storage: &akashtypes.Storage{
-		Quantity: akashtypes.NewResourceValue(randStorage),
+	Storage: &virtenginetypes.Storage{
+		Quantity: virtenginetypes.NewResourceValue(randStorage),
 	},
 }
 
-var randUnits2 = akashtypes.ResourceUnits{
-	CPU: &akashtypes.CPU{
-		Units: akashtypes.NewResourceValue(randCPU2),
+var randUnits2 = virtenginetypes.ResourceUnits{
+	CPU: &virtenginetypes.CPU{
+		Units: virtenginetypes.NewResourceValue(randCPU2),
 	},
-	Memory: &akashtypes.Memory{
-		Quantity: akashtypes.NewResourceValue(randMemory),
+	Memory: &virtenginetypes.Memory{
+		Quantity: virtenginetypes.NewResourceValue(randMemory),
 	},
-	Storage: &akashtypes.Storage{
-		Quantity: akashtypes.NewResourceValue(randStorage),
+	Storage: &virtenginetypes.Storage{
+		Quantity: virtenginetypes.NewResourceValue(randStorage),
 	},
 }
 
@@ -247,29 +247,29 @@ func TestNilManifestIsInvalid(t *testing.T) {
 const nameOfTestService = "test-service"
 const nameOfTestGroup = "testGroup"
 
-func simpleResourceUnits() akashtypes.ResourceUnits {
-	return akashtypes.ResourceUnits{
-		CPU: &akashtypes.CPU{
-			Units: akashtypes.ResourceValue{
+func simpleResourceUnits() virtenginetypes.ResourceUnits {
+	return virtenginetypes.ResourceUnits{
+		CPU: &virtenginetypes.CPU{
+			Units: virtenginetypes.ResourceValue{
 				Val: sdk.NewIntFromUint64(randCPU1),
 			},
 			Attributes: nil,
 		},
-		Memory: &akashtypes.Memory{
-			Quantity: akashtypes.ResourceValue{
+		Memory: &virtenginetypes.Memory{
+			Quantity: virtenginetypes.ResourceValue{
 				Val: sdk.NewIntFromUint64(randMemory),
 			},
 			Attributes: nil,
 		},
-		Storage: &akashtypes.Storage{
-			Quantity: akashtypes.ResourceValue{
+		Storage: &virtenginetypes.Storage{
+			Quantity: virtenginetypes.ResourceValue{
 				Val: sdk.NewIntFromUint64(randStorage),
 			},
 			Attributes: nil,
 		},
-		Endpoints: []akashtypes.Endpoint{
+		Endpoints: []virtenginetypes.Endpoint{
 			{
-				Kind: akashtypes.Endpoint_SHARED_HTTP,
+				Kind: virtenginetypes.Endpoint_SHARED_HTTP,
 			},
 		},
 	}

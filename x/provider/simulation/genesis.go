@@ -2,7 +2,7 @@ package simulation
 
 import (
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/x/provider/types"
 )
 
 // RandomizedGenState generates a random GenesisState for supply

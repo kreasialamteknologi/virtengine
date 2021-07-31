@@ -5,9 +5,9 @@ import (
 	"strconv"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	drest "github.com/ovrclk/akash/x/deployment/client/rest"
-	"github.com/ovrclk/akash/x/market/query"
-	"github.com/ovrclk/akash/x/market/types"
+	drest "github.com/virtengine/virtengine/x/deployment/client/rest"
+	"github.com/virtengine/virtengine/x/market/query"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 // OrderIDFromRequest returns OrderID from parsing request

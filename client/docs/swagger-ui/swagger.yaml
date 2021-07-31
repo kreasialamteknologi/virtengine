@@ -1,10 +1,10 @@
 swagger: '2.0'
 info:
-  title: AKASH - gRPC Gateway docs
+  title: VIRTENGINE - gRPC Gateway docs
   description: 'A REST interface for state queries, legacy transactions'
   version: 1.0.0
 paths:
-  /akash/deployment/v1beta1/deployments/info:
+  /virtengine/deployment/v1beta1/deployments/info:
     get:
       summary: Deployment queries deployment details
       operationId: Deployment
@@ -292,7 +292,7 @@ paths:
           format: uint64
       tags:
         - Query
-  /akash/deployment/v1beta1/deployments/list:
+  /virtengine/deployment/v1beta1/deployments/list:
     get:
       summary: Deployments queries deployments
       operationId: Deployments
@@ -664,7 +664,7 @@ paths:
           format: boolean
       tags:
         - Query
-  /akash/deployment/v1beta1/groups/info:
+  /virtengine/deployment/v1beta1/groups/info:
     get:
       summary: Group queries group details
       operationId: Group
@@ -915,7 +915,7 @@ paths:
           format: int64
       tags:
         - Query
-  /akash/market/v1beta1/bids/info:
+  /virtengine/market/v1beta1/bids/info:
     get:
       summary: Bid queries bid details
       operationId: Bid
@@ -1029,7 +1029,7 @@ paths:
           type: string
       tags:
         - Query
-  /akash/market/v1beta1/bids/list:
+  /virtengine/market/v1beta1/bids/list:
     get:
       summary: Bids queries bids with filters
       operationId: Bids
@@ -1223,7 +1223,7 @@ paths:
           format: boolean
       tags:
         - Query
-  /akash/market/v1beta1/leases/info:
+  /virtengine/market/v1beta1/leases/info:
     get:
       summary: Lease queries lease details
       operationId: Lease
@@ -1333,7 +1333,7 @@ paths:
           type: string
       tags:
         - Query
-  /akash/market/v1beta1/leases/list:
+  /virtengine/market/v1beta1/leases/list:
     get:
       summary: Leases queries leases with filters
       operationId: Leases
@@ -1525,7 +1525,7 @@ paths:
           format: boolean
       tags:
         - Query
-  /akash/market/v1beta1/orders/info:
+  /virtengine/market/v1beta1/orders/info:
     get:
       summary: Order queries order details
       operationId: Order
@@ -1784,7 +1784,7 @@ paths:
           format: int64
       tags:
         - Query
-  /akash/market/v1beta1/orders/list:
+  /virtengine/market/v1beta1/orders/list:
     get:
       summary: Orders queries orders with filters
       operationId: Orders
@@ -2125,7 +2125,7 @@ paths:
           format: boolean
       tags:
         - Query
-  /akash/provider/v1beta1/providers:
+  /virtengine/provider/v1beta1/providers:
     get:
       summary: Providers queries providers
       operationId: Providers
@@ -2257,7 +2257,7 @@ paths:
           format: boolean
       tags:
         - Query
-  '/akash/provider/v1beta1/providers/{owner}':
+  '/virtengine/provider/v1beta1/providers/{owner}':
     get:
       summary: Provider queries provider details
       operationId: Provider
@@ -26191,7 +26191,7 @@ paths:
       tags:
         - Query
 definitions:
-  akash.base.v1beta1.Attribute:
+  virtengine.base.v1beta1.Attribute:
     type: object
     properties:
       key:
@@ -26199,7 +26199,7 @@ definitions:
       value:
         type: string
     title: Attribute represents key value pair
-  akash.base.v1beta1.CPU:
+  virtengine.base.v1beta1.CPU:
     type: object
     properties:
       units:
@@ -26220,10 +26220,10 @@ definitions:
               type: string
           title: Attribute represents key value pair
     title: CPU stores resource units and cpu config attributes
-  akash.base.v1beta1.Endpoint:
+  virtengine.base.v1beta1.Endpoint:
     type: object
     title: Endpoint describes a publicly accessible IP service
-  akash.base.v1beta1.Memory:
+  virtengine.base.v1beta1.Memory:
     type: object
     properties:
       quantity:
@@ -26244,7 +26244,7 @@ definitions:
               type: string
           title: Attribute represents key value pair
     title: Memory stores resource quantity and memory attributes
-  akash.base.v1beta1.PlacementRequirements:
+  virtengine.base.v1beta1.PlacementRequirements:
     type: object
     properties:
       signed_by:
@@ -26275,7 +26275,7 @@ definitions:
           title: Attribute represents key value pair
         title: Attribute list of attributes tenant expects from the provider
     title: PlacementRequirements
-  akash.base.v1beta1.ResourceUnits:
+  virtengine.base.v1beta1.ResourceUnits:
     type: object
     properties:
       cpu:
@@ -26351,14 +26351,14 @@ definitions:
       etc
 
       if field is nil resource is not present in the given data-structure
-  akash.base.v1beta1.ResourceValue:
+  virtengine.base.v1beta1.ResourceValue:
     type: object
     properties:
       val:
         type: string
         format: byte
     title: 'Unit stores cpu, memory and storage metrics'
-  akash.base.v1beta1.SignedBy:
+  virtengine.base.v1beta1.SignedBy:
     type: object
     properties:
       all_of:
@@ -26383,7 +26383,7 @@ definitions:
       entries there
 
       this behaviour to be discussed
-  akash.base.v1beta1.Storage:
+  virtengine.base.v1beta1.Storage:
     type: object
     properties:
       quantity:
@@ -26404,7 +26404,7 @@ definitions:
               type: string
           title: Attribute represents key value pair
     title: Storage stores resource quantity and storage attributes
-  akash.deployment.v1beta1.Deployment:
+  virtengine.deployment.v1beta1.Deployment:
     type: object
     properties:
       deployment_id:
@@ -26433,7 +26433,7 @@ definitions:
         type: string
         format: byte
     title: 'Deployment stores deploymentID, state and version details'
-  akash.deployment.v1beta1.Deployment.State:
+  virtengine.deployment.v1beta1.Deployment.State:
     type: string
     enum:
       - invalid
@@ -26445,7 +26445,7 @@ definitions:
        - active: DeploymentActive denotes state for deployment active
        - closed: DeploymentClosed denotes state for deployment closed
     title: State is an enum which refers to state of deployment
-  akash.deployment.v1beta1.DeploymentFilters:
+  virtengine.deployment.v1beta1.DeploymentFilters:
     type: object
     properties:
       owner:
@@ -26456,7 +26456,7 @@ definitions:
       state:
         type: string
     title: DeploymentFilters defines filters used to filter deployments
-  akash.deployment.v1beta1.DeploymentID:
+  virtengine.deployment.v1beta1.DeploymentID:
     type: object
     properties:
       owner:
@@ -26465,7 +26465,7 @@ definitions:
         type: string
         format: uint64
     title: DeploymentID stores owner and sequence number
-  akash.deployment.v1beta1.DeploymentResponse:
+  virtengine.deployment.v1beta1.DeploymentResponse:
     type: object
     properties:
       deployment:
@@ -26698,7 +26698,7 @@ definitions:
     title: >-
       DeploymentResponse represents details of deployment along with group
       details
-  akash.deployment.v1beta1.Group:
+  virtengine.deployment.v1beta1.Group:
     type: object
     properties:
       group_id:
@@ -26878,7 +26878,7 @@ definitions:
             format: int64
         title: GroupSpec stores group specifications
     title: 'Group stores group id, state and specifications of group'
-  akash.deployment.v1beta1.Group.State:
+  virtengine.deployment.v1beta1.Group.State:
     type: string
     enum:
       - invalid
@@ -26896,7 +26896,7 @@ definitions:
        - insufficient_funds: GroupInsufficientFunds denotes state for group insufficient_funds
        - closed: GroupClosed denotes state for group closed
     title: State is an enum which refers to state of group
-  akash.deployment.v1beta1.GroupID:
+  virtengine.deployment.v1beta1.GroupID:
     type: object
     properties:
       owner:
@@ -26908,7 +26908,7 @@ definitions:
         type: integer
         format: int64
     title: 'GroupID stores owner, deployment sequence number and group sequence number'
-  akash.deployment.v1beta1.GroupSpec:
+  virtengine.deployment.v1beta1.GroupSpec:
     type: object
     properties:
       name:
@@ -27049,7 +27049,7 @@ definitions:
         type: string
         format: int64
     title: GroupSpec stores group specifications
-  akash.deployment.v1beta1.QueryDeploymentResponse:
+  virtengine.deployment.v1beta1.QueryDeploymentResponse:
     type: object
     properties:
       deployment:
@@ -27296,7 +27296,7 @@ definitions:
     title: >-
       QueryDeploymentResponse is response type for the Query/Deployment RPC
       method
-  akash.deployment.v1beta1.QueryDeploymentsResponse:
+  virtengine.deployment.v1beta1.QueryDeploymentsResponse:
     type: object
     properties:
       deployments:
@@ -27570,7 +27570,7 @@ definitions:
     title: >-
       QueryDeploymentsResponse is response type for the Query/Deployments RPC
       method
-  akash.deployment.v1beta1.QueryGroupResponse:
+  virtengine.deployment.v1beta1.QueryGroupResponse:
     type: object
     properties:
       group:
@@ -27764,7 +27764,7 @@ definitions:
             title: GroupSpec stores group specifications
         title: 'Group stores group id, state and specifications of group'
     title: QueryGroupResponse is response type for the Query/Group RPC method
-  akash.deployment.v1beta1.Resource:
+  virtengine.deployment.v1beta1.Resource:
     type: object
     properties:
       resources:
@@ -28269,7 +28269,7 @@ definitions:
                   "@type": "type.googleapis.com/google.protobuf.Duration",
                   "value": "1.212s"
                 }
-  akash.market.v1beta1.Bid:
+  virtengine.market.v1beta1.Bid:
     type: object
     properties:
       bid_id:
@@ -28321,7 +28321,7 @@ definitions:
           NOTE: The amount field is an Int which implements the custom method
           signatures required by gogoproto.
     title: 'Bid stores BidID, state of bid and price'
-  akash.market.v1beta1.Bid.State:
+  virtengine.market.v1beta1.Bid.State:
     type: string
     enum:
       - invalid
@@ -28337,7 +28337,7 @@ definitions:
        - lost: BidLost denotes state for bid lost
        - closed: BidClosed denotes state for bid closed
     title: State is an enum which refers to state of bid
-  akash.market.v1beta1.BidFilters:
+  virtengine.market.v1beta1.BidFilters:
     type: object
     properties:
       owner:
@@ -28356,7 +28356,7 @@ definitions:
       state:
         type: string
     title: BidFilters defines flags for bid list filter
-  akash.market.v1beta1.BidID:
+  virtengine.market.v1beta1.BidID:
     type: object
     properties:
       owner:
@@ -28375,7 +28375,7 @@ definitions:
     description: |-
       BidID stores owner and all other seq numbers
       A successful bid becomes a Lease(ID).
-  akash.market.v1beta1.Lease:
+  virtengine.market.v1beta1.Lease:
     type: object
     properties:
       lease_id:
@@ -28423,7 +28423,7 @@ definitions:
           NOTE: The amount field is an Int which implements the custom method
           signatures required by gogoproto.
     title: 'Lease stores LeaseID, state of lease and price'
-  akash.market.v1beta1.Lease.State:
+  virtengine.market.v1beta1.Lease.State:
     type: string
     enum:
       - invalid
@@ -28437,7 +28437,7 @@ definitions:
        - insufficient_funds: LeaseInsufficientFunds denotes state for lease insufficient_funds
        - closed: LeaseClosed denotes state for lease closed
     title: State is an enum which refers to state of lease
-  akash.market.v1beta1.LeaseFilters:
+  virtengine.market.v1beta1.LeaseFilters:
     type: object
     properties:
       owner:
@@ -28456,7 +28456,7 @@ definitions:
       state:
         type: string
     title: LeaseFilters defines flags for lease list filter
-  akash.market.v1beta1.LeaseID:
+  virtengine.market.v1beta1.LeaseID:
     type: object
     properties:
       owner:
@@ -28473,7 +28473,7 @@ definitions:
       provider:
         type: string
     title: LeaseID stores bid details of lease
-  akash.market.v1beta1.Order:
+  virtengine.market.v1beta1.Order:
     type: object
     properties:
       order_id:
@@ -28656,7 +28656,7 @@ definitions:
         type: string
         format: int64
     title: 'Order stores orderID, state of order and other details'
-  akash.market.v1beta1.Order.State:
+  virtengine.market.v1beta1.Order.State:
     type: string
     enum:
       - invalid
@@ -28670,7 +28670,7 @@ definitions:
        - matched: OrderMatched denotes state for order matched
        - closed: OrderClosed denotes state for order lost
     title: State is an enum which refers to state of order
-  akash.market.v1beta1.OrderFilters:
+  virtengine.market.v1beta1.OrderFilters:
     type: object
     properties:
       owner:
@@ -28687,7 +28687,7 @@ definitions:
       state:
         type: string
     title: OrderFilters defines flags for order list filter
-  akash.market.v1beta1.OrderID:
+  virtengine.market.v1beta1.OrderID:
     type: object
     properties:
       owner:
@@ -28702,7 +28702,7 @@ definitions:
         type: integer
         format: int64
     title: OrderID stores owner and all other seq numbers
-  akash.market.v1beta1.QueryBidResponse:
+  virtengine.market.v1beta1.QueryBidResponse:
     type: object
     properties:
       bid:
@@ -28761,7 +28761,7 @@ definitions:
               signatures required by gogoproto.
         title: 'Bid stores BidID, state of bid and price'
     title: QueryBidResponse is response type for the Query/Bid RPC method
-  akash.market.v1beta1.QueryBidsResponse:
+  virtengine.market.v1beta1.QueryBidsResponse:
     type: object
     properties:
       bids:
@@ -28847,7 +28847,7 @@ definitions:
                    PageResponse page = 2;
            }
     title: QueryBidsResponse is response type for the Query/Bids RPC method
-  akash.market.v1beta1.QueryLeaseResponse:
+  virtengine.market.v1beta1.QueryLeaseResponse:
     type: object
     properties:
       lease:
@@ -28902,7 +28902,7 @@ definitions:
               signatures required by gogoproto.
         title: 'Lease stores LeaseID, state of lease and price'
     title: QueryLeaseResponse is response type for the Query/Lease RPC method
-  akash.market.v1beta1.QueryLeasesResponse:
+  virtengine.market.v1beta1.QueryLeasesResponse:
     type: object
     properties:
       leases:
@@ -28984,7 +28984,7 @@ definitions:
                    PageResponse page = 2;
            }
     title: QueryLeasesResponse is response type for the Query/Leases RPC method
-  akash.market.v1beta1.QueryOrderResponse:
+  virtengine.market.v1beta1.QueryOrderResponse:
     type: object
     properties:
       order:
@@ -29181,7 +29181,7 @@ definitions:
             format: int64
         title: 'Order stores orderID, state of order and other details'
     title: QueryOrderResponse is response type for the Query/Order RPC method
-  akash.market.v1beta1.QueryOrdersResponse:
+  virtengine.market.v1beta1.QueryOrdersResponse:
     type: object
     properties:
       orders:
@@ -29408,7 +29408,7 @@ definitions:
                    PageResponse page = 2;
            }
     title: QueryOrdersResponse is response type for the Query/Orders RPC method
-  akash.provider.v1beta1.Provider:
+  virtengine.provider.v1beta1.Provider:
     type: object
     properties:
       owner:
@@ -29426,7 +29426,7 @@ definitions:
               type: string
           title: Attribute represents key value pair
     title: Provider stores owner and host details
-  akash.provider.v1beta1.QueryProviderResponse:
+  virtengine.provider.v1beta1.QueryProviderResponse:
     type: object
     properties:
       provider:
@@ -29448,7 +29448,7 @@ definitions:
               title: Attribute represents key value pair
         title: Provider stores owner and host details
     title: QueryProviderResponse is response type for the Query/Provider RPC method
-  akash.provider.v1beta1.QueryProvidersResponse:
+  virtengine.provider.v1beta1.QueryProvidersResponse:
     type: object
     properties:
       providers:

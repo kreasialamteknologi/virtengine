@@ -1,3 +1,3 @@
 package constants
 
-const AkashDenom = "uakt"
+const VirtEngineDenom = "uve"

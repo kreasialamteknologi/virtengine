@@ -16,8 +16,8 @@ import (
 	"sync"
 	"time"
 
-	cutils "github.com/ovrclk/akash/x/cert/utils"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	cutils "github.com/virtengine/virtengine/x/cert/utils"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/gorilla/websocket"
@@ -25,13 +25,13 @@ import (
 
 	cosmosclient "github.com/cosmos/cosmos-sdk/client"
 
-	akashclient "github.com/ovrclk/akash/client"
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/provider"
-	cltypes "github.com/ovrclk/akash/provider/cluster/types"
-	ctypes "github.com/ovrclk/akash/x/cert/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	virtengineclient "github.com/virtengine/virtengine/client"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/provider"
+	cltypes "github.com/virtengine/virtengine/provider/cluster/types"
+	ctypes "github.com/virtengine/virtengine/x/cert/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 const (
@@ -77,7 +77,7 @@ type ServiceLogs struct {
 }
 
 // NewClient returns a new Client
-func NewClient(qclient akashclient.QueryClient, addr sdk.Address, certs []tls.Certificate) (Client, error) {
+func NewClient(qclient virtengineclient.QueryClient, addr sdk.Address, certs []tls.Certificate) (Client, error) {
 	res, err := qclient.Provider(context.Background(), &ptypes.QueryProviderRequest{Owner: addr.String()})
 	if err != nil {
 		return nil, err
@@ -143,7 +143,7 @@ func (cd *ClientDirectory) GetClient(providerAddr sdk.Address) (Client, error) {
 		return client, nil
 	}
 
-	client, err := NewClient(akashclient.NewQueryClientFromCtx(cd.cosmosContext), providerAddr, []tls.Certificate{cd.clientCert})
+	client, err := NewClient(virtengineclient.NewQueryClientFromCtx(cd.cosmosContext), providerAddr, []tls.Certificate{cd.clientCert})
 	if err != nil {
 		return nil, err
 	}

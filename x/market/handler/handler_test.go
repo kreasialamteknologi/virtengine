@@ -13,13 +13,13 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/tendermint/tendermint/libs/rand"
 
-	"github.com/ovrclk/akash/testutil"
-	"github.com/ovrclk/akash/testutil/state"
-	akashtypes "github.com/ovrclk/akash/types"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
-	"github.com/ovrclk/akash/x/market/handler"
-	"github.com/ovrclk/akash/x/market/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	"github.com/virtengine/virtengine/testutil"
+	"github.com/virtengine/virtengine/testutil/state"
+	virtenginetypes "github.com/virtengine/virtengine/types"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
+	"github.com/virtengine/virtengine/x/market/handler"
+	"github.com/virtengine/virtengine/x/market/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 )
 
 type testSuite struct {
@@ -447,7 +447,7 @@ func (st *testSuite) createOrder(resources []dtypes.Resource) (types.Order, dtyp
 	return order, group.GroupSpec
 }
 
-func (st *testSuite) createProvider(attr []akashtypes.Attribute) ptypes.Provider {
+func (st *testSuite) createProvider(attr []virtenginetypes.Attribute) ptypes.Provider {
 	st.t.Helper()
 
 	prov := ptypes.Provider{

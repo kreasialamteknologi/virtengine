@@ -1,29 +1,29 @@
 Kustomize Kubernetes
 --------------------
 
-Directory contains templates and files to configure a Kubernetes cluster to support Akash Provider services.
+Directory contains templates and files to configure a Kubernetes cluster to support VirtEngine Provider services.
 
 ## `networking/`
 
 Normal Kubernetes declaration files to be `kubectl apply -f networking/`
 
-* `akash-services` namespace declaration
+* `virtengine-services` namespace declaration
 * Default-deny Network policies for the `default` namespace to cripple the potential of malicious containers being run there.
 
-## `akash-services/`
+## `virtengine-services/`
 
-[Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) directory for configuring Network Policies to support `akash-services` namespace of Akash apps.
+[Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) directory for configuring Network Policies to support `virtengine-services` namespace of VirtEngine apps.
 
-`kubectl kustomize akash-services/ | kubectl apply -f -`
+`kubectl kustomize virtengine-services/ | kubectl apply -f -`
 
-## `akashd/` 
+## `virtengined/` 
 
-Kustomize directory to configure running the `akash` blockchain node service.
+Kustomize directory to configure running the `virtengine` blockchain node service.
 
-`kubectl kustomize akashd/ | kubectl apply -f -`
+`kubectl kustomize virtengined/ | kubectl apply -f -`
 
-## `akash-provider/`
+## `virtengine-provider/`
 
-Kustomize directory to configure running the `akash-provider` instance which manages tenant workloads within the cluster.
+Kustomize directory to configure running the `virtengine-provider` instance which manages tenant workloads within the cluster.
 
-`kubectl kustomize akash-provider/ | kubectl apply -f -`
+`kubectl kustomize virtengine-provider/ | kubectl apply -f -`

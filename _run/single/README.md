@@ -2,7 +2,7 @@
 # Dev Environment: "Single" configuration
 
 The _Single_ dev environment builds A single-node blockchain network and
-an Akash Provider Services Daemon (PSD) for bidding and running workloads,
+an VirtEngine Provider Services Daemon (PSD) for bidding and running workloads,
 all within a kind kubernetes environment.
 
 The [instructions](#runbook) below will illustrate how to:
@@ -52,12 +52,12 @@ this example.
 |`DSEQ`|1|deployment sequence|
 |`GSEQ`|1|group sequence|
 |`OSEQ`|1|order sequence|
-|`PRICE`|10uakt|price to bid|
+|`PRICE`|10uve|price to bid|
 
-To get DNS routing to work locally, there are two addresses which will probably need to set to configure requests to hit the kind docker container. To route requests back to the local interface, add the following two lines to your `/etc/hosts` for the Akash-Node and Akash-Provider examples to work correctly.
+To get DNS routing to work locally, there are two addresses which will probably need to set to configure requests to hit the kind docker container. To route requests back to the local interface, add the following two lines to your `/etc/hosts` for the VirtEngine-Node and VirtEngine-Provider examples to work correctly.
 
-* `127.0.0.1   akash.localhost`
-* `127.0.0.1   akash-provider.localhost`
+* `127.0.0.1   virtengine.localhost`
+* `127.0.0.1   virtengine-provider.localhost`
 
 Or if it does not conflict with other local rules, use a wildcard for localhost:
 * `127.0.0.1   *.localhost`
@@ -108,10 +108,10 @@ cluster created by the `kind` command. This uploads an image from your local doc
 
 __t1__
 ```sh
-DOCKER_IMAGE=ovrclk/akash:mycustomtag make kind-upload-image
+DOCKER_IMAGE=virtengine/virtengine:mycustomtag make kind-upload-image
 ```
 
-### Build Akash binaries and initialize network
+### Build VirtEngine binaries and initialize network
 
 __t1__
 ```sh
@@ -141,7 +141,7 @@ You should see blocks being produced - the block height should be increasing.
 
 You can now view genesis accounts that were created:
 
-**If this command fails**, consider adding `127.0.0.1   akash.localhost` to your `/etc/hosts` for DNS.
+**If this command fails**, consider adding `127.0.0.1   virtengine.localhost` to your `/etc/hosts` for DNS.
 
 __t1__
 ```sh
@@ -288,14 +288,14 @@ make query-accounts
 
 If the KinD configuration uses Docker's random port assignment then the on-chain Provider data will need to be updated for `send-manfiest` to be able to correctly route the manifest POST request.
 
-For example you might need to update the `provider.yaml`'s first line to include the port number. eg: `host: http://akash-provider.localhost:41109`
+For example you might need to update the `provider.yaml`'s first line to include the port number. eg: `host: http://virtengine-provider.localhost:41109`
 
 
 ## Update Deployment
 
 Updating active Deployments is a two step process. First edit the `deployment.yaml` with whatever changes are desired. Example; update the `image` field.
 
- 1. Update the Akash Network to inform the Provider that a new Deployment declaration is expected.
+ 1. Update the VirtEngine Network to inform the Provider that a new Deployment declaration is expected.
    * `make deployment-update`
  2. Send the updated manifest to the Provider to run.
    * `make send-manifest`
@@ -304,7 +304,7 @@ Between the first and second step, the prior deployment's containers will contin
 
 #### Limitations
 
-Akash Groups are translated into Kubernetes Deployments, this means that only a few fields from the Akash SDL are mutable. For example `image`, `command`, `args`, `env` and exposed ports can be modified, but compute resources and placement criteria cannot.
+VirtEngine Groups are translated into Kubernetes Deployments, this means that only a few fields from the VirtEngine SDL are mutable. For example `image`, `command`, `args`, `env` and exposed ports can be modified, but compute resources and placement criteria cannot.
 
 ### Terminate lease
 

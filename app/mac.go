@@ -7,7 +7,7 @@ import (
 	ibctransfertypes "github.com/cosmos/cosmos-sdk/x/ibc/applications/transfer/types"
 	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	escrowtypes "github.com/ovrclk/akash/x/escrow/types"
+	escrowtypes "github.com/virtengine/virtengine/x/escrow/types"
 )
 
 func MacPerms() map[string][]string {

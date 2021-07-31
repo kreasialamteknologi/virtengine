@@ -19,7 +19,7 @@ import (
 
 // ExportAppStateAndValidators exports the state of the application for a genesis
 // file.
-func (app *AkashApp) ExportAppStateAndValidators(
+func (app *VirtEngineApp) ExportAppStateAndValidators(
 	forZeroHeight bool, jailAllowedAddrs []string,
 ) (servertypes.ExportedApp, error) {
 
@@ -56,7 +56,7 @@ func (app *AkashApp) ExportAppStateAndValidators(
 // prepare for fresh start at zero height
 // NOTE zero height genesis is a temporary feature which will be deprecated
 //      in favour of export at a block height
-func (app *AkashApp) prepForZeroHeightGenesis(ctx sdk.Context, jailAllowedAddrs []string) {
+func (app *VirtEngineApp) prepForZeroHeightGenesis(ctx sdk.Context, jailAllowedAddrs []string) {
 	applyAllowedAddrs := false
 
 	// Check if there is a allowed address list
@@ -199,8 +199,8 @@ func (app *AkashApp) prepForZeroHeightGenesis(ctx sdk.Context, jailAllowedAddrs 
 	)
 }
 
-// Setup initializes a new AkashApp. A Nop logger is set in AkashApp.
-func Setup(isCheckTx bool) *AkashApp {
+// Setup initializes a new VirtEngineApp. A Nop logger is set in VirtEngineApp.
+func Setup(isCheckTx bool) *VirtEngineApp {
 	db := dbm.NewMemDB()
 
 	// TODO: make this configurable via config or flag.

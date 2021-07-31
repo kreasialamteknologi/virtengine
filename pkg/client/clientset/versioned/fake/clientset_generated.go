@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/ovrclk/akash/pkg/client/clientset/versioned"
-	akashv1 "github.com/ovrclk/akash/pkg/client/clientset/versioned/typed/akash.network/v1"
-	fakeakashv1 "github.com/ovrclk/akash/pkg/client/clientset/versioned/typed/akash.network/v1/fake"
+	clientset "github.com/virtengine/virtengine/pkg/client/clientset/versioned"
+	virtenginev1 "github.com/virtengine/virtengine/pkg/client/clientset/versioned/typed/virtengine.network/v1"
+	fakevirtenginev1 "github.com/virtengine/virtengine/pkg/client/clientset/versioned/typed/virtengine.network/v1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -76,7 +76,7 @@ func (c *Clientset) Tracker() testing.ObjectTracker {
 
 var _ clientset.Interface = &Clientset{}
 
-// AkashV1 retrieves the AkashV1Client
-func (c *Clientset) AkashV1() akashv1.AkashV1Interface {
-	return &fakeakashv1.FakeAkashV1{Fake: &c.Fake}
+// VirtEngineV1 retrieves the VirtEngineV1Client
+func (c *Clientset) VirtEngineV1() virtenginev1.VirtEngineV1Interface {
+	return &fakevirtenginev1.FakeVirtEngineV1{Fake: &c.Fake}
 }

@@ -16,17 +16,17 @@ import (
 	"github.com/stretchr/testify/require"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	qmock "github.com/ovrclk/akash/client/mocks"
-	"github.com/ovrclk/akash/provider"
-	kubeClient "github.com/ovrclk/akash/provider/cluster/kube"
-	pcmock "github.com/ovrclk/akash/provider/cluster/mocks"
-	clustertypes "github.com/ovrclk/akash/provider/cluster/types"
-	pmmock "github.com/ovrclk/akash/provider/manifest/mocks"
-	pmock "github.com/ovrclk/akash/provider/mocks"
-	"github.com/ovrclk/akash/sdl"
-	"github.com/ovrclk/akash/testutil"
-	manifestValidation "github.com/ovrclk/akash/validation"
-	"github.com/ovrclk/akash/x/market/types"
+	qmock "github.com/virtengine/virtengine/client/mocks"
+	"github.com/virtengine/virtengine/provider"
+	kubeClient "github.com/virtengine/virtengine/provider/cluster/kube"
+	pcmock "github.com/virtengine/virtengine/provider/cluster/mocks"
+	clustertypes "github.com/virtengine/virtengine/provider/cluster/types"
+	pmmock "github.com/virtengine/virtengine/provider/manifest/mocks"
+	pmock "github.com/virtengine/virtengine/provider/mocks"
+	"github.com/virtengine/virtengine/sdl"
+	"github.com/virtengine/virtengine/testutil"
+	manifestValidation "github.com/virtengine/virtengine/validation"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 const (
@@ -358,7 +358,7 @@ func TestRouteStatusFails(t *testing.T) {
 func TestRouteValidateOK(t *testing.T) {
 	runRouterTest(t, false, func(test *routerTest) {
 		validate := provider.ValidateGroupSpecResult{
-			MinBidPrice: testutil.AkashCoin(t, 200),
+			MinBidPrice: testutil.VirtEngineCoin(t, 200),
 		}
 
 		test.pclient.On("Validate", mock.Anything, mock.Anything).Return(validate, nil)

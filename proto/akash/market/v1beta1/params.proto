@@ -1,9 +1,9 @@
 syntax = "proto3";
-package akash.market.v1beta1;
+package virtengine.market.v1beta1;
 import "gogoproto/gogo.proto";
 import "cosmos/base/v1beta1/coin.proto";
 
-option go_package = "github.com/ovrclk/akash/x/market/types";
+option go_package = "github.com/virtengine/virtengine/x/market/types";
 
 // Params is the params for the x/market module
 message Params {

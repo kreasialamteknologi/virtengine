@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	client "github.com/ovrclk/akash/client"
-	broadcaster "github.com/ovrclk/akash/client/broadcaster"
+	client "github.com/virtengine/virtengine/client"
+	broadcaster "github.com/virtengine/virtengine/client/broadcaster"
 
 	mock "github.com/stretchr/testify/mock"
 )

@@ -22,8 +22,8 @@ import (
 	"context"
 	"time"
 
-	v1 "github.com/ovrclk/akash/pkg/apis/akash.network/v1"
-	scheme "github.com/ovrclk/akash/pkg/client/clientset/versioned/scheme"
+	v1 "github.com/virtengine/virtengine/pkg/apis/virtengine.network/v1"
+	scheme "github.com/virtengine/virtengine/pkg/client/clientset/versioned/scheme"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -57,7 +57,7 @@ type manifests struct {
 }
 
 // newManifests returns a Manifests
-func newManifests(c *AkashV1Client, namespace string) *manifests {
+func newManifests(c *VirtEngineV1Client, namespace string) *manifests {
 	return &manifests{
 		client: c.RESTClient(),
 		ns:     namespace,

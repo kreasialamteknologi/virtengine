@@ -3,7 +3,7 @@ version: "2.0"
 
 services:
   web:
-    image: quay.io/ovrclk/demo-app
+    image: quay.io/virtengine/demo-app
     expose:
       - port: 80
         as: 80
@@ -28,7 +28,7 @@ profiles:
         region: us-west
       pricing:
         web: 
-          denom: uakt
+          denom: uve
           amount: 1000
 
 deployment:

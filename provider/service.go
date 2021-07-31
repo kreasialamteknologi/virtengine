@@ -11,12 +11,12 @@ import (
 	"github.com/boz/go-lifecycle"
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/provider/bidengine"
-	"github.com/ovrclk/akash/provider/cluster"
-	"github.com/ovrclk/akash/provider/manifest"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/provider/bidengine"
+	"github.com/virtengine/virtengine/provider/cluster"
+	"github.com/virtengine/virtengine/provider/manifest"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 var (

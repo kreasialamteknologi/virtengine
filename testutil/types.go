@@ -22,8 +22,8 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/simapp"
 
-	"github.com/ovrclk/akash/app"
-	"github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/app"
+	"github.com/virtengine/virtengine/types"
 )
 
 func RandRangeInt(min, max int) int {
@@ -87,7 +87,7 @@ func DefaultConfig() network.Config {
 		}
 
 		stringData := buf.String()
-		stringDataAfter := strings.ReplaceAll(stringData, `"stake"`, `"uakt"`)
+		stringDataAfter := strings.ReplaceAll(stringData, `"stake"`, `"uve"`)
 		if stringData == stringDataAfter {
 			genesisState[k] = v
 			continue

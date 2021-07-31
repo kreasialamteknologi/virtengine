@@ -5,21 +5,21 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ovrclk/akash/manifest"
-	"github.com/ovrclk/akash/provider/cluster/mocks"
-	ctypes "github.com/ovrclk/akash/provider/cluster/types"
-	"github.com/ovrclk/akash/provider/event"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/testutil"
-	atypes "github.com/ovrclk/akash/types"
+	"github.com/virtengine/virtengine/manifest"
+	"github.com/virtengine/virtengine/provider/cluster/mocks"
+	ctypes "github.com/virtengine/virtengine/provider/cluster/types"
+	"github.com/virtengine/virtengine/provider/event"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/testutil"
+	atypes "github.com/virtengine/virtengine/types"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ovrclk/akash/types"
-	"github.com/ovrclk/akash/types/unit"
-	dtypes "github.com/ovrclk/akash/x/deployment/types"
+	"github.com/virtengine/virtengine/types"
+	"github.com/virtengine/virtengine/types/unit"
+	dtypes "github.com/virtengine/virtengine/x/deployment/types"
 )
 
 func newResourceUnits() types.ResourceUnits {

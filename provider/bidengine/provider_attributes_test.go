@@ -3,13 +3,13 @@ package bidengine
 import (
 	"errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	clientmocks "github.com/ovrclk/akash/client/mocks"
-	"github.com/ovrclk/akash/provider/session"
-	"github.com/ovrclk/akash/pubsub"
-	"github.com/ovrclk/akash/testutil"
-	akashtypes "github.com/ovrclk/akash/types"
-	atypes "github.com/ovrclk/akash/x/audit/types"
-	ptypes "github.com/ovrclk/akash/x/provider/types"
+	clientmocks "github.com/virtengine/virtengine/client/mocks"
+	"github.com/virtengine/virtengine/provider/session"
+	"github.com/virtengine/virtengine/pubsub"
+	"github.com/virtengine/virtengine/testutil"
+	virtenginetypes "github.com/virtengine/virtengine/types"
+	atypes "github.com/virtengine/virtengine/x/audit/types"
+	ptypes "github.com/virtengine/virtengine/x/provider/types"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -76,8 +76,8 @@ func TestProvAttrCachesValue(t *testing.T) {
 			Providers: atypes.Providers{
 				atypes.Provider{
 					Owner: scaffold.providerAddr.String(),
-					Attributes: akashtypes.Attributes{
-						akashtypes.Attribute{
+					Attributes: virtenginetypes.Attributes{
+						virtenginetypes.Attribute{
 							Key:   "foo",
 							Value: "bar",
 						},
@@ -138,8 +138,8 @@ func TestProvAttrObeysTTL(t *testing.T) {
 			Providers: atypes.Providers{
 				atypes.Provider{
 					Owner: scaffold.providerAddr.String(),
-					Attributes: akashtypes.Attributes{
-						akashtypes.Attribute{
+					Attributes: virtenginetypes.Attributes{
+						virtenginetypes.Attribute{
 							Key:   "foo",
 							Value: "bar",
 						},
@@ -173,9 +173,9 @@ func TestProvAttrTrimsCache(t *testing.T) {
 	const ttl = 1 * time.Hour
 	scaffold := setupProviderAttributesTestScaffold(t, ttl, func(scaffold *providerAttributesTestScaffold) *clientmocks.QueryClient {
 		queryClient := &clientmocks.QueryClient{}
-		attrs := make([]akashtypes.Attribute, 1001)
+		attrs := make([]virtenginetypes.Attribute, 1001)
 		for i := range attrs {
-			attrs[i] = akashtypes.Attribute{
+			attrs[i] = virtenginetypes.Attribute{
 				Key:   "foo",
 				Value: "bar",
 			}
@@ -248,8 +248,8 @@ func TestProvAttrClearsCache(t *testing.T) {
 			Providers: atypes.Providers{
 				atypes.Provider{
 					Owner: scaffold.providerAddr.String(),
-					Attributes: akashtypes.Attributes{
-						akashtypes.Attribute{
+					Attributes: virtenginetypes.Attributes{
+						virtenginetypes.Attribute{
 							Key:   "foo",
 							Value: "bar",
 						},

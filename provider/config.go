@@ -4,9 +4,9 @@ import (
 	"time"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/ovrclk/akash/provider/bidengine"
-	mparams "github.com/ovrclk/akash/x/market/types"
-	mtypes "github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/provider/bidengine"
+	mparams "github.com/virtengine/virtengine/x/market/types"
+	mtypes "github.com/virtengine/virtengine/x/market/types"
 )
 
 type Config struct {

@@ -1,8 +1,8 @@
 package market
 
 import (
-	"github.com/ovrclk/akash/x/market/keeper"
-	"github.com/ovrclk/akash/x/market/types"
+	"github.com/virtengine/virtengine/x/market/keeper"
+	"github.com/virtengine/virtengine/x/market/types"
 )
 
 const (

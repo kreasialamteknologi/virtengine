@@ -18,8 +18,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/stretchr/testify/require"
 
-	"github.com/ovrclk/akash/client/mocks"
-	"github.com/ovrclk/akash/x/cert/types"
+	"github.com/virtengine/virtengine/client/mocks"
+	"github.com/virtengine/virtengine/x/cert/types"
 )
 
 var AuthVersionOID = asn1.ObjectIdentifier{2, 23, 133, 2, 6}

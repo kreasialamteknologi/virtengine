@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package akash.escrow.v1beta1;
+package virtengine.escrow.v1beta1;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "akash/escrow/v1beta1/types.proto";
+import "virtengine/escrow/v1beta1/types.proto";
 
-option go_package = "github.com/ovrclk/akash/x/escrow/types";
+option go_package = "github.com/virtengine/virtengine/x/escrow/types";
 
 // Query defines the gRPC querier service
 service Query {
@@ -15,14 +15,14 @@ service Query {
   // buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
   // Accounts queries all accounts
   rpc Accounts(QueryAccountsRequest) returns (QueryAccountsResponse) {
-    option (google.api.http).get = "/akash/escrow/v1beta1/types/accounts/list";
+    option (google.api.http).get = "/virtengine/escrow/v1beta1/types/accounts/list";
   }
 
   // buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
   // buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
   // Payments queries all payments
   rpc Payments(QueryPaymentsRequest) returns (QueryPaymentsResponse) {
-    option (google.api.http).get = "/akash/escrow/v1beta1/types/payments/list";
+    option (google.api.http).get = "/virtengine/escrow/v1beta1/types/payments/list";
   }
 }
 

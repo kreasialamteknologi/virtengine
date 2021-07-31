@@ -8,7 +8,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/ovrclk/akash/sdkutil"
+	"github.com/virtengine/virtengine/sdkutil"
 	"github.com/stretchr/testify/require"
 )
 
@@ -88,7 +88,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -140,7 +140,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -167,7 +167,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -194,7 +194,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -210,11 +210,11 @@ var TEPS = []testEventParsing{
 				},
 				{
 					Key:   evProviderKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evPriceDenomKey,
-					Value: "uakt",
+					Value: "uve",
 				},
 				{
 					Key:   evPriceAmountKey,
@@ -232,7 +232,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -252,7 +252,7 @@ var TEPS = []testEventParsing{
 				},
 				{
 					Key:   evPriceDenomKey,
-					Value: "uakt",
+					Value: "uve",
 				},
 				{
 					Key:   evPriceAmountKey,
@@ -270,7 +270,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -286,11 +286,11 @@ var TEPS = []testEventParsing{
 				},
 				{
 					Key:   evProviderKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evPriceDenomKey,
-					Value: "uakt",
+					Value: "uve",
 				},
 				{
 					Key:   evPriceAmountKey,
@@ -309,7 +309,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -325,11 +325,11 @@ var TEPS = []testEventParsing{
 				},
 				{
 					Key:   evProviderKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evPriceDenomKey,
-					Value: "uakt",
+					Value: "uve",
 				},
 				{
 					Key:   evPriceAmountKey,
@@ -348,7 +348,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -364,11 +364,11 @@ var TEPS = []testEventParsing{
 				},
 				{
 					Key:   evProviderKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evPriceDenomKey,
-					Value: "uakt",
+					Value: "uve",
 				},
 				{
 					Key:   evPriceAmountKey,
@@ -386,7 +386,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -406,7 +406,7 @@ var TEPS = []testEventParsing{
 				},
 				{
 					Key:   evPriceDenomKey,
-					Value: "uakt",
+					Value: "uve",
 				},
 				{
 					Key:   evPriceAmountKey,
@@ -425,7 +425,7 @@ var TEPS = []testEventParsing{
 			Attributes: []sdk.Attribute{
 				{
 					Key:   evOwnerKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evDSeqKey,
@@ -441,11 +441,11 @@ var TEPS = []testEventParsing{
 				},
 				{
 					Key:   evProviderKey,
-					Value: "akash1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
+					Value: "virtengine1qtqpdszzakz7ugkey7ka2cmss95z26ygar2mgr",
 				},
 				{
 					Key:   evPriceDenomKey,
-					Value: "uakt",
+					Value: "uve",
 				},
 				{
 					Key:   evPriceAmountKey,

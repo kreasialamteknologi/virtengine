@@ -1,13 +1,9 @@
-# VirtEngine - Decentralized Serverless Network
-
-![tests](https://github.com/virtengine/virtengine/workflows/tests/badge.svg)
-![simulations](https://github.com/virtengine/virtengine/workflows/Sims/badge.svg)
-[![codecov](https://codecov.io/github/virtengine/virtengine/coverage.svg?branch=master)](https://codecov.io/github/virtengine/virtengine?branch=master)
+# VirtEngine - Decentralized Compute Marketplace
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/virtengine/virtengine)](https://goreportcard.com/report/github.com/virtengine/virtengine)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[![VirtEngine](_docs/img/logo-label-black.svg "VirtEngine")](#overview)
+[![VirtEngine](https://virtengine.com/engine/view/assets/img/logo/logo2.png)](#overview)
 
 [VirtEngine](https://virtengine.network) is a secure, transparent, and decentralized cloud computing marketplace that connects those who need computing resources (tenants) with those that have computing capacity to lease (providers).
 

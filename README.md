@@ -5,7 +5,7 @@
 
 [![VirtEngine](https://virtengine.com/engine/view/assets/img/logo/logo2.png)](#overview)
 
-[VirtEngine](https://virtengine.network) is a secure, transparent, and decentralized cloud computing marketplace that connects those who need computing resources (tenants) with those that have computing capacity to lease (providers).
+[VirtEngine](https://virtengine.com) is a secure, transparent, and decentralized cloud computing marketplace that connects those who need computing resources (tenants) with those that have computing capacity to lease (providers).
 
 For a high-level overview of the VirtEngine protocol and network economics, check out the [whitepapers](https://virtengine.network/research); a detailed protocol definition can be 
 found in the [design documentation](https://docs.virtengine.network); and the target workload definition spec is [here](https://docs.virtengine.network/sdl).

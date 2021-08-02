@@ -3,10 +3,8 @@
 package mocks
 
 import (
-	virtenginetypes "github.com/virtengine/virtengine/types"
-
 	mock "github.com/stretchr/testify/mock"
-
+	virtenginetypes "github.com/virtengine/virtengine/types"
 	types "github.com/virtengine/virtengine/x/market/types"
 )
 

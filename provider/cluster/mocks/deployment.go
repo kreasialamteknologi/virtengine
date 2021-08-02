@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	manifest "github.com/virtengine/virtengine/manifest"
 	mock "github.com/stretchr/testify/mock"
+	manifest "github.com/virtengine/virtengine/manifest"
 
 	types "github.com/virtengine/virtengine/x/market/types"
 )

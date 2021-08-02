@@ -56,9 +56,9 @@ replace github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alp
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.33.2
 
-replace github.com/cosmos/cosmos-sdk => github.com/virtengine/cosmos-sdk v0.42.8
+replace github.com/cosmos/cosmos-sdk => github.com/cosmos/cosmos-sdk v0.42.8
 
-replace github.com/tendermint/tendermint => github.com/virtengine/tendermint v0.34.11
+replace github.com/tendermint/tendermint => github.com/tendermint/tendermint v0.34.11
 
 replace (
 	github.com/cosmos/ledger-cosmos-go => github.com/virtengine/ledger-cosmos-go v0.13.3

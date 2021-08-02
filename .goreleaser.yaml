@@ -116,7 +116,7 @@ brews:
     tap:
       owner: virtengine
       name: homebrew-tap
-    homepage: "https://virtengine.network"
+    homepage: "https://virtengine.com"
     description: "Blockchain-powered decentralized compute platform"
     custom_block: |
       {{ .Env.HOMEBREW_CUSTOM }}

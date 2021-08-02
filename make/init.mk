@@ -5,7 +5,7 @@ VIRTENGINE_ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/../)
 include $(VIRTENGINE_ROOT)/.env
 endif
 
-VIRTENGINE                       = $(VIRTENGINE_DEVCACHE_BIN)/virtengine
+VIRTENGINE  			   := $(VIRTENGINE_DEVCACHE_BIN)/virtengine
 
 BINS                       := $(VIRTENGINE)
 
@@ -20,7 +20,7 @@ PROTOC_GEN_COSMOS_VERSION  ?= v0.3.1
 GRPC_GATEWAY_VERSION       := $(shell $(GO) list -mod=readonly -m -f '{{ .Version }}' github.com/grpc-ecosystem/grpc-gateway)
 PROTOC_SWAGGER_GEN_VERSION := $(GRPC_GATEWAY_VERSION)
 GOLANGCI_LINT_VERSION      ?= v1.38.0
-GOLANG_VERSION             ?= 1.16.1
+GOLANG_VERSION             ?= 1.16.6
 GOLANG_CROSS_VERSION       := v$(GOLANG_VERSION)
 STATIK_VERSION             ?= v0.1.7
 GIT_CHGLOG_VERSION         ?= v0.10.0

@@ -14,7 +14,7 @@ if [ -z "$2" ]; then
 fi
 
 # Build genesis file incl account for passed address
-coins="10000000000stake,100000000000samoleans"
+coins="1000000000000stake,10000000000000uve"
 virtengine init --chain-id "$CHAINID" "$CHAINID"
 virtengine keys add validator --keyring-backend="test"
 virtengine add-genesis-account "$(virtengine keys show validator -a --keyring-backend="test")" $coins
